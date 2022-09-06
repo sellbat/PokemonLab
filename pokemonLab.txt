@@ -1,0 +1,15 @@
+Psuedocode:
+
+Public class menu
+	
+
+
+Public class item
+
+
+
+Public class attack
+
+
+
+Public class main

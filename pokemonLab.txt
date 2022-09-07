@@ -57,12 +57,14 @@ Pokemon Class:
 
 Item Class:
     Field Variables:
-        String name ("Potion", "Super Potion", "Revive", "Max Revive", "Rare Candy")
+        String name ("Potion", "Super Potion", "Revive", "Max Revive", "Rare Candy", "Pokeball")
 
         int levelIncrease
         int healthIncrease
         boolean revive
         boolean maxRevive
+
+        boolean pokeball
 
 Attack Class:
     Field Variables:
@@ -93,14 +95,15 @@ Game Class:
 
     nextTurn Method (takes in myTeam and compTeam):
         if !isPlayerTurn:
-            compTeam.randomMove
-
+            compTeam.randomMove()
 
         else: (i.e. isPlayerTurn is true):
-            
-
-
-    
+            ask player for input whether 
+                to attack, 
+                use item (and which pokemon to use it on if necessary) 
+                    (if they choose to use a pokeball, the game is over), 
+                switch pokemon, 
+                or run away (game is over)
 
 Main Class:
     Create myTeam

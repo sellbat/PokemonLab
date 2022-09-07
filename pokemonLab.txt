@@ -27,10 +27,7 @@ Psuedocode:
 
             int level
 
-            boolean dead
-
-        Constructor:
-            Takes in (name, type, attacks, health, level) and sets the field Variables accordinglya
+            boolean fainted
 
         useAttack Method (takes in an attack, and the other team's pokemon):
             if this.paralyzeRoundsLeft == 0:
@@ -65,6 +62,12 @@ Psuedocode:
             boolean maxRevive
 
             boolean pokeball
+    
+    Effect Class:
+        String name
+        int roundsLeft
+        int damage
+        boolean incapacitate
 
     Attack Class:
         Field Variables:
@@ -72,13 +75,12 @@ Psuedocode:
 
             String name
 
-            int poisonRounds
-            int paralyzeRounds
+            Effect effect
         
     Game Class:
         Field Variables:
             boolean isGameOver
-            boolean isPlayerTurn
+            boolean isPlayerTurn = false
 
             enum Screen = {Battle, AttackMenu, BagMenu, PokemonMenu}
 
@@ -94,6 +96,8 @@ Psuedocode:
             this.compPokemon = random pokemon from comp team
 
         nextTurn Method (takes in myTeam and compTeam):
+            this.isPlayerTurn = !this.isPlayerTurn
+
             if !isPlayerTurn:
                 compTeam.randomMove()
 

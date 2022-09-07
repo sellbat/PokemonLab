@@ -1,118 +1,121 @@
 Psuedocode:
 
-ComputerTeam Class:
-    Field Variables:
-        Pokemon[] pokemons
-        Item[] bag
 
-    randomMove Method:
-        (80% chance of uniformly random attack with current pokemon, 20% chance of uniformly random item with current pokemon)
+    ComputerTeam Class:
+        Field Variables:
+            Pokemon[] pokemons
+            Item[] bag
 
-PlayerTeam Class:
-    Field Variables:
-        Pokemon[] pokemons
-        Item[] bag
+        randomMove Method:
+            (80% chance of uniformly random attack with current pokemon, 20% chance of uniformly random item with current pokemon)
 
-Pokemon Class:
-    Field Variables:
-        String name
+    PlayerTeam Class:
+        Field Variables:
+            Pokemon[] pokemons
+            Item[] bag
 
-        int poisonedRoundsLeft
-        int paralyzeRoundsLeft
+    Pokemon Class:
+        Field Variables:
+            String name
 
-        Attack[] attacks
-        int health
-        int maxHealth
+            int poisonedRoundsLeft
+            int paralyzeRoundsLeft
 
-        int level
+            Attack[] attacks
+            int health
+            int maxHealth
 
-    Constructor:
-        Takes in (name, type, attacks, health, level) and sets the field Variables accordinglya
+            int level
 
-    useAttack Method (takes in an attack, and the other team's pokemon):
-        if this.paralyzeRoundsLeft == 0:
-            other team's pokemon health -= attack.damage
-            
-            if attack.poison:
-                poison other team's pokemon
+            boolean dead
 
-            if attack.paralyze:
-                paralyze other team's pokemon
-    
-    useItem Method (takes in an item from team's bag):
-        this.health += healthIncrease
-        this.level += levelIncrease
+        Constructor:
+            Takes in (name, type, attacks, health, level) and sets the field Variables accordinglya
 
-        if health > maxHealth:
-            health = maxHealth
+        useAttack Method (takes in an attack, and the other team's pokemon):
+            if this.paralyzeRoundsLeft == 0:
+                other team's pokemon health -= attack.damage
+                
+                if attack.poison:
+                    poison other team's pokemon
 
-        if level > 100:
-            level = 100
+                if attack.paralyze:
+                    paralyze other team's pokemon
         
-        if item.revive AND this.health == 0:
-            health = maxHealth/2
+        useItem Method (takes in an item from team's bag):
+            this.health += healthIncrease
+            this.level += levelIncrease
 
-        if item.maxRevive AND this.health == 0:
-            health = maxHealth
+            if health > maxHealth:
+                health = maxHealth
 
-Item Class:
-    Field Variables:
-        String name ("Potion", "Super Potion", "Revive", "Max Revive", "Rare Candy", "Pokeball")
+            if level > 100:
+                level = 100
+            
+            if item.revive AND this.health == 0:
+                health = maxHealth/2
 
-        int levelIncrease
-        int healthIncrease
-        boolean revive
-        boolean maxRevive
+            if item.maxRevive AND this.health == 0:
+                health = maxHealth
 
-        boolean pokeball
+    Item Class:
+        Field Variables:
+            String name ("Potion", "Super Potion", "Revive", "Max Revive", "Rare Candy", "Pokeball")
 
-Attack Class:
-    Field Variables:
-        int damage
+            int levelIncrease
+            int healthIncrease
+            boolean revive
+            boolean maxRevive
 
-        String name
+            boolean pokeball
 
-        int poisonRounds
-        int paralyzeRounds
-    
-Game Class:
-    Field Variables:
-        boolean isGameOver
-        boolean isPlayerTurn
+    Attack Class:
+        Field Variables:
+            int damage
 
-        enum Screen = {Battle, AttackMenu, BagMenu, PokemonMenu}
+            String name
 
-        Pokemon playerPokemon
-        Pokemon compPokemon
+            int poisonRounds
+            int paralyzeRounds
+        
+    Game Class:
+        Field Variables:
+            boolean isGameOver
+            boolean isPlayerTurn
 
-    print Method (takes in a screen enum, and a message if any) Method:
-        switch(screen enum):
-            print the correct screen based on the enum (and a message if any)
-    
-    setup Method (myTeam and compTeam):
-        this.playerPokemon = (ask player to input which pokemon)
-        this.compPokemon = random pokemon from comp team
+            enum Screen = {Battle, AttackMenu, BagMenu, PokemonMenu}
 
-    nextTurn Method (takes in myTeam and compTeam):
-        if !isPlayerTurn:
-            compTeam.randomMove()
+            Pokemon playerPokemon
+            Pokemon compPokemon
 
-        else: (i.e. isPlayerTurn is true):
-            ask player for input whether 
-                to attack, 
-                use item (and which pokemon to use it on if necessary) 
-                    (if they choose to use a pokeball, the game is over), 
-                switch pokemon, 
-                or run away (game is over)
+        print Method (takes in a screen enum, and a message if any) Method:
+            switch(screen enum):
+                print the correct screen based on the enum (and a message if any)
+        
+        setup Method (myTeam and compTeam):
+            this.playerPokemon = (ask player to input which pokemon)
+            this.compPokemon = random pokemon from comp team
 
-Main Class:
-    Create myTeam
-    Create compTeam
+        nextTurn Method (takes in myTeam and compTeam):
+            if !isPlayerTurn:
+                compTeam.randomMove()
 
-    Create myGame
+            else: (i.e. isPlayerTurn is true):
+                ask player for input whether 
+                    to attack, 
+                    use item (and which pokemon to use it on if necessary) 
+                        (if they choose to use a pokeball, the game is over), 
+                    switch pokemon, 
+                    or run away (game is over)
 
-    myGame.setup()
+    Main Class:
+        Create myTeam
+        Create compTeam
 
-    while(!myGame.isGameOver):
-        myGame.nextTurn(myTeam, compTeam)
+        Create myGame
+
+        myGame.setup()
+
+        while(!myGame.isGameOver):
+            myGame.nextTurn(myTeam, compTeam)
 

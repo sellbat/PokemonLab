@@ -1,22 +1,82 @@
 Psuedocode:
 
+ComputerTeam Class:
+    Field Variables:
+        Pokemon[] pokemons
+        Item[] bag
+
+PlayerTeam Class:
+    Field Variables:
+        Pokemon[] pokemons
+        Item[] bag
+
 Pokemon Class:
     Field Variables:
         String name
-        String type
+
+        int poisonedRoundsLeft
+        int paralyzeRoundsLeft
 
         Attack[] attacks
         int health
+        int maxHealth
 
         int level
 
     Constructor:
-        Takes in (name, type, attacks, health, level) and sets the field Variables accordingly
+        Takes in (name, type, attacks, health, level) and sets the field Variables accordinglya
+
+    useAttack Method (takes in an attack, and the other team's pokemon):
+        if this.paralyzeRoundsLeft == 0:
+            other team's pokemon health -= attack.damage
+            
+            if attack.poison:
+                poison other team's pokemon
+
+            if attack.paralyze:
+                paralyze other team's pokemon
+    
+    useItem Method (takes in an item from team's bag):
+        this.health += healthIncrease
+        this.level += levelIncrease
+
+        if health > maxHealth:
+            health = maxHealth
+
+        if level > 100:
+            level = 100
+        
+        if item.revive AND this.health == 0:
+            health = maxHealth/2
+
+        if item.maxRevive AND this.health == 0:
+            health = maxHealth
 
 Item Class:
     Field Variables:
-        
+        String name ("Potion", "Super Potion", "Revive", "Max Revive", "Rare Candy")
+
+        int levelIncrease
+        int healthIncrease
+        boolean revive
+        boolean maxRevive
 
 Attack Class:
+    Field Variables:
+        int damage
+
+        String name
+
+        int poisonRounds
+        int paralyzeRounds
+    
+Game Class:
+    enum Screen = {Battle, AttackMenu, BagMenu, PokemonMenu}
+
+    print(takes in a screen enum, a player team, and a message if any) Method:
+        switch()
+
+
+
 
 Main Class:

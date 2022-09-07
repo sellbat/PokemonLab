@@ -34,13 +34,10 @@ Psuedocode:
 
         useAttack Method (takes in an attack, and the other team's pokemon):
             if this.paralyzeRoundsLeft == 0:
-                other team's pokemon health -= attack.damage
+                other team's pokemon health -= attack.damage*(this.level/other team's pokemon's level)
                 
-                if attack.poison:
-                    poison other team's pokemon
-
-                if attack.paralyze:
-                    paralyze other team's pokemon
+                poisonedRoundsLeft += attack.poisonRounds
+                paralyzedRoundsLeft += attack.paralyzeRounds
         
         useItem Method (takes in an item from team's bag):
             this.health += healthIncrease

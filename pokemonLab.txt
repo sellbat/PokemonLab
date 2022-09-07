@@ -1,15 +1,22 @@
 Psuedocode:
 
-Public class menu
-	
+Pokemon Class:
+    Field Variables:
+        String name
+        String type
 
+        Attack[] attacks
+        int health
 
-Public class item
+        int level
 
+    Constructor:
+        Takes in (name, type, attacks, health, level) and sets the field Variables accordingly
 
+Item Class:
+    Field Variables:
+        
 
-Public class attack
+Attack Class:
 
-
-
-Public class main
+Main Class:

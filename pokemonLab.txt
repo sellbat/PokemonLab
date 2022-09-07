@@ -5,6 +5,9 @@ ComputerTeam Class:
         Pokemon[] pokemons
         Item[] bag
 
+    randomMove Method:
+        (80% chance of uniformly random attack with current pokemon, 20% chance of uniformly random item with current pokemon)
+
 PlayerTeam Class:
     Field Variables:
         Pokemon[] pokemons
@@ -71,12 +74,42 @@ Attack Class:
         int paralyzeRounds
     
 Game Class:
-    enum Screen = {Battle, AttackMenu, BagMenu, PokemonMenu}
+    Field Variables:
+        boolean isGameOver
+        boolean isPlayerTurn
 
-    print(takes in a screen enum, a player team, and a message if any) Method:
-        switch()
+        enum Screen = {Battle, AttackMenu, BagMenu, PokemonMenu}
+
+        Pokemon playerPokemon
+        Pokemon compPokemon
+
+    print Method (takes in a screen enum, and a message if any) Method:
+        switch(screen enum):
+            print the correct screen based on the enum (and a message if any)
+    
+    setup Method (myTeam and compTeam):
+        this.playerPokemon = (ask player to input which pokemon)
+        this.compPokemon = random pokemon from comp team
+
+    nextTurn Method (takes in myTeam and compTeam):
+        if !isPlayerTurn:
+            compTeam.randomMove
 
 
+        else: (i.e. isPlayerTurn is true):
+            
 
+
+    
 
 Main Class:
+    Create myTeam
+    Create compTeam
+
+    Create myGame
+
+    myGame.setup()
+
+    while(!myGame.isGameOver):
+        myGame.nextTurn(myTeam, compTeam)
+

@@ -17,10 +17,16 @@ public class Pokemon {
     public int attackEVDefeatYield;
     public int defenseEVDefeatYield;
 
+    public String nature;
+
+    public boolean shiny;
+
     public Attack[] attacks;
 
     public int currentHp;
     public int maxHp;
+    public int attackPower;
+    public int defensePower;
 
     public int level;
 
@@ -50,6 +56,8 @@ public class Pokemon {
         this.level = level;
 
         this.maxHp =  (int) ((0.01 * (2 * baseHp + hpIV + (int)(0.25 * hpEV)) * level) + level + 10);
+        this.attackPower = (int) ((0.01 * (2 * baseAttack + defenseIV + (int)(0.25 * attackEV)) * level) + 5);
+        this.defensePower = (int) (0.01 * (2 * baseDefense + defenseIV + (int)(0.25 * defenseEV)) * level) + 5);
 
         this.currentHp = currentHp;
 

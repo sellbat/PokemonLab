@@ -8,6 +8,12 @@ public class PlayerTeam {
     }
 
     public void addBagItem(int amount, Item item){
+        for(int j=0 ; j<bag.length ; j++){
+            if(bag[j].itemType.name.equals(item.name)){
+                bag[j].numOfItems += amount;
+                return;
+            }
+        }
         BagItem[] newBag = new BagItem[bag.length + 1];
         for(int i=0; i< newBag.length ; i++){
             newBag[i] = bag[i];
@@ -15,5 +21,12 @@ public class PlayerTeam {
         newBag[bag.length] = new BagItem(item, amount);
         this.bag = newBag;
     }
-
+    public void addPokemon(Pokemon pokemon){
+        Pokemon[] newPokemons = new Pokemon[pokemons.length+1];
+        for(int i=0; i<pokemons.length ; i++){
+            newPokemons[i] = pokemons[i];
+        }
+        newPokemons[pokemons.length] = pokemon;
+        this.pokemons = newPokemons;
+    }
 }

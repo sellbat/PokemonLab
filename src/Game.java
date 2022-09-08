@@ -4,5 +4,5 @@ public class Game {
     enum Screen {Battle, AttackMenu, BagMenu, PokemonMenu}
     public Pokemon playerPokemon;
     public Pokemon compPokemon;
-    public void print(Screen, )
+    public void print(Screen, );
 }

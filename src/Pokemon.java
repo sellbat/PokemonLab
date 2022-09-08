@@ -1,67 +1,42 @@
 public class Pokemon {
-    public String name;
+    public String nickName;
 
-    public int baseHp;
-    public int baseAttack;
-    public int baseDefense;
-
-    public int hpIV;
-    public int attackIV;
-    public int defenseIV;
-
-    public int hpEV;
-    public int attackEV;
-    public int defenseEV;
-
-    public int hpEVDefeatYield;
-    public int attackEVDefeatYield;
-    public int defenseEVDefeatYield;
-
-    public String nature;
-
-    public boolean shiny;
+    public PokemonStats stats;
+    public PokemonSpecies species;
 
     public Attack[] attacks;
 
     public int currentHp;
+
     public int maxHp;
     public int attackPower;
     public int defensePower;
 
-    public int level;
-
     public boolean fainted;
 
-    Pokemon(String name, int baseHp, int baseAttack, int baseDefense, int hpIV, int attackIV, int defenseIV, int hpEV, int attackEV, int defenseEV, int hpEVDefeatYield, int attackEVDefeatYield, int defenseEVDefeatYield, Attack[] attacks, int currentHp, int level) {
-        this.name = name;
+    Pokemon(String nickName, PokemonSpecies species, PokemonStats stats, Attack[] attacks, int currentHp) {
+        this.nickName = nickName;
 
-        this.baseHp = baseHp;
-        this.baseAttack = baseAttack;
-        this.baseDefense = baseDefense;
-
-        this.hpIV = hpIV;
-        this.attackIV = attackIV;
-        this.defenseIV = defenseIV;
-
-        this.hpEV = hpEV;
-        this.attackEV = attackEV;
-        this.defenseEV = defenseEV;
-
-        this.hpEVDefeatYield = hpEVDefeatYield;
-        this.attackEVDefeatYield = attackEVDefeatYield;
-        this.defenseEVDefeatYield = defenseEVDefeatYield;
+        this.species = species;
+        this.stats = stats;
 
         this.attacks = attacks;
 
-        this.level = level;
+        this.updateFinalStats();
 
-        this.maxHp =  (int) ((0.01 * (2 * baseHp + hpIV + (int)(0.25 * hpEV)) * level) + level + 10);
-        this.attackPower = (int) ((0.01 * (2 * baseAttack + defenseIV + (int)(0.25 * attackEV)) * level) + 5);
-        this.defensePower = (int) (0.01 * (2 * baseDefense + defenseIV + (int)(0.25 * defenseEV)) * level) + 5);
+        if (currentHp == -1) {
+            this.currentHp = this.maxHp;
+        }
+        else {
+            this.currentHp = currentHp;
+        }
 
-        this.currentHp = currentHp;
+        this.fainted = !(this.currentHp > 0);
+    }
 
-        this.fainted = !(currentHp > 0);
-
+    private void updateFinalStats() {
+        this.maxHp =  (int) ((0.01 * (2 * this.species.baseHp + this.stats.hpIV + (int)(0.25 * this.stats.hpEV)) * this.stats.level) + this.stats.level + 10);
+        this.attackPower = (int) (((0.01 * (2 * this.species.baseAttack + this.stats.defenseIV + (int)(0.25 * this.stats.attackEV)) * this.stats.level) + 5) * this.stats.nature.attackMultiplier);
+        this.defensePower = (int) (((0.01 * (2 * this.species.baseDefense + this.stats.defenseIV + (int)(0.25 * this.stats.defenseEV)) * this.stats.level) + 5) * this.stats.nature.defenseMultiplier);
     }
 }

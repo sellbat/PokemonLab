@@ -4,11 +4,31 @@ public class Game {
     enum Screen {Battle, AttackMenu, BagMenu, PokemonMenu}
     public Pokemon playerPokemon;
     public Pokemon compPokemon;
-    //public void print(Screen, );
+
     public void setup(PlayerTeam myTeam, ComputerTeam compTeam){
         this.playerPokemon = myTeam.pokemons[0];
         this.compPokemon = compTeam.pokemons[0];
     }
+
+    private Screen inputMenuChoice() {
+        String choiceString;
+        Screen choice;
+
+        System.out.print("Input Your Menu Choice (Atk, Bag, Pok, Run): ");
+        while (true) {
+            try {
+                choiceString = StaticVars.SCANNER.next();
+                choice = Screen.valueOf(choiceString);
+                break;
+            }
+            catch (Exception e) {
+                StaticVars.SCANNER.nextLine();
+            }
+            System.out.print("\nPlease Try Again!\nInput Your Menu Choice: ");
+        }
+        return choice;
+    }
+
     private int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
         if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.species.baseSpeed/2))) {
@@ -28,6 +48,7 @@ public class Game {
 
         return ((int) damage/255);
     }
+    
     public void nextTurn(PlayerTeam myTeam, ComputerTeam compTeam){
         this.isPlayerTurn = !this.isPlayerTurn;
         if (!isPlayerTurn){

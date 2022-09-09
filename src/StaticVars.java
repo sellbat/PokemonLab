@@ -1,6 +1,9 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class StaticVars {
+    public static final Scanner SCANNER = new Scanner();
+
     public static final Random RANDOM = new Random();
 
     public static final PokemonSpecies PIKACHU = new PokemonSpecies(PokemonSpecies.SpeciesChoices.Pikachu);

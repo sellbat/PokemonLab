@@ -29,4 +29,6 @@ public class PlayerTeam {
         newPokemons[pokemons.length] = pokemon;
         this.pokemons = newPokemons;
     }
+
+
 }

@@ -5,7 +5,10 @@ public class Game {
     public Pokemon playerPokemon;
     public Pokemon compPokemon;
     //public void print(Screen, );
-
+    public void setup(PlayerTeam myTeam, ComputerTeam compTeam){
+        this.playerPokemon = myTeam.pokemons[0];
+        this.compPokemon = compTeam.pokemons[0];
+    }
     private int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
         if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.species.baseSpeed/2))) {
@@ -25,4 +28,20 @@ public class Game {
 
         return ((int) damage/255);
     }
+    public void nextTurn(PlayerTeam myTeam, ComputerTeam compTeam){
+        this.isPlayerTurn = !this.isPlayerTurn;
+        if (!isPlayerTurn){
+            compTeam.();
+        }
+        else{
+
+            System.out.println()
+        }
+
+    }
+    public void input(){
+
+    }
+
+
 }

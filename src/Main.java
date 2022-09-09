@@ -11,5 +11,18 @@ public class Main {
         myPokemons[4] = new Pokemon("myOverPoweredPokemonAKAtheMaxBound", StaticVars.PIKACHU, new PokemonStats(31, 31, 31, 170, 170, 170, new Nature(Nature.Natures.Hardy), true, 100), attacks, -1);
 
         PlayerTeam myTeam = new PlayerTeam(myPokemons, myItems);
+
+        BagItem[] enemyItems = {null};
+        Attack[] enemyAttacks = {null};
+
+        Pokemon[] enemyPokemons = new Pokemon[5];
+        enemyPokemons[0] = new Pokemon("enemyPikachu", StaticVars.PIKACHU, new PokemonStats(), attacks, -1);
+        enemyPokemons[1] = new Pokemon("enemyCharizard", StaticVars.CHARIZARD, new PokemonStats(), attacks, -1);
+        enemyPokemons[2] = new Pokemon("enemySquirtle", StaticVars.SQUIRTLE, new PokemonStats(), attacks, -1);
+        enemyPokemons[3] = new Pokemon("enemyIvysaur", StaticVars.IVYSAUR, new PokemonStats(), attacks, -1);
+        enemyPokemons[4] = new Pokemon("enemyOP", StaticVars.PIKACHU, new PokemonStats(31, 31, 31, 170, 170, 170, new Nature(Nature.Natures.Hardy), true, 100), attacks, -1);
+
+        ComputerTeam enemyTeam = new ComputerTeam(enemyPokemons, enemyItems);
+        Game myGame =
     }
 }

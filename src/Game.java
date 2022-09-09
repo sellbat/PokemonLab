@@ -24,6 +24,5 @@ public class Game {
         }
 
         return ((int) damage/255);
-        
     }
 }

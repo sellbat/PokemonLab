@@ -3,6 +3,9 @@ public class PokemonSpecies {
 
     public SpeciesChoices name;
 
+    public Type type1;
+    public Type type2;
+
     public int baseHp;
     public int baseAttack;
     public int baseDefense;

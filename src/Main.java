@@ -1,13 +1,8 @@
 public class Main {
-
     public static void main(String[] args) {
         Attack[] attacks = {null};
 
-	    Pokemon myPokemon = new Pokemon("myPokemon", new PokemonSpecies(PokemonSpecies.SpeciesChoices.Pikachu), new PokemonStats(), attacks, -1);
+	    Pokemon myPokemon = new Pokemon("myPokemon", StaticVars.PIKACHU, new PokemonStats(), attacks, -1);
 
-        System.out.print(myPokemon.attackPower);
-
-        Type myType = new Type(Type.Types.Fire);
-        System.out.print("\n" + myType.getTypeEffectivenessAgainst(new Type(Type.Types.Water)));
-    }
+        System.out.print(myPokemon.species.type1.getEffectivenessAgainst(StaticVars.WATER));}
 }

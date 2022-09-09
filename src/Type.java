@@ -26,14 +26,17 @@ public class Type {
             /*Fa*/{1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 2.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 0.5, 1.0},
     };
 
-
     Type(Types type) {
         this.type = type;
 
         this.typeIndex = type.ordinal() - 1;
         }
 
-    public double getTypeEffectivenessAgainst(Type defendingType) {
+    public double getEffectivenessAgainst(Type defendingType) {
+        if ((this.type == Types.None) || (defendingType.type == Types.None)) {
+            return 1.0;
+        }
+
         return TypeMatrix[this.typeIndex][defendingType.typeIndex];
     }
 }

@@ -1,13 +1,12 @@
 public class Attack {
-
-    public int damage;
+    public int power;
 
     public String name;
 
     public Effect effect;
 
     public Attack(int damage, String name, Effect effect){
-        this.damage = damage;
+        this.power = power;
         this.name = name;
         this.effect = effect;
     }

@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class PokemonStats {
     public int hpIV;
     public int attackIV;
@@ -15,17 +13,15 @@ public class PokemonStats {
 
     public int level;
 
-    private static final Random rand = new Random();
-
     PokemonStats() {
-        this.hpIV = rand.nextInt(32);
-        this.attackIV = rand.nextInt(32);
-        this.defenseIV = rand.nextInt(32);
+        this.hpIV = StaticVars.RANDOM.nextInt(32);
+        this.attackIV = StaticVars.RANDOM.nextInt(32);
+        this.defenseIV = StaticVars.RANDOM.nextInt(32);
 
         int maxTotalEVs = 510;
-        this.hpEV = rand.nextInt(255);
-        this.attackEV = rand.nextInt(255);
-        this.defenseEV = rand.nextInt(255);
+        this.hpEV = StaticVars.RANDOM.nextInt(255);
+        this.attackEV = StaticVars.RANDOM.nextInt(255);
+        this.defenseEV = StaticVars.RANDOM.nextInt(255);
 
         while((this.hpEV + this.attackEV + this.defenseEV) > maxTotalEVs) {
             this.hpEV -= 1;
@@ -35,9 +31,9 @@ public class PokemonStats {
 
         this.nature = new Nature();
 
-        this.shiny = (rand.nextInt(4096) == 0);
+        this.shiny = (StaticVars.RANDOM.nextInt(4096) == 0);
 
-        this.level = rand.nextInt(100) + 1;
+        this.level = StaticVars.RANDOM.nextInt(100) + 1;
     }
 
     PokemonStats(int hpIV, int attackIV, int defenseIV, int hpEV, int attackEV, int defenseEV, Nature nature, boolean shiny, int level) {

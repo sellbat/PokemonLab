@@ -19,28 +19,31 @@ public class PokemonSpecies {
 
         switch(speciesChoice) {
             case Pikachu:
-                setSpeciesStats(35, 55, 40, 0, 0, 0);
+                setSpeciesStats(StaticVars.ELECTRIC, StaticVars.NONE, 35, 55, 40, 0, 0, 0);
                 break;
 
             case Ivysaur:
-                setSpeciesStats(60, 62, 63, 0, 0, 0);
+                setSpeciesStats(StaticVars.GRASS, StaticVars.POISON, 60, 62, 63, 0, 0, 0);
                 break;
 
             case Charizard:
-                setSpeciesStats(78, 84, 78, 0, 0, 0);
+                setSpeciesStats(StaticVars.FIRE, StaticVars.FLYING, 78, 84, 78, 0, 0, 0);
                 break;
 
             case Squirtle:
-                setSpeciesStats(44, 48, 65, 0, 0, 1);
+                setSpeciesStats(StaticVars.WATER, StaticVars.NONE, 44, 48, 65, 0, 0, 1);
                 break;
 
             default:
-                setSpeciesStats(40, 40, 40, 0, 0, 0);
+                setSpeciesStats(StaticVars.NONE, StaticVars.NONE,40, 40, 40, 0, 0, 0);
                 break;
         }
     }
 
-    private void setSpeciesStats(int baseHp, int baseAttack, int baseDefense, int hpEVDefeatYield, int attackEVDefeatYield, int defenseEVDefeatYield) {
+    private void setSpeciesStats(Type type1, Type type2, int baseHp, int baseAttack, int baseDefense, int hpEVDefeatYield, int attackEVDefeatYield, int defenseEVDefeatYield) {
+        this.type1 = type1;
+        this.type2 = type2;
+
         this.baseHp = baseHp;
         this.baseAttack = baseAttack;
         this.baseDefense = baseDefense;

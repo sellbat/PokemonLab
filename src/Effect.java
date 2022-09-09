@@ -3,4 +3,6 @@ public class Effect {
     public int roundsLeft;
     public int damage;
     public boolean incapacitate;
+
+    Effect(name, roundsLeft, damage, boolean incapacitate)
 }

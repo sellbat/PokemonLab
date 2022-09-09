@@ -8,6 +8,8 @@ public class Game {
     public void setup(PlayerTeam myTeam, ComputerTeam compTeam){
         this.playerPokemon = myTeam.pokemons[0];
         this.compPokemon = compTeam.pokemons[0];
+
+        StaticVars.SCANNER.useDelimiter("\n");
     }
 
     private Screen inputMenuChoice() {
@@ -48,7 +50,7 @@ public class Game {
 
         return ((int) damage/255);
     }
-    
+
     public void nextTurn(PlayerTeam myTeam, ComputerTeam compTeam){
         this.isPlayerTurn = !this.isPlayerTurn;
         if (!isPlayerTurn){

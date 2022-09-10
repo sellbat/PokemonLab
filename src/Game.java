@@ -57,7 +57,12 @@ public class Game {
             compTeam.randomMove();
         }
         else{
+            switch(inputMenuChoice()){
 
+                case Screen.AttackMenu -> ;
+                case Screen.BagMenu -> ;
+                case Screen.PokemonMenu -> ;
+            }
         }
 
     }

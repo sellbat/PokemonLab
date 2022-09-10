@@ -1,4 +1,4 @@
-public class Screen {
+public class Menu {
     public void pokemonMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "";
@@ -61,17 +61,35 @@ public class Screen {
         }
         System.out.println(lineOne);
     }
-    public void bagMenu(){
-
+    public void bagMenu(PlayerTeam team){
+        String lineThree = "*";
+        String lineOne = "";
+        for(int i=0; i<30; i++){
+            lineOne += ("*");
+            lineThree+="-";
+        }
+        lineThree +="*";
+        String lineTwo = "*Bag";
+        for(int i=0; i<=25 ; i++){
+            lineTwo+=" ";
+        }
+        lineTwo+="*";
+        System.out.println(lineTwo);
+        System.out.println(lineThree);
+        int n =0;
+        for(int i=0; i<12; i++){
+            if(n<team.bag.length){
+                int len = 2+ String.valueOf(team.bag[n].numOfItems).length() + team.bag[n].itemType.name.length();
+                System.out.println();
+                String currLine = ("*" + team.bag[n].numOfItems + "x " + team.bag[n].itemType.name);
+                for(int j = 0; j<30-len ; j++){
+                    currLine += " ";
+                }
+                currLine+="*";
+                System.out.println(currLine);
+                n+=1;
+            }
+        }
+        System.out.println(lineOne);
     }
-
-
-
-
-
-
-
-
-    
-
 }

@@ -2,7 +2,7 @@ public class Effect {
     public enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
 
     public Effects name;
-    public int roundsLeft;
+    public  int roundsLeft;
     public double scalingDamage;
     public int damage;
     public double incapacitateChance;

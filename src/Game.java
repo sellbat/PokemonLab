@@ -31,7 +31,7 @@ public class Game {
         return choice;
     }
 
-    private int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
+    public int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
         if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.species.baseSpeed/2))) {
             criticalHitBonus = 2.0;
@@ -54,11 +54,10 @@ public class Game {
     public void nextTurn(PlayerTeam myTeam, ComputerTeam compTeam){
         this.isPlayerTurn = !this.isPlayerTurn;
         if (!isPlayerTurn){
-            compTeam.();
+            compTeam.randomMove();
         }
         else{
 
-            System.out.println()
         }
 
     }

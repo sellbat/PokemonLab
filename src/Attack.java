@@ -7,6 +7,8 @@ public class Attack {
 
     public Type type;
 
+
+
     public Attack(int damage, String name, Effect effect){
         this.power = power;
         this.name = name;

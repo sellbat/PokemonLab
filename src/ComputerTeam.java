@@ -33,6 +33,9 @@ public class ComputerTeam {
 
         this.pokemons = newPokemons;
     }
+    public void randomMove(){
+        
+    }
 
 
 

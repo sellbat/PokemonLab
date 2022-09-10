@@ -13,6 +13,8 @@ public class PokemonStats {
 
     public int level;
 
+
+
     PokemonStats() {
         this.hpIV = StaticVars.RANDOM.nextInt(32);
         this.attackIV = StaticVars.RANDOM.nextInt(32);

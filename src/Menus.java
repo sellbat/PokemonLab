@@ -1,4 +1,4 @@
-public class Menu {
+public class Menus {
     public void pokemonMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "";

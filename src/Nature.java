@@ -1,5 +1,4 @@
-import java.util.Random;
-
+/*Andrew*/
 public class Nature {
     public enum Natures {Bashful, Docile, Hardy, Quirky, Serious, Adamant, Brave, Lonely, Naughty, Bold, Relaxed, Impish, Lax, Modest, Mild, Quiet, Rash, Calm, Gentle, Sassy, Careful, Timid, Hasty, Jolly, Naive};
     public Natures[] naturesList = {Natures.Bashful, Natures.Docile, Natures.Hardy, Natures.Quirky, Natures.Serious,
@@ -9,16 +8,13 @@ public class Nature {
             Natures.Calm, Natures.Gentle, Natures.Sassy, Natures.Careful,
             Natures.Timid, Natures.Hasty, Natures.Jolly, Natures.Naive};
 
-
     Natures name;
 
     double attackMultiplier;
     double defenseMultiplier;
 
-    private static final Random rand = new Random();
-
     Nature() {
-        updateMultipliers(naturesList[rand.nextInt(naturesList.length)]);
+        updateMultipliers(naturesList[StaticVars.RANDOM.nextInt(naturesList.length)]);
     }
 
     Nature(Natures natureChoice) {

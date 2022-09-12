@@ -22,7 +22,7 @@ public class Main {
         enemyPokemons[3] = new Pokemon("enemyIvysaur", StaticVars.IVYSAUR, new PokemonStats(), attacks, -1);
         enemyPokemons[4] = new Pokemon("enemyOP", StaticVars.PIKACHU, new PokemonStats(31, 31, 31, 170, 170, 170, new Nature(Nature.Natures.Hardy), true, 100), attacks, -1);
 
-        ComputerTeam enemyTeam = new ComputerTeam(enemyPokemons, enemyItems);
+        ComputerTeam compTeam = new ComputerTeam(enemyPokemons, enemyItems);
         Game myGame =
     }
 }

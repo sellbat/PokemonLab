@@ -148,10 +148,6 @@ public class Game {
         if (!isPlayerTurn){
             compTeam.randomMove();
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> c55423d32de4638b06b741506a5cc6645aad22a0
         else{
             switch(inputMenuChoice()){
                 case AttackMenu:

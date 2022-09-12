@@ -60,7 +60,6 @@ public class Game {
         if (!isPlayerTurn){
             compTeam.randomMove();
         }
-        
         else{
             switch(inputMenuChoice()){
                 case AttackMenu:

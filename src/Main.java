@@ -1,3 +1,4 @@
+//Connor
 public class Main {
     public static void main(String[] args) {
         BagItem[] myItems = {null};

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ComputerTeam {
     public Pokemon[] pokemons;
     public BagItem[] bag;
@@ -24,7 +26,7 @@ public class ComputerTeam {
         this.bag = newBag;
     }
 
-    public void addPokemon(Pokemon pokemon) {
+    public void addPokemon(Pokemon pokemon) { //connor
         Pokemon[] newPokemons = new Pokemon[pokemons.length+1];
         for (int i=0; i<pokemons.length; i++) {
             newPokemons[i] = pokemons[i];
@@ -33,8 +35,29 @@ public class ComputerTeam {
 
         this.pokemons = newPokemons;
     }
-    public void randomMove(){
-
+    public void randomMove(){ //connor
+        int n = StaticVars.RANDOM.nextInt(0, 4);
+        switch(n){
+            case 0 :
+                int p = StaticVars.RANDOM.nextInt(0,pokemons.length);
+                Pokemon[] pokemonsTemp = new Pokemon[pokemons.length];
+                pokemons[p] = pokemonsTemp[0];                              //swap pokemons using a temporary array
+                int count = 1;
+                for(int i=0 ; i<p; i++){
+                    pokemonsTemp[count] = pokemons[i]; //adds all the values in the original array except for the chosen pokemon
+                    count++;
+                }
+                for(int i=p; i<pokemons.length; i++){
+                 pokemonsTemp[count] = pokemons[i];
+                 count++;
+                }
+                this.pokemons = pokemonsTemp;
+            case 1:
+                int p = StaticVars.RANDOM.nextInt(0, Attack.length)
+                //add attacks
+            case 2:
+            case 3:
+        }
     }
 
 

@@ -12,9 +12,7 @@ public class Pokemon {
     public int attackPower;
     public int defensePower;
 
-    public int paralyzedRoundsLeft;
-
-    public int poisonedRoundsLeft;
+    public Effect effect;
 
     public boolean fainted;
 

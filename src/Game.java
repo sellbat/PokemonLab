@@ -66,9 +66,12 @@ public class Game {
 
     /*Andrew*/
     public static void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
-        defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
-        if (defender.currentHp <= 0) {
-            defender.fainted = true;
+        double rand = Math.random();
+        if ((attacker.effect == null) || (rand > attacker.effect.incapacitateChance)) {
+            defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
+            if (defender.currentHp <= 0) {
+                defender.fainted = true;
+            }
         }
     }
 

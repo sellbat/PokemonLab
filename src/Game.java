@@ -40,6 +40,17 @@ public class Game {
         return choice;
     }
 
+    public void runAway(boolean isCompTeam) {
+        this.isGameOver = true;
+
+        if (isCompTeam) {
+            System.out.print("The enemy team has run away!\nGame over!");
+        }
+        else {
+            System.out.print("Your team has run away!\nGame over!");
+        }
+    }
+
     public static void switchPokemon(boolean isCompTeam, Pokemon choice) {
         if (isCompTeam) {
             compPokemon = choice;

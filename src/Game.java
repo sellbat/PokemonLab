@@ -2,8 +2,8 @@ public class Game {
     public boolean isGameOver;
     public boolean isPlayerTurn;
     enum Screen {Battle, AttackMenu, BagMenu, PokemonMenu}
-    public static Pokemon playerPokemon;
-    public static Pokemon compPokemon;
+    public Pokemon playerPokemon;
+    public Pokemon compPokemon;
 
     public Game(PlayerTeam playerTeam, ComputerTeam compTeam) {
         this.isGameOver = false;
@@ -51,7 +51,7 @@ public class Game {
         }
     }
 
-    public static void switchPokemon(boolean isCompTeam, Pokemon choice) {
+    public void switchPokemon(boolean isCompTeam, Pokemon choice) {
         if (isCompTeam) {
             compPokemon = choice;
         }

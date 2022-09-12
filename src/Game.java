@@ -5,6 +5,7 @@ public class Game {
     public Pokemon playerPokemon;
     public Pokemon compPokemon;
 
+    /*Connor*/
     public void setup(PlayerTeam myTeam, ComputerTeam compTeam){
         this.playerPokemon = myTeam.pokemons[0];
         this.compPokemon = compTeam.pokemons[0];
@@ -12,6 +13,7 @@ public class Game {
         StaticVars.SCANNER.useDelimiter("\n");
     }
 
+    /*Connor*/
     private Screen inputMenuChoice() {
         String choiceString;
         Screen choice;
@@ -31,10 +33,95 @@ public class Game {
         return choice;
     }
 
-    public int useItem(BagItem item, Pokemon target) {
-
+    /*Andrew*/
+    public void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
+        defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
+        if (defender.currentHp <= 0) {
+            defender.fainted = true;
+        }
     }
 
+    /*Andrew*/
+    public void useItem(BagItem item, Pokemon target, ComputerTeam compTeam, PlayerTeam playerTeam) {
+        item.numOfItems -= 1;
+
+        target.currentHp += item.itemType.healthIncrease;
+        target.stats.level += item.itemType.levelIncrease;
+
+        if (item.itemType.revive) {
+            target.currentHp = target.maxHp/2;
+            target.fainted = false;
+        }
+
+        else if (item.itemType.maxRevive) {
+            target.currentHp = target.maxHp;
+            target.fainted = false;
+        }
+
+        else if (item.itemType.pokeBall) {
+            if (compTeam != null) {
+                for (int i=0; i<compTeam.pokemons.length; i++) {
+                    if (playerTeam.pokemons[i] == target) {
+                        Pokemon[] newCompPokemons = new Pokemon[compTeam.pokemons.length+1];
+                        for (int j=0; j<compTeam.pokemons.length; j++) {
+                            newCompPokemons[j] = compTeam.pokemons[j];
+                        }
+                        newCompPokemons[compTeam.pokemons.length] = target;
+                        compTeam.pokemons = newCompPokemons;
+                        break;
+                    }
+                }
+
+                Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.pokemons.length-1];
+                int index = -1;
+                for (int i=0; i<playerTeam.pokemons.length; i++) {
+                    if (playerTeam.pokemons[i] == target) {
+                        index = i;
+                        break;
+                    }
+                }
+                for (int i=0; i<index; i++) {
+                    newPlayerPokemons[i] = playerTeam.pokemons[i];
+                }
+                for (int i=index+1; i<playerTeam.pokemons.length-1; i++) {
+                    newPlayerPokemons[i] = playerTeam.pokemons[i];
+                }
+                playerTeam.pokemons = newPlayerPokemons;
+            }
+
+            else {
+                for (int i=0; i<playerTeam.pokemons.length; i++) {
+                    if (compTeam.pokemons[i] == target) {
+                        Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.pokemons.length+1];
+                        for (int j=0; j<playerTeam.pokemons.length; j++) {
+                            newPlayerPokemons[j] = playerTeam.pokemons[j];
+                        }
+                        newPlayerPokemons[playerTeam.pokemons.length] = target;
+                        playerTeam.pokemons = newPlayerPokemons;
+                        break;
+                    }
+                }
+
+                Pokemon[] newCompPokemons = new Pokemon[compTeam.pokemons.length-1];
+                int index = -1;
+                for (int i=0; i<compTeam.pokemons.length; i++) {
+                    if (compTeam.pokemons[i] == target) {
+                        index = i;
+                        break;
+                    }
+                }
+                for (int i=0; i<index; i++) {
+                    newCompPokemons[i] = compTeam.pokemons[i];
+                }
+                for (int i=index+1; i<compTeam.pokemons.length-1; i++) {
+                    newCompPokemons[i] = compTeam.pokemons[i];
+                }
+                playerTeam.pokemons = newCompPokemons;
+            }
+        }
+    }
+
+    /*Andrew*/
     public int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
         if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.species.baseSpeed/2))) {
@@ -55,11 +142,16 @@ public class Game {
         return ((int) damage/255);
     }
 
+    /*Connor*/
     public void nextTurn(PlayerTeam myTeam, ComputerTeam compTeam){
         this.isPlayerTurn = !this.isPlayerTurn;
         if (!isPlayerTurn){
             compTeam.randomMove();
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> c55423d32de4638b06b741506a5cc6645aad22a0
         else{
             switch(inputMenuChoice()){
                 case AttackMenu:
@@ -72,6 +164,7 @@ public class Game {
         }
 
     }
+
     public void input(){
 
     }

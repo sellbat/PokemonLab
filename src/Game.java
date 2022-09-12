@@ -5,6 +5,13 @@ public class Game {
     public static Pokemon playerPokemon;
     public static Pokemon compPokemon;
 
+    public Game(PlayerTeam playerTeam, ComputerTeam compTeam) {
+        this.isGameOver = false;
+        this.isPlayerTurn = true;
+        playerPokemon = playerTeam.pokemons[0];
+        compPokemon = compTeam.pokemons[0];
+    }
+
     /*Connor*/
     public void setup(PlayerTeam myTeam, ComputerTeam compTeam){
         this.playerPokemon = myTeam.pokemons[0];

@@ -41,7 +41,7 @@ public class ComputerTeam {
             //Switch Pokemon
             case 0:
                 int p = -1;
-                
+
                 int originalP = -1;
                 for (int i=0; i<pokemons.length; i++) {
                     if (pokemons[i] == Game.compPokemon) {

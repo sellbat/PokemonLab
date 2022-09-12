@@ -64,13 +64,20 @@ public class ComputerTeam {
 
                 //add attacks
             case 2:
+                BagItem randomItem = bag[StaticVars.RANDOM.nextInt(bag.length)];
+                Pokemon randomTarget;
 
+                if (randomItem.itemType != StaticVars.POKEBALL) {
+                    randomTarget = pokemons[StaticVars.RANDOM.nextInt(pokemons.length)];
+                }
+                else {
+                    randomTarget = game.playerPokemon;
+                }
 
+                game.useItem(randomItem, randomTarget, this, game.playerTeam);
 
-                //switch bag
             case 3:
-
-                //run
+                game.runAway(true);
         }
     }
 

@@ -4,12 +4,16 @@ public class Game {
     enum Screen {Battle, AttackMenu, BagMenu, PokemonMenu}
     public Pokemon playerPokemon;
     public Pokemon compPokemon;
+    public PlayerTeam playerTeam;
+    public ComputerTeam compTeam;
 
     public Game(PlayerTeam playerTeam, ComputerTeam compTeam) {
         this.isGameOver = false;
         this.isPlayerTurn = true;
-        playerPokemon = playerTeam.pokemons[0];
-        compPokemon = compTeam.pokemons[0];
+        this.playerPokemon = playerTeam.pokemons[0];
+        this.compPokemon = compTeam.pokemons[0];
+        this.playerTeam = playerTeam;
+        this.compTeam = compTeam;
     }
 
     /*Connor*/

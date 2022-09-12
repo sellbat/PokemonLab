@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class ComputerTeam {
     public Pokemon[] pokemons;
     public BagItem[] bag;

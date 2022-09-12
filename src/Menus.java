@@ -2,10 +2,13 @@ public class Menus {
     public void pokemonMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "";
+        String spaceLine = "*";
         for(int i=0; i<30; i++){
             lineOne += ("*");
             lineThree+="-";
+            if(i < 29){spaceLine += " ";}
         }
+        spaceLine += "*";
         lineThree +="*";
         String lineTwo = "*Pokemon";
         for(int i=0; i<=21 ; i++){
@@ -27,16 +30,22 @@ public class Menus {
                 System.out.println(currLine);
                 n+=1;
             }
+            else{
+                System.out.println(spaceLine);
+            }
         }
         System.out.println(lineOne);
     }
     public void attackMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "";
+        String spaceLine = "*";
         for(int i=0; i<30; i++){
             lineOne += ("*");
             lineThree+="-";
+            if(i < 29){spaceLine += " ";}
         }
+        spaceLine += "*";
         lineThree +="*";
         String lineTwo = "*Attacks";
         for(int i=0; i<=21 ; i++){
@@ -58,21 +67,27 @@ public class Menus {
                 System.out.println(currLine);
                 n+=1;
             }
+            else{
+                System.out.println(spaceLine);
+            }
         }
         System.out.println(lineOne);
     }
     public void bagMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "";
+        String spaceLine = "*";
         for(int i=0; i<30; i++){
             lineOne += ("*");
             lineThree+="-";
+            if(i < 29){spaceLine += " ";}
         }
         lineThree +="*";
         String lineTwo = "*Bag";
         for(int i=0; i<=25 ; i++){
             lineTwo+=" ";
         }
+        spaceLine += "*";
         lineTwo+="*";
         System.out.println(lineTwo);
         System.out.println(lineThree);
@@ -88,6 +103,9 @@ public class Menus {
                 currLine+="*";
                 System.out.println(currLine);
                 n+=1;
+            }
+            else{
+                System.out.println(spaceLine);
             }
         }
         System.out.println(lineOne);

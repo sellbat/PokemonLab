@@ -161,10 +161,13 @@ public class Game {
             switch(inputMenuChoice()){
                 case AttackMenu:
                     Menus.attackMenu(myTeam);
+                    break;
                 case BagMenu:
                     Menus.bagMenu(myTeam);
+                    break;
                 case PokemonMenu:
                     Menus.pokemonMenu(myTeam);
+                    break;
             }
         }
 

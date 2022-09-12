@@ -31,6 +31,10 @@ public class Game {
         return choice;
     }
 
+    public int useItem(BagItem item, Pokemon target) {
+
+    }
+
     public int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
         if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.species.baseSpeed/2))) {

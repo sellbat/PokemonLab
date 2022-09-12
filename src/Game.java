@@ -56,12 +56,12 @@ public class Game {
         if (!isPlayerTurn){
             compTeam.randomMove();
         }
+        Menus menus = new Menus();
         else{
             switch(inputMenuChoice()){
-
-                case Screen.AttackMenu -> ;
-                case Screen.BagMenu -> ;
-                case Screen.PokemonMenu -> ;
+                case Screen.AttackMenu -> menus.attackMenu(myTeam);
+                case Screen.BagMenu -> menus.bagMenu(myTeam);
+                case Screen.PokemonMenu -> menus.pokemonMenu(myTeam);
             }
         }
 

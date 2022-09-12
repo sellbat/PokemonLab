@@ -38,20 +38,24 @@ public class ComputerTeam {
     public void randomMove(){ //connor
         int n = StaticVars.RANDOM.nextInt(0, 4);
         switch(n){
-            case 0 :
-                int p = StaticVars.RANDOM.nextInt(0,pokemons.length);
-                Pokemon[] pokemonsTemp = new Pokemon[pokemons.length];
-                pokemons[p] = pokemonsTemp[0];                              //swap pokemons using a temporary array
-                int count = 1;
-                for(int i=0 ; i<p; i++){
-                    pokemonsTemp[count] = pokemons[i]; //adds all the values in the original array except for the chosen pokemon
-                    count++;
+            //Switch Pokemon
+            case 0:
+                int p = -1;
+                
+                int originalP = -1;
+                for (int i=0; i<pokemons.length; i++) {
+                    if (pokemons[i] == Game.compPokemon) {
+                        originalP = i;
+                    }
                 }
-                for(int i=p; i<pokemons.length; i++){
-                 pokemonsTemp[count] = pokemons[i];
-                 count++;
+
+                while (p != originalP) {
+                    p = StaticVars.RANDOM.nextInt(pokemons.length);
                 }
-                this.pokemons = pokemonsTemp;
+
+                Game.switchPokemon(true, this.pokemons[p]);
+                break;
+
             case 1:
                 int p = StaticVars.RANDOM.nextInt(0, Attack.length)
                 //add attacks

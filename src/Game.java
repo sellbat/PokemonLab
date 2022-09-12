@@ -2,8 +2,8 @@ public class Game {
     public boolean isGameOver;
     public boolean isPlayerTurn;
     enum Screen {Battle, AttackMenu, BagMenu, PokemonMenu}
-    public Pokemon playerPokemon;
-    public Pokemon compPokemon;
+    public static Pokemon playerPokemon;
+    public static Pokemon compPokemon;
 
     /*Connor*/
     public void setup(PlayerTeam myTeam, ComputerTeam compTeam){
@@ -31,6 +31,15 @@ public class Game {
             System.out.print("\nPlease Try Again!\nInput Your Menu Choice: ");
         }
         return choice;
+    }
+
+    public static void switchPokemon(boolean isCompTeam, Pokemon choice) {
+        if (isCompTeam) {
+            compPokemon = choice;
+        }
+        else {
+            playerPokemon = choice;
+        }
     }
 
     /*Andrew*/

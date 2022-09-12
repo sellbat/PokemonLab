@@ -61,7 +61,7 @@ public class Game {
     }
 
     /*Andrew*/
-    public void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
+    public static void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
         defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
         if (defender.currentHp <= 0) {
             defender.fainted = true;
@@ -149,7 +149,7 @@ public class Game {
     }
 
     /*Andrew*/
-    public int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
+    public static int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
         if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.species.baseSpeed/2))) {
             criticalHitBonus = 2.0;

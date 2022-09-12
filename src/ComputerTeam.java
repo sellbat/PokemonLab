@@ -35,7 +35,7 @@ public class ComputerTeam {
 
         this.pokemons = newPokemons;
     }
-    public void randomMove(){ //connor
+    public void randomMove(Game game){ //connor
         int n = StaticVars.RANDOM.nextInt(0, 4);
         switch(n){
             //Switch Pokemon
@@ -44,7 +44,7 @@ public class ComputerTeam {
 
                 int originalP = -1;
                 for (int i=0; i<pokemons.length; i++) {
-                    if (pokemons[i] == Game.compPokemon) {
+                    if (pokemons[i] == game.compPokemon) {
                         originalP = i;
                     }
                 }
@@ -53,14 +53,24 @@ public class ComputerTeam {
                     p = StaticVars.RANDOM.nextInt(pokemons.length);
                 }
 
-                Game.switchPokemon(true, this.pokemons[p]);
+                game.switchPokemon(true, this.pokemons[p]);
                 break;
 
             case 1:
-                int p = StaticVars.RANDOM.nextInt(0, Attack.length)
+                Pokemon attacker = game.compPokemon;
+                Pokemon defender = game.playerPokemon;
+                Attack randomAttack = attacker.attacks[StaticVars.RANDOM.nextInt(attacker.attacks.length)];
+                game.useAttack(randomAttack,attacker,defender);
+
                 //add attacks
             case 2:
+
+
+
+                //switch bag
             case 3:
+
+                //run
         }
     }
 

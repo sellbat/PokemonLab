@@ -173,7 +173,7 @@ public class Game {
     public void nextTurn(PlayerTeam myTeam, ComputerTeam compTeam){
         this.isPlayerTurn = !this.isPlayerTurn;
         if (!isPlayerTurn){
-            compTeam.randomMove();
+            compTeam.randomMove(this);
         }
         else{
             switch(inputMenuChoice()){

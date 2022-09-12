@@ -36,7 +36,7 @@ public class ComputerTeam {
         this.pokemons = newPokemons;
     }
     public void randomMove(Game game){ //connor
-        int n = StaticVars.RANDOM.nextInt(0, 4);
+        int n = StaticVars.RANDOM.nextInt(4);
         switch(n){
             //Switch Pokemon
             case 0:

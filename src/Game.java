@@ -69,6 +69,9 @@ public class Game {
         double rand = Math.random();
         if ((attacker.effect == null) || (rand > attacker.effect.incapacitateChance)) {
             defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
+            if (attack.effect != null) {
+                defender.effect = attack.effect;
+            }
             if (defender.currentHp <= 0) {
                 defender.fainted = true;
             }
@@ -82,17 +85,25 @@ public class Game {
         target.currentHp += item.itemType.healthIncrease;
         target.stats.level += item.itemType.levelIncrease;
 
-        if (item.itemType.revive) {
-            target.currentHp = target.maxHp/2;
-            target.fainted = false;
-        }
-
-        else if (item.itemType.maxRevive) {
+        if (target.currentHp > target.maxHp) {
             target.currentHp = target.maxHp;
-            target.fainted = false;
+        }
+        if (target.stats.level > 100) {
+            target.stats.level = 100;
         }
 
-        else if (item.itemType.pokeBall) {
+        if (target.fainted) {
+            if (item.itemType.revive) {
+                target.currentHp = target.maxHp / 2;
+                target.fainted = false;
+            }
+            else if (item.itemType.maxRevive) {
+                target.currentHp = target.maxHp;
+                target.fainted = false;
+            }
+        }
+
+        if (item.itemType.pokeBall) {
             if (compTeam != null) {
                 for (int i=0; i<compTeam.pokemons.length; i++) {
                     if (playerTeam.pokemons[i] == target) {

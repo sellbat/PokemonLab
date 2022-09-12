@@ -1,5 +1,5 @@
 public class Menus {
-    public void pokemonMenu(PlayerTeam team){
+    public static void pokemonMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "";
         String spaceLine = "*";
@@ -36,7 +36,7 @@ public class Menus {
         }
         System.out.println(lineOne);
     }
-    public void attackMenu(PlayerTeam team){
+    public static void attackMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "";
         String spaceLine = "*";
@@ -73,7 +73,7 @@ public class Menus {
         }
         System.out.println(lineOne);
     }
-    public void bagMenu(PlayerTeam team){
+    public static void bagMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "";
         String spaceLine = "*";

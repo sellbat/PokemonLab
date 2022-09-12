@@ -18,7 +18,7 @@ public class StaticVars {
     public static final Item MAXREVIVE = new Item(0, 0,false,true, false, "Max Revive");
     public static final Item RARECANDY = new Item(1, 0,false,false, false, "Rare Candy");
     public static final Item POKEBALL = new Item(0, 0,false,false, true, "Pokeball");
-    
+
     public static final Type NONE = new Type(Type.Types.None);
     public static final Type FIRE = new Type(Type.Types.Fire);
     public static final Type WATER = new Type(Type.Types.Water);

@@ -72,9 +72,6 @@ public class Game {
             if (attack.effect != null) {
                 defender.effect = attack.effect;
             }
-            if (defender.currentHp <= 0) {
-                defender.fainted = true;
-            }
         }
     }
 
@@ -187,12 +184,42 @@ public class Game {
         return ((int) damage/255);
     }
 
+    /*Andrew*/
+    public void applyEffects(Pokemon[] pokemons) {
+        for (int i=0; i<pokemons.length; i++) {
+            if (pokemons[i].effect != null) {
+                applyEffects(pokemons[i]);
+            }
+        }
+    }
+    /*Andrew*/
+    public void applyEffects(Pokemon pokemon) {
+        pokemon.effect.roundsLeft -= 1;
+        pokemon.currentHp -= pokemon.effect.scalingDamage * pokemon.currentHp;
+        pokemon.currentHp -= pokemon.effect.damage;
+    }
+
+    public void updateIfFainted(Pokemon[] pokemons) {
+        for (int i=0; i<pokemons.length; i++) {
+            if (pokemons[i].currentHp <= 0) {
+                pokemons[i].fainted = true;
+            }
+        }
+    }
+
     /*Connor*/
     public void nextTurn(PlayerTeam myTeam, ComputerTeam compTeam){
+        applyEffects(myTeam.pokemons);
+        applyEffects(compTeam.pokemons);
+
+        updateIfFainted(myTeam.pokemons);
+        updateIfFainted(compTeam.pokemons);
+
         this.isPlayerTurn = !this.isPlayerTurn;
         if (!isPlayerTurn){
             compTeam.randomMove(this);
         }
+
         else{
             switch(inputMenuChoice()){
                 case AttackMenu:

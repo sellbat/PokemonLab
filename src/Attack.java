@@ -1,17 +1,19 @@
 public class Attack {
     public int power;
-
-    public String name;
+    public double accuracy;
 
     public Effect effect;
+    public double effectChance;
 
     public Type type;
 
-
-
-    public Attack(int damage, String name, Effect effect){
+    public Attack(int power, double accuracy, Effect effect, double effectChance, Type type){
         this.power = power;
-        this.name = name;
+        this.accuracy = accuracy;
+
         this.effect = effect;
+        this.effectChance = effectChance;
+
+        this.type = type;
     }
 }

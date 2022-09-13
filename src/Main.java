@@ -26,5 +26,11 @@ public class Main {
         ComputerTeam compTeam = new ComputerTeam(enemyPokemons, enemyItems);
 
         Game myGame = new Game(myTeam, compTeam);
+
+        myGame.setup();
+
+        while (!myGame.isGameOver) {
+            myGame.nextTurn();
+        }
     }
 }

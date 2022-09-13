@@ -17,9 +17,9 @@ public class Game {
     }
 
     /*Connor*/
-    public void setup(PlayerTeam myTeam, ComputerTeam compTeam){
-        this.playerPokemon = myTeam.pokemons[0];
-        this.compPokemon = compTeam.pokemons[0];
+    public void setup(){
+        this.playerPokemon = this.playerTeam.pokemons[0];
+        this.compPokemon = this.compTeam.pokemons[0];
 
         StaticVars.SCANNER.useDelimiter("\n");
     }
@@ -68,9 +68,13 @@ public class Game {
     public static void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
         double rand = Math.random();
         if ((attacker.effect == null) || (rand > attacker.effect.incapacitateChance)) {
-            defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
-            if (attack.effect != null) {
-                defender.effect = attack.effect;
+            rand = Math.random();
+            if (rand < attack.accuracy) {
+                defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
+                rand = Math.random();
+                if ((attack.effect != null) && (rand < attack.effectChance)) {
+                    defender.effect = attack.effect;
+                }
             }
         }
     }
@@ -208,11 +212,11 @@ public class Game {
     }
 
     /*Connor*/
-    public void nextTurn(PlayerTeam myTeam, ComputerTeam compTeam){
-        applyEffects(myTeam.pokemons);
-        applyEffects(compTeam.pokemons);
+    public void nextTurn(){
+        applyEffects(this.playerTeam.pokemons);
+        applyEffects(this.compTeam.pokemons);
 
-        updateIfFainted(myTeam.pokemons);
+        updateIfFainted(this.playerTeam.pokemons);
         updateIfFainted(compTeam.pokemons);
 
         this.isPlayerTurn = !this.isPlayerTurn;
@@ -223,13 +227,13 @@ public class Game {
         else{
             switch(inputMenuChoice()){
                 case AttackMenu:
-                    Menus.attackMenu(myTeam);
+                    Menus.attackMenu(this.playerTeam);
                     break;
                 case BagMenu:
-                    Menus.bagMenu(myTeam);
+                    Menus.bagMenu(this.playerTeam);
                     break;
                 case PokemonMenu:
-                    Menus.pokemonMenu(myTeam);
+                    Menus.pokemonMenu(this.playerTeam);
                     break;
             }
         }

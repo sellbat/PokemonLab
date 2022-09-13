@@ -37,4 +37,14 @@ public class StaticVars {
     public static final Type DRAGON = new Type(Type.Types.Dragon);
     public static final Type STEEL = new Type(Type.Types.Steel);
     public static final Type FAIRY = new Type(Type.Types.Fairy);
+
+    public static final Effect PARALYSIS = new Effect(Effect.Effects.Paralyzed, 5);
+
+    public static final Attack ThunderShock = new Attack(40, 100, PARALYSIS, 0.10, ELECTRIC);
+    public static final Attack Spark = new Attack(65, 100, PARALYSIS, 0.30, ELECTRIC);
+    public static final Attack Discharge = new Attack(80, 100, PARALYSIS, 0.30, ELECTRIC);
+    public static final Attack Thunderbolt = new Attack(90, 100, PARALYSIS, 0.10, ELECTRIC);
+    public static final Attack Thunder = new Attack(110, 70, PARALYSIS, 0.30, ELECTRIC);
+
+
 }

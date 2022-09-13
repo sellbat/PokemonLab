@@ -6,7 +6,7 @@ public class Main {
                 {
                         {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
                         {StaticVars.ATTACK.AIRSLASH, StaticVars.ATTACK.DRAGONCLAW, StaticVars.ATTACK.HEATWAVE, StaticVars.ATTACK.INFERNO},
-                        {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
+                        {StaticVars.ATTACK.TACKLE, StaticVars.ATTACK.WATERGUN, StaticVars.ATTACK.BITE, StaticVars.ATTACK.AQUATAIL},
                         {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
                         {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
                 };
@@ -25,7 +25,7 @@ public class Main {
                 {
                         {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
                         {StaticVars.ATTACK.AIRSLASH, StaticVars.ATTACK.DRAGONCLAW, StaticVars.ATTACK.HEATWAVE, StaticVars.ATTACK.INFERNO},
-                        {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
+                        {StaticVars.ATTACK.TACKLE, StaticVars.ATTACK.WATERGUN, StaticVars.ATTACK.BITE, StaticVars.ATTACK.AQUATAIL},
                         {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
                         {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
                 };

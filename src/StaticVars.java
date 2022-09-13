@@ -8,6 +8,7 @@ public class StaticVars {
 
     public static class TYPE {
         public static final Type NONE = new Type(Type.Types.None);
+        public static final Type NORMAL = new Type(Type.Types.Normal);
         public static final Type FIRE = new Type(Type.Types.Fire);
         public static final Type WATER = new Type(Type.Types.Water);
         public static final Type GRASS = new Type(Type.Types.Grass);
@@ -62,6 +63,13 @@ public class StaticVars {
         public static final Attack DRAGONCLAW = new Attack("Dragon Claw", 80, 1.00, null, 0.00, TYPE.DRAGON);
         public static final Attack HEATWAVE = new Attack("Heat Wave", 95, 0.90, EFFECT.BURNED, 0.10, TYPE.FIRE);
         public static final Attack INFERNO = new Attack("Inferno", 100, 0.50, EFFECT.BURNED, 1.00, TYPE.FIRE);
+
+        public static final Attack TACKLE = new Attack("Tackle", 40, 1.00, null, 0.00, TYPE.NORMAL);
+        public static final Attack WATERGUN = new Attack("Water Gun", 40, 1.00, null, 0.00, TYPE.WATER);
+        public static final Attack BITE = new Attack("Bite", 60, 1.00, EFFECT.FLINCH, 0.30, TYPE.DARK);
+        public static final Attack AQUATAIL = new Attack("Aqua Tail", 90, 0.90, null, 0.00, TYPE.WATER);
+
+
 
     }
 

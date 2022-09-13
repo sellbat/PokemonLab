@@ -1,7 +1,7 @@
 public class Game {
     public boolean isGameOver;
     public boolean isPlayerTurn;
-    enum Screen {Battle, AttackMenu, BagMenu, PokemonMenu}
+    enum Screen {Battle, Atk, Bag, Pok, Run}
     public Pokemon playerPokemon;
     public Pokemon compPokemon;
     public PlayerTeam playerTeam;
@@ -26,18 +26,20 @@ public class Game {
 
     /*Andrew*/
     private Screen inputMenuChoice() {
-        String choiceString;
+        String choiceString = "";
         Screen choice;
 
         System.out.print("Input Your Menu Choice (Atk, Bag, Pok, Run): ");
         while (true) {
             try {
-                choiceString = StaticVars.SCANNER.next();\
+                choiceString = StaticVars.SCANNER.next();
             }
             catch (Exception e) {
                 StaticVars.SCANNER.nextLine();
             }
-            if (choiceString.equals("Atk") || choiceString.equals("Bag") choiceString.equals("Run"))
+            if (choiceString.equals("Atk") || choiceString.equals("Bag") || choiceString.equals("Pok") || choiceString.equals("Run")) {
+                break;
+            }
             System.out.print("\nPlease Try Again!\nInput Your Menu Choice: ");
         }
         choice = Screen.valueOf(choiceString);
@@ -45,6 +47,7 @@ public class Game {
         return choice;
     }
 
+    /*Andrew*/
     public void runAway(boolean isCompTeam) {
         this.isGameOver = true;
 
@@ -55,7 +58,8 @@ public class Game {
             System.out.print("Your team has run away!\nGame over!");
         }
     }
-
+    
+    /*Andrew*/
     public void switchPokemon(boolean isCompTeam, Pokemon choice) {
         if (isCompTeam) {
             compPokemon = choice;
@@ -66,7 +70,7 @@ public class Game {
     }
 
     /*Andrew*/
-    public static void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
+    public void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
         double rand = Math.random();
         if ((attacker.effect == null) || (rand > attacker.effect.incapacitateChance)) {
             rand = Math.random();
@@ -169,7 +173,7 @@ public class Game {
     }
 
     /*Andrew*/
-    public static int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
+    public int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
         if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.species.baseSpeed/2))) {
             criticalHitBonus = 2.0;
@@ -227,15 +231,18 @@ public class Game {
 
         else{
             switch(inputMenuChoice()){
-                case AttackMenu:
+                case Atk:
                     Menus.attackMenu(this.playerTeam);
                     break;
-                case BagMenu:
+                case Bag:
                     Menus.bagMenu(this.playerTeam);
                     break;
-                case PokemonMenu:
+                case Pok:
                     Menus.pokemonMenu(this.playerTeam);
                     break;
+                case Run:
+                    runAway(false);
+
             }
         }
 

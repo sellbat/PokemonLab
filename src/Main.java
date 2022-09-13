@@ -13,8 +13,8 @@ public class Main {
 
         PlayerTeam myTeam = new PlayerTeam(myPokemons, myItems);
 
-        BagItem[] enemyItems = {null};
-        Attack[] enemyAttacks = {null};
+        BagItem[] enemyItems = myItems;
+        Attack[] enemyAttacks = attacks;
 
         Pokemon[] enemyPokemons = new Pokemon[5];
         enemyPokemons[0] = new Pokemon("enemyPikachu", StaticVars.PIKACHU, new PokemonStats(), attacks, -1);

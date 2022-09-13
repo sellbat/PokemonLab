@@ -53,10 +53,10 @@ public class StaticVars {
     }
 
     public static class ATTACK {
-        public static final Attack THUNDERSHOCK = new Attack("Thunder Shock", 40, 100, EFFECT.PARALYSIS, 0.10, ELECTRIC);
-        public static final Attack SPARK = new Attack("Spark", 65, 100, EFFECT.PARALYSIS, 0.30, ELECTRIC);
-        public static final Attack THUNDERBOLT = new Attack("Thunderbolt", 90, 100, EFFECT.PARALYSIS, 0.10, ELECTRIC);
-        public static final Attack THUNDER = new Attack("Thunder", 110, 70, EFFECT.PARALYSIS, 0.30, ELECTRIC);
+        public static final Attack THUNDERSHOCK = new Attack("Thunder Shock", 40, 100, EFFECT.PARALYSIS, 0.10, TYPE.ELECTRIC);
+        public static final Attack SPARK = new Attack("Spark", 65, 100, EFFECT.PARALYSIS, 0.30, TYPE.ELECTRIC);
+        public static final Attack THUNDERBOLT = new Attack("Thunderbolt", 90, 100, EFFECT.PARALYSIS, 0.10, TYPE.ELECTRIC);
+        public static final Attack THUNDER = new Attack("Thunder", 110, 70, EFFECT.PARALYSIS, 0.30, TYPE.ELECTRIC);
     }
 
 }

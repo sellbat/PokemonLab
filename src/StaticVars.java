@@ -53,10 +53,16 @@ public class StaticVars {
     }
 
     public static class ATTACK {
-        public static final Attack THUNDERSHOCK = new Attack("Thunder Shock", 40, 100, EFFECT.PARALYSIS, 0.10, TYPE.ELECTRIC);
-        public static final Attack SPARK = new Attack("Spark", 65, 100, EFFECT.PARALYSIS, 0.30, TYPE.ELECTRIC);
-        public static final Attack THUNDERBOLT = new Attack("Thunderbolt", 90, 100, EFFECT.PARALYSIS, 0.10, TYPE.ELECTRIC);
-        public static final Attack THUNDER = new Attack("Thunder", 110, 70, EFFECT.PARALYSIS, 0.30, TYPE.ELECTRIC);
+        public static final Attack THUNDERSHOCK = new Attack("Thunder Shock", 40, 1.00, EFFECT.PARALYSIS, 0.10, TYPE.ELECTRIC);
+        public static final Attack SPARK = new Attack("Spark", 65, 1.00, EFFECT.PARALYSIS, 0.30, TYPE.ELECTRIC);
+        public static final Attack THUNDERBOLT = new Attack("Thunderbolt", 90, 1.00, EFFECT.PARALYSIS, 0.10, TYPE.ELECTRIC);
+        public static final Attack THUNDER = new Attack("Thunder", 110, 0.70, EFFECT.PARALYSIS, 0.30, TYPE.ELECTRIC);
+
+        public static final Attack AIRSLASH = new Attack("Air Slash", 75, 0.95, EFFECT.FLINCH, 0.30, TYPE.FLYING);
+        public static final Attack DRAGONCLAW = new Attack("Dragon Claw", 80, 1.00, null, 0.00, TYPE.DRAGON);
+        public static final Attack HEATWAVE = new Attack("Heat Wave", 95, 0.90, EFFECT.BURNED, 0.10, TYPE.FIRE);
+        public static final Attack INFERNO = new Attack("Inferno", 100, 0.50, EFFECT.BURNED, 1.00, TYPE.FIRE);
+
     }
 
 }

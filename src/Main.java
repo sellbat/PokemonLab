@@ -5,10 +5,10 @@ public class Main {
         Attack[][] myAttacks =
                 {
                         {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
-                        {StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDERBOLT, StaticVars.THUNDER},
-                        {StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDERBOLT, StaticVars.THUNDER},
-                        {StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDERBOLT, StaticVars.THUNDER},
-                        {StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDERBOLT, StaticVars.THUNDER},
+                        {StaticVars.ATTACK.AIRSLASH, StaticVars.ATTACK.DRAGONCLAW, StaticVars.ATTACK.HEATWAVE, StaticVars.ATTACK.INFERNO},
+                        {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
+                        {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
+                        {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
                 };
 
         Pokemon[] myPokemons = new Pokemon[5];
@@ -24,10 +24,10 @@ public class Main {
         Attack[][] enemyAttacks =
                 {
                         {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
-                        {StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDERBOLT, StaticVars.THUNDER},
-                        {StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDERBOLT, StaticVars.THUNDER},
-                        {StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDERBOLT, StaticVars.THUNDER},
-                        {StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDERBOLT, StaticVars.THUNDER},
+                        {StaticVars.ATTACK.AIRSLASH, StaticVars.ATTACK.DRAGONCLAW, StaticVars.ATTACK.HEATWAVE, StaticVars.ATTACK.INFERNO},
+                        {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
+                        {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
+                        {StaticVars.ATTACK.THUNDERSHOCK, StaticVars.ATTACK.SPARK, StaticVars.ATTACK.THUNDERBOLT, StaticVars.ATTACK.THUNDER},
                 };
 
         Pokemon[] enemyPokemons = new Pokemon[5];

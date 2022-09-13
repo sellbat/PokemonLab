@@ -21,23 +21,23 @@ public class PokemonSpecies {
 
         switch(speciesChoice) {
             case Pikachu:
-                setSpeciesStats(StaticVars.ELECTRIC, StaticVars.NONE, 35, 55, 40, 90, 0, 0, 0);
+                setSpeciesStats(StaticVars.TYPE.ELECTRIC, StaticVars.TYPE.NONE, 35, 55, 40, 90, 0, 0, 0);
                 break;
 
             case Ivysaur:
-                setSpeciesStats(StaticVars.GRASS, StaticVars.POISON, 60, 62, 63, 60, 0, 0, 0);
+                setSpeciesStats(StaticVars.TYPE.GRASS, StaticVars.TYPE.POISON, 60, 62, 63, 60, 0, 0, 0);
                 break;
 
             case Charizard:
-                setSpeciesStats(StaticVars.FIRE, StaticVars.FLYING, 78, 84, 78, 100, 0, 0, 0);
+                setSpeciesStats(StaticVars.TYPE.FIRE, StaticVars.TYPE.FLYING, 78, 84, 78, 100, 0, 0, 0);
                 break;
 
             case Squirtle:
-                setSpeciesStats(StaticVars.WATER, StaticVars.NONE, 44, 48, 65, 43, 0, 0, 1);
+                setSpeciesStats(StaticVars.TYPE.WATER, StaticVars.TYPE.NONE, 44, 48, 65, 43, 0, 0, 1);
                 break;
 
             default:
-                setSpeciesStats(StaticVars.NONE, StaticVars.NONE,40, 40, 40, 40, 0, 0, 0);
+                setSpeciesStats(StaticVars.TYPE.NONE, StaticVars.TYPE.NONE,40, 40, 40, 40, 0, 0, 0);
                 break;
         }
     }

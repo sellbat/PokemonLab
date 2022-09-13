@@ -12,7 +12,7 @@ public class Menus {
             }
         }
         for(int i=0; i<team.pokemons[0].attacks.length; i++){
-            String currLine = ("*" + team.pokemons[0].attacks[i].name);
+            String currLine = ("*" + team.pokemons[0].attacks[i].getName());
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
@@ -91,7 +91,7 @@ public class Menus {
         int n =0;
         for(int i=0; i<12; i++){
             if(n<team.pokemons[0].attacks.length){
-                String currLine = ("*" + team.pokemons[0].attacks[n].name);
+                String currLine = ("*" + team.pokemons[0].attacks[n].getName());
                 for(int j = currLine.length(); j<max ; j++){
                     currLine += " ";
                 }

@@ -103,11 +103,11 @@ public class Game {
         double rand = Math.random();
         if ((attacker.effect == null) || (rand > attacker.effect.incapacitateChance)) {
             rand = Math.random();
-            if (rand < attack.accuracy) {
+            if (rand < attack.getAccuracy()) {
                 defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
                 rand = Math.random();
-                if ((attack.effect != null) && (rand < attack.effectChance)) {
-                    defender.effect = attack.effect;
+                if ((attack.getEffect() != null) && (rand < attack.getEffectChance())) {
+                    defender.effect = attack.getEffect();
                 }
             }
         }
@@ -209,12 +209,12 @@ public class Game {
         }
 
         double STABBonus = 1.0;
-        if ((attack.type == attacker.species.type1) || (attack.type == attacker.species.type2)) {
+        if ((attack.getType() == attacker.species.type1) || (attack.getType() == attacker.species.type2)) {
             STABBonus = 1.5;
         }
 
-        double damage = (((((2.0 * attacker.stats.level * criticalHitBonus)/5.0) + 2.0) * attack.power * ((double)attacker.attackPower/(double)defender.defensePower))/50.0);
-        damage = damage * STABBonus * attack.type.getEffectivenessAgainst(defender.species.type1) * attack.type.getEffectivenessAgainst(defender.species.type2);
+        double damage = (((((2.0 * attacker.stats.level * criticalHitBonus)/5.0) + 2.0) * attack.getPower() * ((double)attacker.attackPower/(double)defender.defensePower))/50.0);
+        damage = damage * STABBonus * attack.getType().getEffectivenessAgainst(defender.species.type1) * attack.getType().getEffectivenessAgainst(defender.species.type2);
         if (!((int) damage == 1)) {
             damage = damage * (StaticVars.RANDOM.nextInt(256-217) + 217);
         }

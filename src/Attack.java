@@ -1,14 +1,57 @@
 public class Attack {
-    public String name;
+    private String name;
+    private int power;
+    private double accuracy;
+    private Effect effect;
+    private double effectChance;
+    private Type type;
+    public String getName() {
+        return name;
+    }
 
-    public int power;
-    public double accuracy;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Effect effect;
-    public double effectChance;
+    public int getPower() {
+        return power;
+    }
 
-    public Type type;
+    public void setPower(int power) {
+        this.power = power;
+    }
 
+    public double getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(double accuracy) {
+        this.accuracy = accuracy;
+    }
+
+    public Effect getEffect() {
+        return effect;
+    }
+
+    public void setEffect(Effect effect) {
+        this.effect = effect;
+    }
+
+    public double getEffectChance() {
+        return effectChance;
+    }
+
+    public void setEffectChance(double effectChance) {
+        this.effectChance = effectChance;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
     public Attack(String name, int power, double accuracy, Effect effect, double effectChance, Type type) {
         this.name = name;
 

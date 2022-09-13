@@ -1,11 +1,11 @@
 public class Effect {
-    public enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
+    private enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
 
-    public Effects name;
-    public  int roundsLeft;
-    public double scalingDamage;
-    public int damage;
-    public double incapacitateChance;
+    private Effects name;
+    private  int roundsLeft;
+    private double scalingDamage;
+    private int damage;
+    private double incapacitateChance;
 
     Effect(Effects effect, int roundsLeft) {
         this.name = effect;

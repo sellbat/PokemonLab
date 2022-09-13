@@ -40,11 +40,11 @@ public class StaticVars {
 
     public static final Effect PARALYSIS = new Effect(Effect.Effects.Paralyzed, 5);
 
-    public static final Attack ThunderShock = new Attack(40, 100, PARALYSIS, 0.10, ELECTRIC);
-    public static final Attack Spark = new Attack(65, 100, PARALYSIS, 0.30, ELECTRIC);
-    public static final Attack Discharge = new Attack(80, 100, PARALYSIS, 0.30, ELECTRIC);
-    public static final Attack Thunderbolt = new Attack(90, 100, PARALYSIS, 0.10, ELECTRIC);
-    public static final Attack Thunder = new Attack(110, 70, PARALYSIS, 0.30, ELECTRIC);
+    public static final Attack THUNDERSHOCK = new Attack("Thunder Shock", 40, 100, PARALYSIS, 0.10, ELECTRIC);
+    public static final Attack SPARK = new Attack("Spark", 65, 100, PARALYSIS, 0.30, ELECTRIC);
+    public static final Attack DISCHARGE = new Attack("Discharge", 80, 100, PARALYSIS, 0.30, ELECTRIC);
+    public static final Attack THUNDERBOLT = new Attack("Thunderbolt", 90, 100, PARALYSIS, 0.10, ELECTRIC);
+    public static final Attack THUNDER = new Attack("Thunder", 110, 70, PARALYSIS, 0.30, ELECTRIC);
 
 
 }

@@ -1,4 +1,6 @@
 public class Attack {
+    public String name;
+
     public int power;
     public double accuracy;
 
@@ -7,7 +9,9 @@ public class Attack {
 
     public Type type;
 
-    public Attack(int power, double accuracy, Effect effect, double effectChance, Type type){
+    public Attack(String name, int power, double accuracy, Effect effect, double effectChance, Type type) {
+        this.name = name;
+
         this.power = power;
         this.accuracy = accuracy;
 

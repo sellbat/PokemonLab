@@ -60,7 +60,7 @@ public class Menus {
             if(n<team.pokemons[0].attacks.length){
                 int len = 1+String.valueOf(team.pokemons[0].attacks[n]).length();
                 System.out.println();
-                String currLine = ("*" + team.pokemons[0].attacks[n].name );
+                String currLine = ("*" + team.pokemons[0].attacks[n].name);
                 for(int j = 0; j<30-len ; j++){
                     currLine += " ";
                 }

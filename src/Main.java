@@ -1,8 +1,8 @@
 //Connor
 public class Main {
     public static void main(String[] args) {
-        BagItem[] myItems = {null};
-        Attack[] attacks = {null};
+        BagItem[] myItems = {new BagItem(StaticVars.POKEBALL, 5), new BagItem(StaticVars.RARECANDY, 5)};
+        Attack[] attacks = {StaticVars.THUNDERBOLT, StaticVars.THUNDERSHOCK, StaticVars.SPARK, StaticVars.THUNDER};
 
         Pokemon[] myPokemons = new Pokemon[5];
         myPokemons[0] = new Pokemon("myPikachu", StaticVars.PIKACHU, new PokemonStats(), attacks, -1);

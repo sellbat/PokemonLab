@@ -24,7 +24,7 @@ public class Game {
         StaticVars.SCANNER.useDelimiter("\n");
     }
 
-    /*Connor*/
+    /*Andrew*/
     private Screen inputMenuChoice() {
         String choiceString;
         Screen choice;
@@ -32,15 +32,16 @@ public class Game {
         System.out.print("Input Your Menu Choice (Atk, Bag, Pok, Run): ");
         while (true) {
             try {
-                choiceString = StaticVars.SCANNER.next();
-                choice = Screen.valueOf(choiceString);
-                break;
+                choiceString = StaticVars.SCANNER.next();\
             }
             catch (Exception e) {
                 StaticVars.SCANNER.nextLine();
             }
+            if (choiceString.equals("Atk") || choiceString.equals("Bag") choiceString.equals("Run"))
             System.out.print("\nPlease Try Again!\nInput Your Menu Choice: ");
         }
+        choice = Screen.valueOf(choiceString);
+
         return choice;
     }
 

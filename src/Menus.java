@@ -1,3 +1,5 @@
+import javax.swing.text.Style;
+
 //Connor
 public class Menus {
     public static int maxWidth(PlayerTeam team){
@@ -141,5 +143,94 @@ public class Menus {
         }
         
         System.out.println(lineOne);
+    }
+
+    /*Andrew*/
+    public static void battleMenu(Game game, String message) {
+        int width = maxWidth(team);
+
+        for (int i = 0; i < width; i++) {
+            System.out.print("*");
+        }
+
+        String lineOne = "*" + game.compPokemon.nickName + " Lvl " + game.compPokemon.stats.level;
+        System.out.print("\n" + lineOne);
+        for (int i = 0; i < lineOne.length() - 1; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("*");
+
+        String lineTwo = "*HP: " + game.compPokemon.currentHp;
+        System.out.print("\n" + lineTwo);
+        for (int i = 0; i < lineOne.length() - 1; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("*");
+
+        System.out.print("\n*");
+        for (int i = 0; i < width - 5; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("O    *");
+
+        System.out.print("\n*");
+        for (int i = 0; i < width - 6; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("-|-    *");
+
+        System.out.print("\n*");
+        for (int i = 0; i < width - 6; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("/ \\    *");
+
+        System.out.print("\n*");
+        for (int i = 0; i < width - 1; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("*");
+
+        System.out.print("\n*    O");
+        for (int i = 0; i < width - 5; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("*");
+
+        System.out.print("\n*    -|-");
+        for (int i = 0; i < width - 6 - game.playerPokemon.nickName.length(); i++) {
+            System.out.print(" ");
+        }
+        System.out.print("" + game.playerPokemon.nickName + " Lvl " + game.playerPokemon.stats.level + "*");
+
+        System.out.print("\n*    / \\");
+        for (int i = 0; i < width - 12; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("HP:" + game.playerPokemon.currentHp + "*");
+
+        System.out.print("*");
+        for (int i = 0; i < width - 2; i++) {
+            System.out.print("_");
+        }
+        System.out.print("*");
+
+        String firstMessage = message.substring(0, width-8);
+        System.out.print("\n" + firstMessage);
+        for (int i = 0; i < width - 8 - firstMessage.length(); i++) {
+            System.out.print(" ");
+        }
+        System.out.print("|Atk|Bag*");
+
+        String secondMessage = message.substring(width-8, message.length());
+        System.out.print("\n" + secondMessage);
+        for (int i = 0; i < width - 8 - secondMessage.length(); i++) {
+            System.out.print(" ");
+        }
+        System.out.print("|Pok|Run*");
+
+        for (int i = 0; i < width; i++) {
+            System.out.print("*");
+        }
     }
 }

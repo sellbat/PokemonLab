@@ -48,6 +48,35 @@ public class Game {
     }
 
     /*Andrew*/
+    private Pokemon inputPlayerPokemon() {
+        String choiceString = "";
+        Pokemon choice = null;
+
+        System.out.print("Input Your Pokemon Choice: ");
+        while (true) {
+            try {
+                choiceString = StaticVars.SCANNER.next();
+            }
+            catch (Exception e) {
+                StaticVars.SCANNER.nextLine();
+            }
+            if (choiceString.equals(playerTeam.pokemons[0].nickName) || choiceString.equals(playerTeam.pokemons[1].nickName) || choiceString.equals(playerTeam.pokemons[2].nickName) || choiceString.equals(playerTeam.pokemons[3].nickName) || choiceString.equals(playerTeam.pokemons[4].nickName) || choiceString.equals(playerTeam.pokemons[5].nickName)) {
+                break;
+            }
+            System.out.print("\nPlease Try Again!\nInput Your Pokemon Choice: ");
+        }
+
+        for (int i=0; i<playerTeam.pokemons.length; i++) {
+            if (playerTeam.pokemons[i].nickName.equals(choiceString)) {
+                choice = playerTeam.pokemons[i];
+                break;
+            }
+        }
+
+        return choice;
+    }
+
+    /*Andrew*/
     public void runAway(boolean isCompTeam) {
         this.isGameOver = true;
 
@@ -58,7 +87,7 @@ public class Game {
             System.out.print("Your team has run away!\nGame over!");
         }
     }
-    
+
     /*Andrew*/
     public void switchPokemon(boolean isCompTeam, Pokemon choice) {
         if (isCompTeam) {
@@ -239,18 +268,14 @@ public class Game {
                     break;
                 case Pok:
                     Menus.pokemonMenu(this.playerTeam);
+                    Pokemon newPlayerPokemon = inputPlayerPokemon();
+                    switchPokemon(false, newPlayerPokemon);
+                    Menus.battleMenu();
                     break;
                 case Run:
                     runAway(false);
 
             }
         }
-
     }
-
-    public void input(){
-
-    }
-
-
 }

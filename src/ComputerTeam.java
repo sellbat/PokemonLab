@@ -61,7 +61,7 @@ public class ComputerTeam {
             BagItem randomItem = bag[StaticVars.RANDOM.nextInt(bag.length)];
             Pokemon randomTarget;
 
-            if (randomItem.itemType != StaticVars.POKEBALL) {
+            if (randomItem.itemType != StaticVars.ITEM.POKEBALL) {
                 randomTarget = pokemons[StaticVars.RANDOM.nextInt(pokemons.length)];
             }
             else {

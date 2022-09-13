@@ -5,7 +5,7 @@ public class Game {
     public Pokemon playerPokemon;
     public Pokemon compPokemon;
     public PlayerTeam playerTeam;
-    public ComputerTeam compTeam;
+    private ComputerTeam compTeam;
 
     public Game(PlayerTeam playerTeam, ComputerTeam compTeam) {
         this.isGameOver = false;

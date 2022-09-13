@@ -147,7 +147,7 @@ public class Menus {
 
     /*Andrew*/
     public static void battleMenu(Game game, String message) {
-        int width = maxWidth(team);
+        int width = maxWidth(game.playerTeam);
 
         for (int i = 0; i < width; i++) {
             System.out.print("*");

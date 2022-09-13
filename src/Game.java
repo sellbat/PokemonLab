@@ -270,7 +270,7 @@ public class Game {
                     Menus.pokemonMenu(this.playerTeam);
                     Pokemon newPlayerPokemon = inputPlayerPokemon();
                     switchPokemon(false, newPlayerPokemon);
-                    Menus.battleMenu(this, "");
+                    Menus.battleMenu(this, "123456789012345678901234567890");
                     break;
                 case Run:
                     runAway(false);

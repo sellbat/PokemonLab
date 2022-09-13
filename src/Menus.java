@@ -209,28 +209,34 @@ public class Menus {
         }
         System.out.print("HP:" + game.playerPokemon.currentHp + "*");
 
-        System.out.print("*");
+        System.out.print("\n*");
         for (int i = 0; i < width - 2; i++) {
             System.out.print("_");
         }
         System.out.print("*");
 
-        String firstMessage = message.substring(0, width-8);
+
+        for (int i=0; i<(2*(width-9)) - message.length(); i++) {
+            message += "";
+        }
+
+        String firstMessage = message.substring(0, width-9);
         System.out.print("\n" + firstMessage);
-        for (int i = 0; i < width - 8 - firstMessage.length(); i++) {
+        for (int i = 0; i < width - 9 - firstMessage.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("|Atk|Bag*");
 
-        String secondMessage = message.substring(width-8, message.length());
+        String secondMessage = message.substring(width-9, message.length());
         System.out.print("\n" + secondMessage);
-        for (int i = 0; i < width - 8 - secondMessage.length(); i++) {
+        for (int i = 0; i < width - 9 - secondMessage.length(); i++) {
             System.out.print(" ");
         }
-        System.out.print("|Pok|Run*");
+        System.out.print("|Pok|Run*\n");
 
         for (int i = 0; i < width; i++) {
             System.out.print("*");
         }
+        System.out.print("\n");
     }
 }

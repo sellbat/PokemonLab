@@ -393,7 +393,7 @@ public class Game {
 
         else{
             if (playerPokemon.getFainted()) {
-                Menus.pokemonMenu(this.playerTeam);
+                Menus.pokemonMenu(this.playerTeam, this.compTeam);
                 Pokemon newPlayerPokemon = inputPlayerPokemon();
                 switchPokemon(false, newPlayerPokemon);
                 Menus.battleMenu(this, newPlayerPokemon.getNickName() + " has entered the battle");
@@ -401,7 +401,7 @@ public class Game {
             else {
                 switch (inputMenuChoice()) {
                     case Atk:
-                        Menus.attackMenu(this.playerTeam);
+                        Menus.attackMenu(this.playerTeam, this.compTeam);
                         Attack attackChoice = inputAttackChoice();
                         useAttack(attackChoice, this.playerPokemon, this.compPokemon);
                         Menus.battleMenu(this, this.playerPokemon.getNickName() + " used " + attackChoice.getName());
@@ -420,7 +420,7 @@ public class Game {
                         }
                         break;
                     case Pok:
-                        Menus.pokemonMenu(this.playerTeam);
+                        Menus.pokemonMenu(this.playerTeam, this.compTeam);
                         Pokemon newPlayerPokemon = inputPlayerPokemon();
                         switchPokemon(false, newPlayerPokemon);
                         Menus.battleMenu(this, newPlayerPokemon.getNickName() + " has entered the battle");

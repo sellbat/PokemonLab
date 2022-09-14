@@ -1,13 +1,13 @@
 public class Effect {
+    /* Connor */
     enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
-
     private Effects name;
     private  int roundsLeft;
     private double scalingDamage;
     private int damage;
     private double incapacitateChance;
 
-    Effect(Effects effect, int roundsLeft) {
+    Effect(Effects effect, int roundsLeft) { /*Andrew */
         this.name = effect;
         this.roundsLeft = roundsLeft;
 

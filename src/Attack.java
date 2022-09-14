@@ -57,7 +57,6 @@ public class Attack {
     }
     public Attack(String name, int power, double accuracy, Effect effect, double effectChance, Type type) {
         this.name = name;
-
         this.power = power;
         this.accuracy = accuracy;
 

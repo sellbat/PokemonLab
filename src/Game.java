@@ -67,7 +67,7 @@ public class Game {
     }
 
     /*Andrew*/
-    private Screen inputMenuChoice() {
+    private Screen inputMenuChoice() { // Andrew
         String choiceString = "";
         Screen choice;
 
@@ -202,6 +202,7 @@ public class Game {
     public void switchPokemon(boolean isCompTeam, Pokemon choice) {
         if (isCompTeam) {
             compPokemon = choice;
+            System.out.println("Computer team has switched pokemon to "+ choice.getNickName());
         }
         else {
             playerPokemon = choice;

@@ -408,6 +408,16 @@ public class Game {
                         break;
                     case Bag:
                         Menus.bagMenu(this.playerTeam);
+                        BagItem itemChoice = inputItemChoice();
+                        if (itemChoice.getItemType().getPokeBall()) {
+                            useItem(itemChoice, compPokemon, compTeam, playerTeam);
+                            Menus.battleMenu(this, "You threw a pokeball and captured " + this.getCompPokemon().getNickName());
+                        }
+                        else {
+                            Pokemon pokemonChoice =  inputPlayerPokemon();
+                            useItem(itemChoice, pokemonChoice, compTeam, playerTeam);
+                            Menus.battleMenu(this, "You used " + itemChoice.getItemType().getName() + " on " + pokemonChoice.getNickName());
+                        }
                         break;
                     case Pok:
                         Menus.pokemonMenu(this.playerTeam);

@@ -56,21 +56,7 @@ public class ComputerTeam {
             game.runAway(true);
         }
         else if (n%32 == 0) {
-            //Switch Pokemon
-            int p = -1;
-
-            int originalP = -1;
-            for (int i=0; i<pokemons.length; i++) {
-                if (pokemons[i] == game.getCompPokemon()) {
-                    originalP = i;
-                }
-            }
-
-            while (p != originalP) {
-                p = StaticVars.RANDOM.nextInt(pokemons.length);
-            }
-
-            game.switchPokemon(true, this.pokemons[p]);
+            randomSwitchPokemon(game);
         }
         else if (n%8 == 0) {
             //Use Item
@@ -95,5 +81,22 @@ public class ComputerTeam {
             game.useAttack(randomAttack,attacker,defender);
         }
 
+    }
+
+    public void randomSwitchPokemon(Game game) {
+        //Switch Pokemon
+        int originalP = -1;
+        for (int i=0; i<pokemons.length; i++) {
+            if (pokemons[i] == game.getCompPokemon()) {
+                originalP = i;
+            }
+        }
+
+        int p = originalP;
+        while ((p == originalP) || (pokemons[p].getFainted())) {
+            p = StaticVars.RANDOM.nextInt(pokemons.length);
+        }
+
+        game.switchPokemon(true, this.pokemons[p]);
     }
 }

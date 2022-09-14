@@ -10,7 +10,6 @@ public class Game {
 
     public Game(PlayerTeam playerTeam, ComputerTeam compTeam) {
         this.isGameOver = false;
-        this.isPlayerTurn = true;
         this.playerTeam = playerTeam;
         this.compTeam = compTeam;
     }
@@ -47,12 +46,16 @@ public class Game {
         this.playerTeam = playerTeam;
     }
 
-    /*Connor*/
+    /*Andrew*/
     public void setup() {
+        this.isPlayerTurn = false;
+
         this.playerPokemon = this.playerTeam.getPokemons()[0];
         this.compPokemon = this.compTeam.getPokemons()[0];
 
         StaticVars.SCANNER.useDelimiter("\n");
+
+        Menus.battleMenu(this, "You have entered the battle!");
     }
 
     /*Andrew*/
@@ -297,6 +300,7 @@ public class Game {
         pokemon.setCurrentHp(pokemon.getCurrentHp() - pokemon.getEffect().getDamage());
     }
 
+    /*Andrew*/
     public void updateIfFainted(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
             if ((pokemons[i] != null) && (pokemons[i].getCurrentHp() <= 0)) {
@@ -305,17 +309,39 @@ public class Game {
         }
     }
 
-    /*Connor*/
+    private void checkGameOver() {
+        int count = 0;
+        for (Pokemon compPokemon : compTeam.getPokemons()) {
+            if (compPokemon.getFainted()) {
+                count++;
+            }
+        }
+        if (count == compTeam.getPokemons().length) {
+            System.out.print("The enemy team has lost!\nYou win! Game over!");
+            return;
+        }
+
+        count = 0;
+    }
+
+    /*Andrew*/
     public void nextTurn(){
+        this.isPlayerTurn = !this.isPlayerTurn;
+
         applyEffects(this.playerTeam.getPokemons());
         applyEffects(this.compTeam.getPokemons());
 
         updateIfFainted(this.playerTeam.getPokemons());
         updateIfFainted(compTeam.getPokemons());
 
-        this.isPlayerTurn = !this.isPlayerTurn;
         if (!isPlayerTurn){
-            compTeam.randomMove(this);
+            if (compPokemon.getFainted()) {
+                compTeam.randomSwitchPokemon(this);
+                Menus.battleMenu(this, compPokemon.getNickName() + " has entered the battle");
+            }
+            else {
+                compTeam.randomMove(this);
+            }
         }
 
         else{
@@ -340,5 +366,7 @@ public class Game {
 
             }
         }
+
+        checkGameOver();
     }
 }

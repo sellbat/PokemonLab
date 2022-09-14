@@ -4,21 +4,22 @@ import javax.swing.text.Style;
 public class Menus {
     private static int maxWidth(PlayerTeam team){
         //NEED TO ADD "*   -|-myOverPoweredPokemon Lvl 100*" edge case
-        //NEED TO CHECK EVERY POKEMONS ATTACKS
         //NEED TO ADD " (fainted)"
         int max=0;
         for(int n=0; n<team.getPokemons().length; n++) {
-            String currLine = ("*Lvl " + team.getPokemons()[n].getStats().getLevel() + " " + team.getPokemons()[n].getNickName()) + " ";
+            String currLine = ("*Lvl " + team.getPokemons()[n].getStats().getLevel() + " " + team.getPokemons()[n].getNickName()) + " (fainted)";
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
             }
         }
-        for(int i=0; i<team.getPokemons()[0].getAttacks().length; i++){
-            String currLine = ("*" + team.getPokemons()[0].getAttacks()[i].getName());
-            int curr = currLine.length();
-            if(curr>max){
-                max = curr;
+        for(int j=0 ; j<team.getPokemons().length ; j++) {
+            for (int i = 0; i < team.getPokemons()[j].getAttacks().length; i++) {
+                String currLine = ("*   -|-" + team.getPokemons()[j].getAttacks()[i].getName() + " Lvl 100");
+                int curr = currLine.length();
+                if (curr > max) {
+                    max = curr;
+                }
             }
         }
         for(int i=0 ; i<team.getBag().length; i++){
@@ -58,16 +59,30 @@ public class Menus {
         for(int i=0; i<12; i++){
             if(n<team.getPokemons().length){
                 String levelString = String.valueOf(team.getPokemons()[n].getStats().getLevel());
-                for (int k=0; k<3-String.valueOf(team.getPokemons()[n].getStats().getLevel()).length(); k++) {
-                    levelString = " " + levelString;
+                if(team.getPokemons()[n].getFainted()) {
+                    for (int k = 0; k < 3 - String.valueOf(team.getPokemons()[n].getStats().getLevel()).length(); k++) {
+                        levelString = " " + levelString;
+                    }
+                    String currLine = ("*Lvl " + levelString + " " + team.getPokemons()[n].getNickName() + " (fainted)");
+                    for (int j = currLine.length(); j < (max); j++) {
+                        currLine += " ";
+                    }
+                    currLine += "*";
+                    System.out.println(currLine);
+                    n += 1;
                 }
-                String currLine = ("*Lvl " + levelString +  " " + team.getPokemons()[n].getNickName() + " ");
-                for (int j = currLine.length(); j < (max); j++) {
-                    currLine += " ";
+                else{
+                    for (int k = 0; k < 3 - String.valueOf(team.getPokemons()[n].getStats().getLevel()).length(); k++) {
+                        levelString = " " + levelString;
+                    }
+                    String currLine = ("*Lvl " + levelString + " " + team.getPokemons()[n].getNickName() + " ");
+                    for (int j = currLine.length(); j < (max); j++) {
+                        currLine += " ";
+                    }
+                    currLine += "*";
+                    System.out.println(currLine);
+                    n += 1;
                 }
-                currLine+="*";
-                System.out.println(currLine);
-                n+=1;
             }
             else{
                 System.out.println(spaceLine);

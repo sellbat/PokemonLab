@@ -1,5 +1,5 @@
 public class Effect {
-    private enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
+    public enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
 
     private Effects name;
     private  int roundsLeft;
@@ -47,5 +47,46 @@ public class Effect {
                 this.damage = 0;
                 this.incapacitateChance = 0.0;
         }
+
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public double getScalingDamage() {
+        return scalingDamage;
+    }
+
+    public void setScalingDamage(double scalingDamage) {
+        this.scalingDamage = scalingDamage;
+    }
+
+    public double getIncapacitateChance() {
+        return incapacitateChance;
+    }
+
+    public void setIncapacitateChance(double incapacitateChance) {
+        this.incapacitateChance = incapacitateChance;
+    }
+
+    public int getRoundsLeft() {
+        return roundsLeft;
+    }
+
+    public void setRoundsLeft(int roundsLeft) {
+        this.roundsLeft = roundsLeft;
+    }
+
+    public Effects getName() {
+        return name;
+    }
+
+    public void setName(Effects name) {
+        this.name = name;
     }
 }

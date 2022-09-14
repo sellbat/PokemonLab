@@ -17,7 +17,7 @@ public class Main {
         myPokemons[2] = new Pokemon("mySquirtle", StaticVars.SPECIES.SQUIRTLE, new PokemonStats(), myAttacks[2], -1);
         myPokemons[3] = new Pokemon("myIvysaur", StaticVars.SPECIES.IVYSAUR, new PokemonStats(), myAttacks[3], -1);
         myPokemons[4] = new Pokemon("myOverPoweredPokemon", StaticVars.SPECIES.PIKACHU, new PokemonStats(31, 31, 31, 170, 170, 170, new Nature(Nature.Natures.Hardy), true, 100), myAttacks[4], -1);
-        myPokemons[5] = new Pokemon("myOverPoweredPokemon", StaticVars.SPECIES.PIKACHU, new PokemonStats(31, 31, 31, 170, 170, 170, new Nature(Nature.Natures.Hardy), true, 100), myAttacks[4], -1);
+        myPokemons[5] = new Pokemon("myOverPoweredPokemon", StaticVars.SPECIES.PIKACHU, new PokemonStats(31, 31, 31, 170, 170, 170, new Nature(Nature.Natures.Hardy), true, 1), myAttacks[4], -1);
 
 
         PlayerTeam myTeam = new PlayerTeam(myPokemons, myItems);

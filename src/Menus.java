@@ -5,7 +5,7 @@ public class Menus {
     public static int maxWidth(PlayerTeam team){
         int max=0;
         for(int n=0; n<team.pokemons.length; n++) {
-            String currLine = ("*Lvl  " + team.pokemons[n].stats.level + "  " + team.pokemons[n].nickName);
+            String currLine = ("*Lvl " + team.pokemons[n].stats.level + " " + team.pokemons[n].nickName) + " ";
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
@@ -52,7 +52,11 @@ public class Menus {
         int n =0;
         for(int i=0; i<12; i++){
             if(n<team.pokemons.length){
-                String currLine = ("*Lvl  " + team.pokemons[n].stats.level +  "  " + team.pokemons[n].nickName);
+                String levelString = String.valueOf(team.pokemons[n].stats.level);
+                for (int k=0; k<3-String.valueOf(team.pokemons[n].stats.level).length(); k++) {
+                    levelString = " " + levelString;
+                }
+                String currLine = ("*Lvl " + levelString +  " " + team.pokemons[n].nickName + " ");
                 for (int j = currLine.length(); j < (max); j++) {
                     currLine += " ";
                 }
@@ -155,35 +159,35 @@ public class Menus {
 
         String lineOne = "*" + game.compPokemon.nickName + " Lvl " + game.compPokemon.stats.level;
         System.out.print("\n" + lineOne);
-        for (int i = 0; i < lineOne.length() - 1; i++) {
+        for (int i = 0; i < width - lineOne.length() - 1; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
         String lineTwo = "*HP: " + game.compPokemon.currentHp;
         System.out.print("\n" + lineTwo);
-        for (int i = 0; i < lineOne.length() - 1; i++) {
+        for (int i = 0; i < width - lineTwo.length() - 1; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 5; i++) {
+        for (int i = 0; i < width - 7; i++) {
             System.out.print(" ");
         }
         System.out.print("O    *");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 6; i++) {
+        for (int i = 0; i < width - 8; i++) {
             System.out.print(" ");
         }
-        System.out.print("-|-    *");
+        System.out.print("-|-   *");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 6; i++) {
+        for (int i = 0; i < width - 8; i++) {
             System.out.print(" ");
         }
-        System.out.print("/ \\    *");
+        System.out.print("/ \\   *");
 
         System.out.print("\n*");
         for (int i = 0; i < width - 1; i++) {
@@ -191,14 +195,14 @@ public class Menus {
         }
         System.out.print("*");
 
-        System.out.print("\n*    O");
+        System.out.print("\n*     O");
         for (int i = 0; i < width - 5; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
         System.out.print("\n*    -|-");
-        for (int i = 0; i < width - 6 - game.playerPokemon.nickName.length(); i++) {
+        for (int i = 0; i < width - 15 - game.playerPokemon.nickName.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("" + game.playerPokemon.nickName + " Lvl " + game.playerPokemon.stats.level + "*");
@@ -207,7 +211,7 @@ public class Menus {
         for (int i = 0; i < width - 12; i++) {
             System.out.print(" ");
         }
-        System.out.print("HP:" + game.playerPokemon.currentHp + "*");
+        System.out.print("HP: " + game.playerPokemon.currentHp + "*");
 
         System.out.print("\n*");
         for (int i = 0; i < width - 2; i++) {

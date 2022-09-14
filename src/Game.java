@@ -101,7 +101,7 @@ public class Game {
     /*Andrew*/
     public void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
         double rand = Math.random();
-        if ((attacker.effect == null) || (rand > attacker.effect.incapacitateChance)) {
+        if ((attacker.effect == null) || (rand > attacker.effect.getIncapacitateChance())) {
             rand = Math.random();
             if (rand < attack.getAccuracy()) {
                 defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
@@ -232,9 +232,9 @@ public class Game {
     }
     /*Andrew*/
     public void applyEffects(Pokemon pokemon) {
-        pokemon.effect.roundsLeft -= 1;
-        pokemon.currentHp -= pokemon.effect.scalingDamage * pokemon.currentHp;
-        pokemon.currentHp -= pokemon.effect.damage;
+        pokemon.effect.setRoundsLeft(pokemon.effect.getRoundsLeft() - 1);
+        pokemon.currentHp -= pokemon.effect.getScalingDamage() * pokemon.currentHp;
+        pokemon.currentHp -= pokemon.effect.getDamage();
     }
 
     public void updateIfFainted(Pokemon[] pokemons) {

@@ -2,9 +2,7 @@ import javax.swing.text.Style;
 
 //Connor
 public class Menus {
-    private static int maxWidth(PlayerTeam team){
-        //NEED TO ADD "*   -|-myOverPoweredPokemon Lvl 100*" edge case
-        //NEED TO ADD " (fainted)"
+    private static int maxWidth(PlayerTeam team, ComputerTeam compTeam){
         int max=0;
         for(int n=0; n<team.getPokemons().length; n++) {
             String currLine = ("*Lvl " + team.getPokemons()[n].getStats().getLevel() + " " + team.getPokemons()[n].getNickName()) + " (fainted)";
@@ -29,16 +27,38 @@ public class Menus {
                 max = curr;
             }
         }
+        for(int n=0; n<compTeam.getPokemons().length; n++) {
+            String currLine = ("*Lvl " + team.getPokemons()[n].getStats().getLevel() + " " + team.getPokemons()[n].getNickName()) + " (fainted)";
+            int curr = currLine.length();
+            if(curr>max){
+                max = curr;
+            }
+        }
+        for(int j=0 ; j<compTeam.getPokemons().length ; j++) {
+            for (int i = 0; i < team.getPokemons()[j].getAttacks().length; i++) {
+                String currLine = ("*   -|-" + team.getPokemons()[j].getAttacks()[i].getName() + " Lvl 100");
+                int curr = currLine.length();
+                if (curr > max) {
+                    max = curr;
+                }
+            }
+        }
+        for(int i=0 ; i<compTeam.getBag().length; i++){
+            String currLine = ("*" + team.getBag()[i].getNumOfItems() + "x " + team.getBag()[i].getItemType().getName());
+            int curr = currLine.length();
+            if(curr>max){
+                max = curr;
+            }
+        }
         return max;
-
     }
 
-    public static void pokemonMenu(PlayerTeam team){
+    public static void pokemonMenu(PlayerTeam team, ComputerTeam compTeam){
         //NEED TO ADD " (fainted)"
         String lineThree = "*";
         String lineOne = "*";
         String spaceLine = "*";
-        int max = maxWidth(team);
+        int max = maxWidth(team, compTeam);
         for(int i=0; i<max; i++){
             lineOne += ("*");
             lineThree+="-";
@@ -90,8 +110,8 @@ public class Menus {
         }
         System.out.println(lineOne);
     }
-    public static void attackMenu(PlayerTeam team){
-        int max = maxWidth(team);
+    public static void attackMenu(PlayerTeam team, ComputerTeam compTeam){
+        int max = maxWidth(team, compTeam);
         String lineThree = "*";
         String lineOne = "*";
         String spaceLine = "*";
@@ -129,8 +149,8 @@ public class Menus {
         }
         System.out.println(lineOne);
     }
-    public static void bagMenu(PlayerTeam team){
-        int max = maxWidth(team);
+    public static void bagMenu(PlayerTeam team, ComputerTeam compTeam){
+        int max = maxWidth(team, compTeam);
         String lineThree = "*";
         String lineOne = "*";
         String spaceLine = "*";

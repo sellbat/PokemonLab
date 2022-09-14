@@ -145,6 +145,40 @@ public class Game {
     }
 
     /*Andrew*/
+    private BagItem inputItemChoice() {
+        String choiceString = "";
+        BagItem choice = null;
+
+        System.out.print("Input Your Item Choice: ");
+        ErrorHandlingLoop:
+        while (true) {
+            try {
+                choiceString = StaticVars.SCANNER.next();
+            }
+            catch (Exception e) {
+                StaticVars.SCANNER.nextLine();
+            }
+            for (int i=0; i<playerTeam.getPokemons().length; i++) {
+                if (choiceString.equals(playerTeam.getBag()[i].getItemType().getName())) {
+                    if (playerTeam.getBag()[i].getNumOfItems() > 0) {
+                        break ErrorHandlingLoop;
+                    }
+                }
+            }
+            System.out.print("\nPlease Try Again!\nInput Your Item Choice: ");
+        }
+
+        for (int i=0; i<playerTeam.getBag().length; i++) {
+            if (playerTeam.getBag()[i].getItemType().getName().equals(choiceString)) {
+                choice = playerTeam.getBag()[i];
+                break;
+            }
+        }
+
+        return choice;
+    }
+
+    /*Andrew*/
     public void runAway(boolean isCompTeam) {
         this.isGameOver = true;
 

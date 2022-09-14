@@ -95,7 +95,7 @@ public class ComputerTeam {
         int p = originalP;
         while ((p == originalP) || (pokemons[p].getFainted())) {
             p = StaticVars.RANDOM.nextInt(pokemons.length);
-        }   
+        }
 
         game.switchPokemon(true, this.pokemons[p]); //switches to the random pokemon
     }

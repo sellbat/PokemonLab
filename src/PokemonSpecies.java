@@ -1,5 +1,5 @@
 public class PokemonSpecies {
-    enum SpeciesChoices {Pikachu, Ivysaur, Charizard, Squirtle};
+    enum SpeciesChoices {Pikachu, Ivysaur, Charizard, Squirtle, Pidgey, Jigglypuff};
 
     private SpeciesChoices name;
 
@@ -34,6 +34,14 @@ public class PokemonSpecies {
 
             case Squirtle:
                 setSpeciesStats(StaticVars.TYPE.WATER, StaticVars.TYPE.NONE, 44, 48, 65, 43, 0, 0, 1);
+                break;
+
+            case Pidgey:
+                setSpeciesStats(StaticVars.TYPE.NORMAL, StaticVars.TYPE.FLYING, 40, 45, 40, 56, 0, 0, 0);
+                break;
+
+            case Jigglypuff:
+                setSpeciesStats(StaticVars.TYPE.NORMAL, StaticVars.TYPE.FAIRY, 115, 45, 20, 20, 2, 0, 0);
                 break;
 
             default:

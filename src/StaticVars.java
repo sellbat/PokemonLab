@@ -33,6 +33,8 @@ public class StaticVars {
         public static final PokemonSpecies IVYSAUR = new PokemonSpecies(PokemonSpecies.SpeciesChoices.Ivysaur);
         public static final PokemonSpecies CHARIZARD = new PokemonSpecies(PokemonSpecies.SpeciesChoices.Charizard);
         public static final PokemonSpecies SQUIRTLE = new PokemonSpecies(PokemonSpecies.SpeciesChoices.Squirtle);
+        public static final PokemonSpecies PIDGEY = new PokemonSpecies(PokemonSpecies.SpeciesChoices.Pidgey);
+        public static final PokemonSpecies JIGGLYPUFF = new PokemonSpecies(PokemonSpecies.SpeciesChoices.Jigglypuff);
     }
 
     public static class ITEM {
@@ -69,8 +71,18 @@ public class StaticVars {
         public static final Attack BITE = new Attack("Bite", 60, 1.00, EFFECT.FLINCH, 0.30, TYPE.DARK);
         public static final Attack AQUATAIL = new Attack("Aqua Tail", 90, 0.90, null, 0.00, TYPE.WATER);
 
+        public static final Attack VINEWHIP = new Attack("Vine Whip", 45, 1.00, null, 0.00, TYPE.GRASS);
+        public static final Attack RAZORLEAF = new Attack("Razor Leaf", 55, 0.95, null, 0.00, TYPE.GRASS);
+        public static final Attack SLUDGEBOMB = new Attack("Sludge Bomb", 90, 1.00, EFFECT.POISONED, 0.30, TYPE.POISON);
 
+        public static final Attack GUST = new Attack("Gust", 40, 1.00, null, 0.00, TYPE.FLYING);
+        public static final Attack QUICKATTACK = new Attack("Quick Attack", 40, 1.00, null, 0.00, TYPE.NORMAL);
+        public static final Attack TWISTER = new Attack("Twister", 40, 1.00, EFFECT.FLINCH, 0.30, TYPE.DRAGON);
 
+        public static final Attack DISARMINGVOICE = new Attack("Disarming Voice", 40, 1.00, null, 0.00, TYPE.FAIRY);
+        public static final Attack POUND = new Attack("Pound", 40, 1.00, null, 0.00, TYPE.NORMAL);
+        public static final Attack BODYSLAM = new Attack("Body Slam", 85, 1.00, EFFECT.PARALYSIS, 0.30, TYPE.NORMAL);
+        public static final Attack HYPERVOICE = new Attack("Hyper Voice", 90, 1.00, null, 0.00, TYPE.NORMAL);
     }
 
 }

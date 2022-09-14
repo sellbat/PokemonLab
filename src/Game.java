@@ -362,6 +362,7 @@ public class Game {
     public void updateIfFainted(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
             if ((pokemons[i] != null) && (pokemons[i].getCurrentHp() <= 0)) {
+                pokemons[i].setCurrentHp(0);
                 pokemons[i].setFainted(true);
             }
         }

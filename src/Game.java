@@ -87,6 +87,7 @@ public class Game {
         Pokemon choice = null;
 
         System.out.print("Input Your Pokemon Choice: ");
+        ErrorHandlingLoop:
         while (true) {
             try {
                 choiceString = StaticVars.SCANNER.next();
@@ -94,8 +95,12 @@ public class Game {
             catch (Exception e) {
                 StaticVars.SCANNER.nextLine();
             }
-            if (choiceString.equals(playerTeam.getPokemons()[0].getNickName()) || choiceString.equals(playerTeam.getPokemons()[1].getNickName()) || choiceString.equals(playerTeam.getPokemons()[2].getNickName()) || choiceString.equals(playerTeam.getPokemons()[3].getNickName()) || choiceString.equals(playerTeam.getPokemons()[4].getNickName()) || choiceString.equals(playerTeam.getPokemons()[5].getNickName())) {
-                break;
+            for (int i=0; i<playerTeam.getPokemons().length; i++) {
+                if (choiceString.equals(playerTeam.getPokemons()[i].getNickName())) {
+                    if (!playerTeam.getPokemons()[i].getFainted()) {
+                        break ErrorHandlingLoop;
+                    }
+                }
             }
             System.out.print("\nPlease Try Again!\nInput Your Pokemon Choice: ");
         }
@@ -317,11 +322,22 @@ public class Game {
             }
         }
         if (count == compTeam.getPokemons().length) {
+            isGameOver = true;
             System.out.print("The enemy team has lost!\nYou win! Game over!");
             return;
         }
 
         count = 0;
+        for (Pokemon playerPokemon : playerTeam.getPokemons()) {
+            if (playerPokemon.getFainted()) {
+                count++;
+            }
+        }
+        if (count == playerTeam.getPokemons().length) {
+            isGameOver = true;
+            System.out.print("Your team has lost!\nThe enemy wins! Game over!");
+            return;
+        }
     }
 
     /*Andrew*/
@@ -330,9 +346,6 @@ public class Game {
 
         applyEffects(this.playerTeam.getPokemons());
         applyEffects(this.compTeam.getPokemons());
-
-        updateIfFainted(this.playerTeam.getPokemons());
-        updateIfFainted(compTeam.getPokemons());
 
         if (!isPlayerTurn){
             if (compPokemon.getFainted()) {
@@ -345,27 +358,37 @@ public class Game {
         }
 
         else{
-            switch(inputMenuChoice()){
-                case Atk:
-                    Menus.attackMenu(this.playerTeam);
-                    Attack attackChoice = inputAttackChoice();
-                    useAttack(attackChoice, this.playerPokemon, this.compPokemon);
-                    Menus.battleMenu(this, this.playerPokemon.getNickName() + " used " + attackChoice.getName());
-                    break;
-                case Bag:
-                    Menus.bagMenu(this.playerTeam);
-                    break;
-                case Pok:
-                    Menus.pokemonMenu(this.playerTeam);
-                    Pokemon newPlayerPokemon = inputPlayerPokemon();
-                    switchPokemon(false, newPlayerPokemon);
-                    Menus.battleMenu(this, newPlayerPokemon.getNickName() + " has entered the battle");
-                    break;
-                case Run:
-                    runAway(false);
+            if (playerPokemon.getFainted()) {
+                Menus.pokemonMenu(this.playerTeam);
+                Pokemon newPlayerPokemon = inputPlayerPokemon();
+                switchPokemon(false, newPlayerPokemon);
+                Menus.battleMenu(this, newPlayerPokemon.getNickName() + " has entered the battle");
+            }
+            else {
+                switch (inputMenuChoice()) {
+                    case Atk:
+                        Menus.attackMenu(this.playerTeam);
+                        Attack attackChoice = inputAttackChoice();
+                        useAttack(attackChoice, this.playerPokemon, this.compPokemon);
+                        Menus.battleMenu(this, this.playerPokemon.getNickName() + " used " + attackChoice.getName());
+                        break;
+                    case Bag:
+                        Menus.bagMenu(this.playerTeam);
+                        break;
+                    case Pok:
+                        Menus.pokemonMenu(this.playerTeam);
+                        Pokemon newPlayerPokemon = inputPlayerPokemon();
+                        switchPokemon(false, newPlayerPokemon);
+                        Menus.battleMenu(this, newPlayerPokemon.getNickName() + " has entered the battle");
+                        break;
+                    case Run:
+                        runAway(false);
 
+                }
             }
         }
+        updateIfFainted(this.playerTeam.getPokemons());
+        updateIfFainted(compTeam.getPokemons());
 
         checkGameOver();
     }

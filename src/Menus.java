@@ -3,6 +3,9 @@ import javax.swing.text.Style;
 //Connor
 public class Menus {
     private static int maxWidth(PlayerTeam team){
+        //NEED TO ADD "*   -|-myOverPoweredPokemon Lvl 100*" edge case
+        //NEED TO CHECK EVERY POKEMONS ATTACKS
+        //NEED TO ADD " (fainted)"
         int max=0;
         for(int n=0; n<team.getPokemons().length; n++) {
             String currLine = ("*Lvl " + team.getPokemons()[n].getStats().getLevel() + " " + team.getPokemons()[n].getNickName()) + " ";
@@ -30,6 +33,7 @@ public class Menus {
     }
 
     public static void pokemonMenu(PlayerTeam team){
+        //NEED TO ADD " (fainted)"
         String lineThree = "*";
         String lineOne = "*";
         String spaceLine = "*";

@@ -77,6 +77,35 @@ public class Game {
     }
 
     /*Andrew*/
+    private Attack inputAttackChoice() {
+        String choiceString = "";
+        Attack choice = null;
+
+        System.out.print("Input Your Attack Choice: ");
+        while (true) {
+            try {
+                choiceString = StaticVars.SCANNER.next();
+            }
+            catch (Exception e) {
+                StaticVars.SCANNER.nextLine();
+            }
+            if (choiceString.equals(playerPokemon.attacks[0].getName()) || choiceString.equals(playerPokemon.attacks[1].getName()) || choiceString.equals(playerPokemon.attacks[2].getName()) || choiceString.equals(playerPokemon.attacks[3].getName())) {
+                break;
+            }
+            System.out.print("\nPlease Try Again!\nInput Your Attack Choice: ");
+        }
+
+        for (int i=0; i<playerPokemon.attacks.length; i++) {
+            if (playerPokemon.attacks[i].getName().equals(choiceString)) {
+                choice = playerPokemon.attacks[i];
+                break;
+            }
+        }
+
+        return choice;
+    }
+
+    /*Andrew*/
     public void runAway(boolean isCompTeam) {
         this.isGameOver = true;
 
@@ -262,6 +291,9 @@ public class Game {
             switch(inputMenuChoice()){
                 case Atk:
                     Menus.attackMenu(this.playerTeam);
+                    Attack attackChoice = inputAttackChoice();
+                    useAttack(attackChoice, this.playerPokemon, this.compPokemon);
+                    Menus.battleMenu(this, this.playerPokemon.nickName + " used " + attackChoice.getName());
                     break;
                 case Bag:
                     Menus.bagMenu(this.playerTeam);
@@ -270,7 +302,7 @@ public class Game {
                     Menus.pokemonMenu(this.playerTeam);
                     Pokemon newPlayerPokemon = inputPlayerPokemon();
                     switchPokemon(false, newPlayerPokemon);
-                    Menus.battleMenu(this, "Pikachu used Tackle");
+                    Menus.battleMenu(this, newPlayerPokemon.nickName + " has entered the battle");
                     break;
                 case Run:
                     runAway(false);

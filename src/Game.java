@@ -196,7 +196,7 @@ public class Game {
                 for (int i=index+1; i<compTeam.pokemons.length-1; i++) {
                     newCompPokemons[i] = compTeam.pokemons[i];
                 }
-                playerTeam.pokemons = newCompPokemons;
+                compTeam.pokemons = newCompPokemons;
             }
         }
     }
@@ -225,7 +225,7 @@ public class Game {
     /*Andrew*/
     public void applyEffects(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
-            if (pokemons[i].effect != null) {
+            if ((pokemons[i] != null) && (pokemons[i].effect != null)) {
                 applyEffects(pokemons[i]);
             }
         }
@@ -239,7 +239,7 @@ public class Game {
 
     public void updateIfFainted(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
-            if (pokemons[i].currentHp <= 0) {
+            if ((pokemons[i] != null) && (pokemons[i].currentHp <= 0)) {
                 pokemons[i].fainted = true;
             }
         }
@@ -270,7 +270,7 @@ public class Game {
                     Menus.pokemonMenu(this.playerTeam);
                     Pokemon newPlayerPokemon = inputPlayerPokemon();
                     switchPokemon(false, newPlayerPokemon);
-                    Menus.battleMenu(this, "123456789012345678901234567890");
+                    Menus.battleMenu(this, "Pikachu used Tackle");
                     break;
                 case Run:
                     runAway(false);

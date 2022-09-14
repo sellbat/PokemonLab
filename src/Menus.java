@@ -190,25 +190,25 @@ public class Menus {
         System.out.print("/ \\   *");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 1; i++) {
+        for (int i = 0; i < width - 2; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
-        System.out.print("\n*     O");
-        for (int i = 0; i < width - 5; i++) {
+        System.out.print("\n*    O");
+        for (int i = 0; i < width - 7; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
-        System.out.print("\n*    -|-");
-        for (int i = 0; i < width - 15 - game.playerPokemon.nickName.length(); i++) {
+        System.out.print("\n*   -|-");
+        for (int i = 0; i < width - 13 - game.playerPokemon.nickName.length() - String.valueOf(game.playerPokemon.stats.level).length(); i++) {
             System.out.print(" ");
         }
         System.out.print("" + game.playerPokemon.nickName + " Lvl " + game.playerPokemon.stats.level + "*");
 
-        System.out.print("\n*    / \\");
-        for (int i = 0; i < width - 12; i++) {
+        System.out.print("\n*   / \\");
+        for (int i = 0; i < width - 12 - String.valueOf(game.playerPokemon.currentHp).length(); i++) {
             System.out.print(" ");
         }
         System.out.print("HP: " + game.playerPokemon.currentHp + "*");
@@ -224,14 +224,14 @@ public class Menus {
             message += "";
         }
 
-        String firstMessage = message.substring(0, width-9);
+        String firstMessage = "*" + message.substring(0, Math.min(message.length(), width-10));
         System.out.print("\n" + firstMessage);
         for (int i = 0; i < width - 9 - firstMessage.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("|Atk|Bag*");
 
-        String secondMessage = message.substring(width-9, message.length());
+        String secondMessage = "*" + message.substring(Math.min(message.length(), width-10), Math.min(message.length(), 2*width-20));
         System.out.print("\n" + secondMessage);
         for (int i = 0; i < width - 9 - secondMessage.length(); i++) {
             System.out.print(" ");

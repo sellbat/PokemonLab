@@ -1,3 +1,4 @@
+/* Andrew */
 public class ComputerTeam {
     private Pokemon[] pokemons;
     private BagItem[] bag;
@@ -25,40 +26,39 @@ public class ComputerTeam {
 
     public void addBagItem(Item item, int numOfItems) {
         for (int i=0; i<bag.length; i++) {
-            if (item.getName().equals(bag[i].getItemType().getName())) {
+            if (item.getName().equals(bag[i].getItemType().getName())) { //if item already exists, the quantity is increased
                 bag[i].setNumOfItems(bag[i].getNumOfItems() + numOfItems);
                 return;
             }
         }
 
-        BagItem[] newBag = new BagItem[bag.length+1];
+        BagItem[] newBag = new BagItem[bag.length+1]; //if it's a new item, create a bag that is larger by 1
         for (int i=0; i<bag.length; i++) {
-            newBag[i] = bag[i];
+            newBag[i] = bag[i]; // set all items to new bag
         }
-        newBag[bag.length] = new BagItem(item, numOfItems);
-
+        newBag[bag.length] = new BagItem(item, numOfItems); //final item is the new item
         this.bag = newBag;
     }
 
     public void addPokemon(Pokemon pokemon) { //connor
-        Pokemon[] newPokemons = new Pokemon[pokemons.length+1];
+        Pokemon[] newPokemons = new Pokemon[pokemons.length+1]; //new array for the pokemon
         for (int i=0; i<pokemons.length; i++) {
-            newPokemons[i] = pokemons[i];
+            newPokemons[i] = pokemons[i]; //set all previous pokemon to the new array
         }
-        newPokemons[pokemons.length] = pokemon;
+        newPokemons[pokemons.length] = pokemon; //set final value in the new array to the new pokemon
 
         this.pokemons = newPokemons;
     }
     public void randomMove(Game game) { //connor
         int n = StaticVars.RANDOM.nextInt(256);
-        if (n%256 == 0) {
+        if (n%256 == 0) { // 1 in 256 chance of the computer team running away
             //Run
             game.runAway(true);
         }
-        else if (n%32 == 0) {
+        else if (n%32 == 0) { //1 in 32 chance of switching pokemon
             randomSwitchPokemon(game);
         }
-        else if (n%8 == 0) {
+        else if (n%8 == 0) { // 1 in 8 chance of using a random item
             //Use Item
             BagItem randomItem = bag[StaticVars.RANDOM.nextInt(bag.length)];
             Pokemon randomTarget;
@@ -73,7 +73,7 @@ public class ComputerTeam {
             game.useItem(randomItem, randomTarget, this, game.getPlayerTeam());
 
         }
-        else {
+        else { //use attack if none of the other statements above are satisfied
             //Attack
             Pokemon attacker = game.getCompPokemon();
             Pokemon defender = game.getPlayerPokemon();
@@ -88,15 +88,15 @@ public class ComputerTeam {
         int originalP = -1;
         for (int i=0; i<pokemons.length; i++) {
             if (pokemons[i] == game.getCompPokemon()) {
-                originalP = i;
+                originalP = i; //finds the index of the pokemon on the compTeam being used in the game
             }
         }
 
         int p = originalP;
         while ((p == originalP) || (pokemons[p].getFainted())) {
             p = StaticVars.RANDOM.nextInt(pokemons.length);
-        }
+        }   
 
-        game.switchPokemon(true, this.pokemons[p]);
+        game.switchPokemon(true, this.pokemons[p]); //switches to the random pokemon
     }
 }

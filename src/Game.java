@@ -67,7 +67,7 @@ public class Game {
     }
 
     /*Andrew*/
-    private Screen inputMenuChoice() {
+    private Screen inputMenuChoice() { // Andrew
         String choiceString = "";
         Screen choice;
 

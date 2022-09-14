@@ -407,7 +407,7 @@ public class Game {
                         Menus.battleMenu(this, this.playerPokemon.getNickName() + " used " + attackChoice.getName());
                         break;
                     case Bag:
-                        Menus.bagMenu(this.playerTeam);
+                        Menus.bagMenu(this.playerTeam, this.compTeam);
                         BagItem itemChoice = inputItemChoice();
                         if (itemChoice.getItemType().getPokeBall()) {
                             useItem(itemChoice, compPokemon, compTeam, playerTeam);

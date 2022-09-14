@@ -124,6 +124,40 @@ public class Game {
     }
 
     /*Andrew*/
+    private Pokemon inputFaintedPlayerPokemon() {
+        String choiceString = "";
+        Pokemon choice = null;
+
+        System.out.print("Input Your Pokemon Choice: ");
+        ErrorHandlingLoop:
+        while (true) {
+            try {
+                choiceString = StaticVars.SCANNER.next();
+            }
+            catch (Exception e) {
+                StaticVars.SCANNER.nextLine();
+            }
+            for (int i=0; i<playerTeam.getPokemons().length; i++) {
+                if (choiceString.equals(playerTeam.getPokemons()[i].getNickName())) {
+                    if (playerTeam.getPokemons()[i].getFainted()) {
+                        break ErrorHandlingLoop;
+                    }
+                }
+            }
+            System.out.print("\nPlease Try Again!\nInput Your Pokemon Choice: ");
+        }
+
+        for (int i=0; i<playerTeam.getPokemons().length; i++) {
+            if (playerTeam.getPokemons()[i].getNickName().equals(choiceString)) {
+                choice = playerTeam.getPokemons()[i];
+                break;
+            }
+        }
+
+        return choice;
+    }
+
+    /*Andrew*/
     private Attack inputAttackChoice() {
         String choiceString = "";
         Attack choice = null;
@@ -435,9 +469,17 @@ public class Game {
                             this.isPlayerTurn = !this.isPlayerTurn; //DONT DELETE ACTUALLY USEFUL
                         }
                         else {
-                            Pokemon pokemonChoice =  inputPlayerPokemon();
-                            useItem(itemChoice, pokemonChoice, false);
-                            Menus.battleMenu(this, "You used " + itemChoice.getItemType().getName() + " on " + pokemonChoice.getNickName());
+                            Menus.pokemonMenu(this.playerTeam, this.compTeam);
+                            if (itemChoice.getItemType().getMaxRevive() || itemChoice.getItemType().getRevive()) {
+                                Pokemon pokemonChoice = inputFaintedPlayerPokemon();
+                                useItem(itemChoice, pokemonChoice, false);
+                                Menus.battleMenu(this, "You used " + itemChoice.getItemType().getName() + " on " + pokemonChoice.getNickName());
+                            }
+                            else {
+                                Pokemon pokemonChoice = inputPlayerPokemon();
+                                useItem(itemChoice, pokemonChoice, false);
+                                Menus.battleMenu(this, "You used " + itemChoice.getItemType().getName() + " on " + pokemonChoice.getNickName());
+                            }
                         }
                         break;
                     case Pok:

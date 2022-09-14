@@ -7,7 +7,7 @@ public class Main {
                 new BagItem(StaticVars.ITEM.HYPERPOTION, 10),
                 new BagItem(StaticVars.ITEM.REVIVE, 2),
                 new BagItem(StaticVars.ITEM.MAXREVIVE, 1),
-                new BagItem(StaticVars.ITEM.RARECANDY, 5),
+                new BagItem(StaticVars.ITEM.RARECANDY, 10),
                 new BagItem(StaticVars.ITEM.POKEBALL, 5)
         };
 
@@ -34,13 +34,11 @@ public class Main {
 
 
         BagItem[] enemyItems = {
-                new BagItem(StaticVars.ITEM.POTION, 20),
-                new BagItem(StaticVars.ITEM.SUPERPOTION, 15),
-                new BagItem(StaticVars.ITEM.HYPERPOTION, 10),
-                new BagItem(StaticVars.ITEM.REVIVE, 2),
-                new BagItem(StaticVars.ITEM.MAXREVIVE, 1),
-                new BagItem(StaticVars.ITEM.RARECANDY, 5),
-                new BagItem(StaticVars.ITEM.POKEBALL, 5)
+                new BagItem(StaticVars.ITEM.POTION, 5),
+                new BagItem(StaticVars.ITEM.SUPERPOTION, 2),
+                new BagItem(StaticVars.ITEM.HYPERPOTION, 1),
+                new BagItem(StaticVars.ITEM.RARECANDY, 2),
+                new BagItem(StaticVars.ITEM.POKEBALL, 1)
         };
 
         Attack[][] enemyAttacks =

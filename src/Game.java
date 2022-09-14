@@ -46,6 +46,14 @@ public class Game {
         this.playerTeam = playerTeam;
     }
 
+    public ComputerTeam getCompTeam() {
+        return compTeam;
+    }
+
+    public void setCompTeam(ComputerTeam compTeam) {
+        this.compTeam = compTeam;
+    }
+
     /*Andrew*/
     public void setup() {
         this.isPlayerTurn = false;

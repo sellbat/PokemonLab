@@ -1,3 +1,4 @@
+/* Connor */
 public class BagItem {
     private Item itemType;
     private int numOfItems;

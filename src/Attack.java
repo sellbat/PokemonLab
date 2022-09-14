@@ -1,4 +1,6 @@
+/* Connor */
 public class Attack {
+
     private String name;
     private int power;
     private double accuracy;

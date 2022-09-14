@@ -25,7 +25,7 @@ public class ComputerTeam {
 
     public void addBagItem(Item item, int numOfItems) {
         for (int i=0; i<bag.length; i++) {
-            if (item.name.equals(bag[i].getItemType().name)) {
+            if (item.getName().equals(bag[i].getItemType().getName())) {
                 bag[i].setNumOfItems(bag[i].getNumOfItems() + numOfItems);
                 return;
             }
@@ -91,7 +91,7 @@ public class ComputerTeam {
             //Attack
             Pokemon attacker = game.getCompPokemon();
             Pokemon defender = game.getPlayerPokemon();
-            Attack randomAttack = attacker.attacks[StaticVars.RANDOM.nextInt(attacker.attacks.length)];
+            Attack randomAttack = attacker.getAttacks()[StaticVars.RANDOM.nextInt(attacker.getAttacks().length)];
             game.useAttack(randomAttack,attacker,defender);
         }
 

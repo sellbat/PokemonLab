@@ -2,8 +2,8 @@
 public class Type {
     enum Types {None, Normal, Fire, Water, Grass, Electric, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dark, Dragon, Steel, Fairy}
 
-    Types type;
-    int typeIndex;
+    private Types type;
+    private int typeIndex;
 
     public static double[][] TypeMatrix = {
          //Atk/Dfn  N    F    W   Gs    E    I   Fi   Po   Gd   Fl   Ps    B    R   Gt   Da   Dr    S   Fa

@@ -2,24 +2,24 @@ import javax.swing.text.Style;
 
 //Connor
 public class Menus {
-    public static int maxWidth(PlayerTeam team){
+    private static int maxWidth(PlayerTeam team){
         int max=0;
-        for(int n=0; n<team.pokemons.length; n++) {
-            String currLine = ("*Lvl " + team.pokemons[n].stats.level + " " + team.pokemons[n].nickName) + " ";
+        for(int n=0; n<team.getPokemons().length; n++) {
+            String currLine = ("*Lvl " + team.getPokemons()[n].getStats().getLevel() + " " + team.getPokemons()[n].getNickName()) + " ";
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
             }
         }
-        for(int i=0; i<team.pokemons[0].attacks.length; i++){
-            String currLine = ("*" + team.pokemons[0].attacks[i].getName());
+        for(int i=0; i<team.getPokemons()[0].getAttacks().length; i++){
+            String currLine = ("*" + team.getPokemons()[0].getAttacks()[i].getName());
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
             }
         }
-        for(int i=0 ; i<team.bag.length; i++){
-            String currLine = ("*" + team.bag[i].getNumOfItems() + "x " + team.bag[i].getItemType().name);
+        for(int i=0 ; i<team.getBag().length; i++){
+            String currLine = ("*" + team.getBag()[i].getNumOfItems() + "x " + team.getBag()[i].getItemType().getName());
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
@@ -28,6 +28,7 @@ public class Menus {
         return max;
 
     }
+
     public static void pokemonMenu(PlayerTeam team){
         String lineThree = "*";
         String lineOne = "*";
@@ -51,12 +52,12 @@ public class Menus {
         System.out.println(lineThree);
         int n =0;
         for(int i=0; i<12; i++){
-            if(n<team.pokemons.length){
-                String levelString = String.valueOf(team.pokemons[n].stats.level);
-                for (int k=0; k<3-String.valueOf(team.pokemons[n].stats.level).length(); k++) {
+            if(n<team.getPokemons().length){
+                String levelString = String.valueOf(team.getPokemons()[n].getStats().getLevel());
+                for (int k=0; k<3-String.valueOf(team.getPokemons()[n].getStats().getLevel()).length(); k++) {
                     levelString = " " + levelString;
                 }
-                String currLine = ("*Lvl " + levelString +  " " + team.pokemons[n].nickName + " ");
+                String currLine = ("*Lvl " + levelString +  " " + team.getPokemons()[n].getNickName() + " ");
                 for (int j = currLine.length(); j < (max); j++) {
                     currLine += " ";
                 }
@@ -94,8 +95,8 @@ public class Menus {
         System.out.println(lineThree);
         int n =0;
         for(int i=0; i<12; i++){
-            if(n<team.pokemons[0].attacks.length){
-                String currLine = ("*" + team.pokemons[0].attacks[n].getName());
+            if(n<team.getPokemons()[0].getAttacks().length){
+                String currLine = ("*" + team.getPokemons()[0].getAttacks()[n].getName());
                 for(int j = currLine.length(); j<max ; j++){
                     currLine += " ";
                 }
@@ -132,8 +133,8 @@ public class Menus {
         System.out.println(lineThree);
         int n =0;
         for(int i=0; i<12; i++){
-            if(n<team.bag.length){
-                String currLine = ("*" + team.bag[n].getNumOfItems() + "x " + team.bag[n].getItemType().name);
+            if(n<team.getBag().length){
+                String currLine = ("*" + team.getBag()[n].getNumOfItems() + "x " + team.getBag()[n].getItemType().getName());
                 for(int j = currLine.length(); j<max; j++){
                     currLine += " ";
                 }
@@ -157,14 +158,14 @@ public class Menus {
             System.out.print("*");
         }
 
-        String lineOne = "*" + game.getCompPokemon().nickName + " Lvl " + game.getCompPokemon().stats.level;
+        String lineOne = "*" + game.getCompPokemon().getNickName() + " Lvl " + game.getCompPokemon().getStats().getLevel();
         System.out.print("\n" + lineOne);
         for (int i = 0; i < width - lineOne.length() - 1; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
-        String lineTwo = "*HP: " + game.getCompPokemon().currentHp;
+        String lineTwo = "*HP: " + game.getCompPokemon().getCurrentHp();
         System.out.print("\n" + lineTwo);
         for (int i = 0; i < width - lineTwo.length() - 1; i++) {
             System.out.print(" ");
@@ -202,16 +203,16 @@ public class Menus {
         System.out.print("*");
 
         System.out.print("\n*   -|-");
-        for (int i = 0; i < width - 13 - game.getPlayerPokemon().nickName.length() - String.valueOf(game.getPlayerPokemon().stats.level).length(); i++) {
+        for (int i = 0; i < width - 13 - game.getPlayerPokemon().getNickName().length() - String.valueOf(game.getPlayerPokemon().getStats().getLevel()).length(); i++) {
             System.out.print(" ");
         }
-        System.out.print("" + game.getPlayerPokemon().nickName + " Lvl " + game.getPlayerPokemon().stats.level + "*");
+        System.out.print("" + game.getPlayerPokemon().getNickName() + " Lvl " + game.getPlayerPokemon().getStats().getLevel() + "*");
 
         System.out.print("\n*   / \\");
-        for (int i = 0; i < width - 12 - String.valueOf(game.getPlayerPokemon().currentHp).length(); i++) {
+        for (int i = 0; i < width - 12 - String.valueOf(game.getPlayerPokemon().getCurrentHp()).length(); i++) {
             System.out.print(" ");
         }
-        System.out.print("HP: " + game.getPlayerPokemon().currentHp + "*");
+        System.out.print("HP: " + game.getPlayerPokemon().getCurrentHp() + "*");
 
         System.out.print("\n*");
         for (int i = 0; i < width - 2; i++) {

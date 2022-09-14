@@ -1,20 +1,44 @@
 /*Andrew*/
 public class Nature {
-    public enum Natures {Bashful, Docile, Hardy, Quirky, Serious, Adamant, Brave, Lonely, Naughty, Bold, Relaxed, Impish, Lax, Modest, Mild, Quiet, Rash, Calm, Gentle, Sassy, Careful, Timid, Hasty, Jolly, Naive};
-    public Natures[] naturesList = {Natures.Bashful, Natures.Docile, Natures.Hardy, Natures.Quirky, Natures.Serious,
+    enum Natures {Bashful, Docile, Hardy, Quirky, Serious, Adamant, Brave, Lonely, Naughty, Bold, Relaxed, Impish, Lax, Modest, Mild, Quiet, Rash, Calm, Gentle, Sassy, Careful, Timid, Hasty, Jolly, Naive};
+    private Natures[] naturesList = {Natures.Bashful, Natures.Docile, Natures.Hardy, Natures.Quirky, Natures.Serious,
             Natures.Adamant, Natures.Brave, Natures.Lonely, Natures.Naughty,
             Natures.Bold, Natures.Relaxed, Natures.Impish, Natures.Lax,
             Natures.Modest, Natures.Mild, Natures.Quiet, Natures.Rash,
             Natures.Calm, Natures.Gentle, Natures.Sassy, Natures.Careful,
             Natures.Timid, Natures.Hasty, Natures.Jolly, Natures.Naive};
 
-    Natures name;
+    private Natures name;
 
-    double attackMultiplier;
-    double defenseMultiplier;
+    private double attackMultiplier;
+    private double defenseMultiplier;
 
     Nature() {
         updateMultipliers(naturesList[StaticVars.RANDOM.nextInt(naturesList.length)]);
+    }
+
+    public Natures getName() {
+        return name;
+    }
+
+    public void setName(Natures name) {
+        this.name = name;
+    }
+
+    public double getAttackMultiplier() {
+        return attackMultiplier;
+    }
+
+    public void setAttackMultiplier(double attackMultiplier) {
+        this.attackMultiplier = attackMultiplier;
+    }
+
+    public double getDefenseMultiplier() {
+        return defenseMultiplier;
+    }
+
+    public void setDefenseMultiplier(double defenseMultiplier) {
+        this.defenseMultiplier = defenseMultiplier;
     }
 
     Nature(Natures natureChoice) {

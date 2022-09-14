@@ -1,20 +1,20 @@
 public class Pokemon {
-    public String nickName;
+    private String nickName;
 
-    public PokemonStats stats;
-    public PokemonSpecies species;
+    private PokemonStats stats;
+    private PokemonSpecies species;
 
-    public Attack[] attacks;
+    private Attack[] attacks;
 
-    public int currentHp;
+    private int currentHp;
 
-    public int maxHp;
-    public int attackPower;
-    public int defensePower;
+    private int maxHp;
+    private int attackPower;
+    private int defensePower;
 
-    public Effect effect;
+    private Effect effect;
 
-    public boolean fainted;
+    private boolean fainted;
 
     Pokemon(String nickName, PokemonSpecies species, PokemonStats stats, Attack[] attacks, int currentHp) {
         this.nickName = nickName;
@@ -37,8 +37,88 @@ public class Pokemon {
     }
 
     private void updateFinalStats() {
-        this.maxHp =  (int) ((0.01 * (2 * this.species.baseHp + this.stats.hpIV + (int)(0.25 * this.stats.hpEV)) * this.stats.level) + this.stats.level + 10);
-        this.attackPower = (int) (((0.01 * (2 * this.species.baseAttack + this.stats.defenseIV + (int)(0.25 * this.stats.attackEV)) * this.stats.level) + 5) * this.stats.nature.attackMultiplier);
-        this.defensePower = (int) (((0.01 * (2 * this.species.baseDefense + this.stats.defenseIV + (int)(0.25 * this.stats.defenseEV)) * this.stats.level) + 5) * this.stats.nature.defenseMultiplier);
+        this.maxHp =  (int) ((0.01 * (2 * this.species.getBaseHp() + this.stats.getHpIV() + (int)(0.25 * this.stats.getHpEV())) * this.stats.getLevel()) + this.stats.getLevel() + 10);
+        this.attackPower = (int) (((0.01 * (2 * this.species.getBaseAttack() + this.stats.getAttackIV() + (int)(0.25 * this.stats.getAttackEV())) * this.stats.getLevel()) + 5) * this.stats.getNature().getAttackMultiplier());
+        this.defensePower = (int) (((0.01 * (2 * this.species.getBaseDefense() + this.stats.getDefenseIV() + (int)(0.25 * this.stats.getDefenseEV())) * this.stats.getLevel()) + 5) * this.stats.getNature().getDefenseMultiplier());
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public PokemonStats getStats() {
+        return stats;
+    }
+
+    public void setStats(PokemonStats stats) {
+        this.stats = stats;
+    }
+
+    public PokemonSpecies getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(PokemonSpecies species) {
+        this.species = species;
+    }
+
+    public Attack[] getAttacks() {
+        return attacks;
+    }
+
+    public void setAttacks(Attack[] attacks) {
+        this.attacks = attacks;
+    }
+
+    public int getCurrentHp() {
+        return currentHp;
+    }
+
+    public void setCurrentHp(int currentHp) {
+        this.currentHp = currentHp;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
+
+    public int getDefensePower() {
+        return defensePower;
+    }
+
+    public void setDefensePower(int defensePower) {
+        this.defensePower = defensePower;
+    }
+
+    public Effect getEffect() {
+        return effect;
+    }
+
+    public void setEffect(Effect effect) {
+        this.effect = effect;
+    }
+
+    public boolean getFainted() {
+        return fainted;
+    }
+
+    public void setFainted(boolean fainted) {
+        this.fainted = fainted;
     }
 }

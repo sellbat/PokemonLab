@@ -1,17 +1,17 @@
 public class PokemonStats {
-    public int hpIV;
-    public int attackIV;
-    public int defenseIV;
+    private int hpIV;
+    private int attackIV;
+    private int defenseIV;
 
-    public int hpEV;
-    public int attackEV;
-    public int defenseEV;
+    private int hpEV;
+    private int attackEV;
+    private int defenseEV;
 
-    public Nature nature;
+    private Nature nature;
 
-    public boolean shiny;
+    private boolean shiny;
 
-    public int level;
+    private int level;
 
 
 
@@ -51,6 +51,74 @@ public class PokemonStats {
 
         this.shiny = shiny;
 
+        this.level = level;
+    }
+
+    public int getHpIV() {
+        return hpIV;
+    }
+
+    public void setHpIV(int hpIV) {
+        this.hpIV = hpIV;
+    }
+
+    public int getAttackIV() {
+        return attackIV;
+    }
+
+    public void setAttackIV(int attackIV) {
+        this.attackIV = attackIV;
+    }
+
+    public int getDefenseIV() {
+        return defenseIV;
+    }
+
+    public void setDefenseIV(int defenseIV) {
+        this.defenseIV = defenseIV;
+    }
+
+    public int getHpEV() {
+        return hpEV;
+    }
+
+    public void setHpEV(int hpEV) {
+        this.hpEV = hpEV;
+    }
+
+    public int getAttackEV() {
+        return attackEV;
+    }
+
+    public void setAttackEV(int attackEV) {
+        this.attackEV = attackEV;
+    }
+
+    public int getDefenseEV() {
+        return defenseEV;
+    }
+
+    public void setDefenseEV(int defenseEV) {
+        this.defenseEV = defenseEV;
+    }
+
+    public Nature getNature() {
+        return nature;
+    }
+
+    public void setNature(Nature nature) {
+        this.nature = nature;
+    }
+
+    public boolean isShiny() {
+        return shiny;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
         this.level = level;
     }
 }

@@ -11,8 +11,6 @@ public class Game {
     public Game(PlayerTeam playerTeam, ComputerTeam compTeam) {
         this.isGameOver = false;
         this.isPlayerTurn = true;
-        this.playerPokemon = playerTeam.pokemons[0];
-        this.compPokemon = compTeam.getPokemons()[0];
         this.playerTeam = playerTeam;
         this.compTeam = compTeam;
     }
@@ -50,8 +48,8 @@ public class Game {
     }
 
     /*Connor*/
-    public void setup(){
-        this.playerPokemon = this.playerTeam.pokemons[0];
+    public void setup() {
+        this.playerPokemon = this.playerTeam.getPokemons()[0];
         this.compPokemon = this.compTeam.getPokemons()[0];
 
         StaticVars.SCANNER.useDelimiter("\n");
@@ -93,15 +91,15 @@ public class Game {
             catch (Exception e) {
                 StaticVars.SCANNER.nextLine();
             }
-            if (choiceString.equals(playerTeam.pokemons[0].nickName) || choiceString.equals(playerTeam.pokemons[1].nickName) || choiceString.equals(playerTeam.pokemons[2].nickName) || choiceString.equals(playerTeam.pokemons[3].nickName) || choiceString.equals(playerTeam.pokemons[4].nickName) || choiceString.equals(playerTeam.pokemons[5].nickName)) {
+            if (choiceString.equals(playerTeam.getPokemons()[0].getNickName()) || choiceString.equals(playerTeam.getPokemons()[1].getNickName()) || choiceString.equals(playerTeam.getPokemons()[2].getNickName()) || choiceString.equals(playerTeam.getPokemons()[3].getNickName()) || choiceString.equals(playerTeam.getPokemons()[4].getNickName()) || choiceString.equals(playerTeam.getPokemons()[5].getNickName())) {
                 break;
             }
             System.out.print("\nPlease Try Again!\nInput Your Pokemon Choice: ");
         }
 
-        for (int i=0; i<playerTeam.pokemons.length; i++) {
-            if (playerTeam.pokemons[i].nickName.equals(choiceString)) {
-                choice = playerTeam.pokemons[i];
+        for (int i=0; i<playerTeam.getPokemons().length; i++) {
+            if (playerTeam.getPokemons()[i].getNickName().equals(choiceString)) {
+                choice = playerTeam.getPokemons()[i];
                 break;
             }
         }
@@ -122,15 +120,15 @@ public class Game {
             catch (Exception e) {
                 StaticVars.SCANNER.nextLine();
             }
-            if (choiceString.equals(playerPokemon.attacks[0].getName()) || choiceString.equals(playerPokemon.attacks[1].getName()) || choiceString.equals(playerPokemon.attacks[2].getName()) || choiceString.equals(playerPokemon.attacks[3].getName())) {
+            if (choiceString.equals(playerPokemon.getAttacks()[0].getName()) || choiceString.equals(playerPokemon.getAttacks()[1].getName()) || choiceString.equals(playerPokemon.getAttacks()[2].getName()) || choiceString.equals(playerPokemon.getAttacks()[3].getName())) {
                 break;
             }
             System.out.print("\nPlease Try Again!\nInput Your Attack Choice: ");
         }
 
-        for (int i=0; i<playerPokemon.attacks.length; i++) {
-            if (playerPokemon.attacks[i].getName().equals(choiceString)) {
-                choice = playerPokemon.attacks[i];
+        for (int i=0; i<playerPokemon.getAttacks().length; i++) {
+            if (playerPokemon.getAttacks()[i].getName().equals(choiceString)) {
+                choice = playerPokemon.getAttacks()[i];
                 break;
             }
         }
@@ -163,13 +161,13 @@ public class Game {
     /*Andrew*/
     public void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
         double rand = Math.random();
-        if ((attacker.effect == null) || (rand > attacker.effect.getIncapacitateChance())) {
+        if ((attacker.getEffect() == null) || (rand > attacker.getEffect().getIncapacitateChance())) {
             rand = Math.random();
             if (rand < attack.getAccuracy()) {
-                defender.currentHp -= calculateAttackDamage(attack, attacker, defender);
+                defender.setCurrentHp(defender.getCurrentHp() - calculateAttackDamage(attack, attacker, defender));
                 rand = Math.random();
                 if ((attack.getEffect() != null) && (rand < attack.getEffectChance())) {
-                    defender.effect = attack.getEffect();
+                    defender.setEffect(attack.getEffect());
                 }
             }
         }
@@ -179,31 +177,31 @@ public class Game {
     public void useItem(BagItem item, Pokemon target, ComputerTeam compTeam, PlayerTeam playerTeam) {
         item.setNumOfItems(item.getNumOfItems() - 1);
 
-        target.currentHp += item.getItemType().healthIncrease;
-        target.stats.level += item.getItemType().levelIncrease;
+        target.setCurrentHp(target.getCurrentHp() + item.getItemType().getHealthIncrease());
+        target.getStats().setLevel(target.getStats().getLevel() + item.getItemType().getLevelIncrease());
 
-        if (target.currentHp > target.maxHp) {
-            target.currentHp = target.maxHp;
+        if (target.getCurrentHp() > target.getMaxHp()) {
+            target.setCurrentHp(target.getMaxHp());
         }
-        if (target.stats.level > 100) {
-            target.stats.level = 100;
+        if (target.getStats().getLevel() > 100) {
+            target.getStats().setLevel(100);
         }
 
-        if (target.fainted) {
-            if (item.getItemType().revive) {
-                target.currentHp = target.maxHp / 2;
-                target.fainted = false;
+        if (target.getFainted()) {
+            if (item.getItemType().getRevive()) {
+                target.setCurrentHp(target.getMaxHp() / 2);
+                target.setFainted(false);
             }
-            else if (item.getItemType().maxRevive) {
-                target.currentHp = target.maxHp;
-                target.fainted = false;
+            else if (item.getItemType().getMaxRevive()) {
+                target.setCurrentHp(target.getMaxHp());
+                target.setFainted(false);
             }
         }
 
-        if (item.getItemType().pokeBall) {
+        if (item.getItemType().getPokeBall()) {
             if (compTeam != null) {
                 for (int i=0; i<compTeam.getPokemons().length; i++) {
-                    if (playerTeam.pokemons[i] == target) {
+                    if (playerTeam.getPokemons()[i] == target) {
                         Pokemon[] newCompPokemons = new Pokemon[compTeam.getPokemons().length+1];
                         for (int j=0; j<compTeam.getPokemons().length; j++) {
                             newCompPokemons[j] = compTeam.getPokemons()[j];
@@ -214,32 +212,32 @@ public class Game {
                     }
                 }
 
-                Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.pokemons.length-1];
+                Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.getPokemons().length-1];
                 int index = -1;
-                for (int i=0; i<playerTeam.pokemons.length; i++) {
-                    if (playerTeam.pokemons[i] == target) {
+                for (int i=0; i<playerTeam.getPokemons().length; i++) {
+                    if (playerTeam.getPokemons()[i] == target) {
                         index = i;
                         break;
                     }
                 }
                 for (int i=0; i<index; i++) {
-                    newPlayerPokemons[i] = playerTeam.pokemons[i];
+                    newPlayerPokemons[i] = playerTeam.getPokemons()[i];
                 }
-                for (int i=index+1; i<playerTeam.pokemons.length-1; i++) {
-                    newPlayerPokemons[i] = playerTeam.pokemons[i];
+                for (int i=index+1; i<playerTeam.getPokemons().length-1; i++) {
+                    newPlayerPokemons[i] = playerTeam.getPokemons()[i];
                 }
-                playerTeam.pokemons = newPlayerPokemons;
+                playerTeam.setPokemons(newPlayerPokemons);
             }
 
             else {
-                for (int i=0; i<playerTeam.pokemons.length; i++) {
+                for (int i=0; i<playerTeam.getPokemons().length; i++) {
                     if (compTeam.getPokemons()[i] == target) {
-                        Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.pokemons.length+1];
-                        for (int j=0; j<playerTeam.pokemons.length; j++) {
-                            newPlayerPokemons[j] = playerTeam.pokemons[j];
+                        Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.getPokemons().length+1];
+                        for (int j=0; j<playerTeam.getPokemons().length; j++) {
+                            newPlayerPokemons[j] = playerTeam.getPokemons()[j];
                         }
-                        newPlayerPokemons[playerTeam.pokemons.length] = target;
-                        playerTeam.pokemons = newPlayerPokemons;
+                        newPlayerPokemons[playerTeam.getPokemons().length] = target;
+                        playerTeam.setPokemons(newPlayerPokemons);
                         break;
                     }
                 }
@@ -266,17 +264,17 @@ public class Game {
     /*Andrew*/
     public int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
-        if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.species.baseSpeed/2))) {
+        if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.getSpecies().getBaseSpeed()/2))) {
             criticalHitBonus = 2.0;
         }
 
         double STABBonus = 1.0;
-        if ((attack.getType() == attacker.species.type1) || (attack.getType() == attacker.species.type2)) {
+        if ((attack.getType() == attacker.getSpecies().getType1()) || (attack.getType() == attacker.getSpecies().getType2())) {
             STABBonus = 1.5;
         }
 
-        double damage = (((((2.0 * attacker.stats.level * criticalHitBonus)/5.0) + 2.0) * attack.getPower() * ((double)attacker.attackPower/(double)defender.defensePower))/50.0);
-        damage = damage * STABBonus * attack.getType().getEffectivenessAgainst(defender.species.type1) * attack.getType().getEffectivenessAgainst(defender.species.type2);
+        double damage = (((((2.0 * attacker.getStats().getLevel() * criticalHitBonus)/5.0) + 2.0) * attack.getPower() * ((double)attacker.getAttackPower()/(double)defender.getDefensePower()))/50.0);
+        damage = damage * STABBonus * attack.getType().getEffectivenessAgainst(defender.getSpecies().getType1()) * attack.getType().getEffectivenessAgainst(defender.getSpecies().getType2());
         if (!((int) damage == 1)) {
             damage = damage * (StaticVars.RANDOM.nextInt(256-217) + 217);
         }
@@ -287,32 +285,32 @@ public class Game {
     /*Andrew*/
     public void applyEffects(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
-            if ((pokemons[i] != null) && (pokemons[i].effect != null)) {
+            if ((pokemons[i] != null) && (pokemons[i].getEffect() != null)) {
                 applyEffects(pokemons[i]);
             }
         }
     }
     /*Andrew*/
     public void applyEffects(Pokemon pokemon) {
-        pokemon.effect.setRoundsLeft(pokemon.effect.getRoundsLeft() - 1);
-        pokemon.currentHp -= pokemon.effect.getScalingDamage() * pokemon.currentHp;
-        pokemon.currentHp -= pokemon.effect.getDamage();
+        pokemon.getEffect().setRoundsLeft(pokemon.getEffect().getRoundsLeft() - 1);
+        pokemon.setCurrentHp((int) (pokemon.getCurrentHp() - (pokemon.getEffect().getScalingDamage() * pokemon.getCurrentHp())));
+        pokemon.setCurrentHp(pokemon.getCurrentHp() - pokemon.getEffect().getDamage());
     }
 
     public void updateIfFainted(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
-            if ((pokemons[i] != null) && (pokemons[i].currentHp <= 0)) {
-                pokemons[i].fainted = true;
+            if ((pokemons[i] != null) && (pokemons[i].getCurrentHp() <= 0)) {
+                pokemons[i].setFainted(true);
             }
         }
     }
 
     /*Connor*/
     public void nextTurn(){
-        applyEffects(this.playerTeam.pokemons);
+        applyEffects(this.playerTeam.getPokemons());
         applyEffects(this.compTeam.getPokemons());
 
-        updateIfFainted(this.playerTeam.pokemons);
+        updateIfFainted(this.playerTeam.getPokemons());
         updateIfFainted(compTeam.getPokemons());
 
         this.isPlayerTurn = !this.isPlayerTurn;
@@ -326,7 +324,7 @@ public class Game {
                     Menus.attackMenu(this.playerTeam);
                     Attack attackChoice = inputAttackChoice();
                     useAttack(attackChoice, this.playerPokemon, this.compPokemon);
-                    Menus.battleMenu(this, this.playerPokemon.nickName + " used " + attackChoice.getName());
+                    Menus.battleMenu(this, this.playerPokemon.getNickName() + " used " + attackChoice.getName());
                     break;
                 case Bag:
                     Menus.bagMenu(this.playerTeam);
@@ -335,7 +333,7 @@ public class Game {
                     Menus.pokemonMenu(this.playerTeam);
                     Pokemon newPlayerPokemon = inputPlayerPokemon();
                     switchPokemon(false, newPlayerPokemon);
-                    Menus.battleMenu(this, newPlayerPokemon.nickName + " has entered the battle");
+                    Menus.battleMenu(this, newPlayerPokemon.getNickName() + " has entered the battle");
                     break;
                 case Run:
                     runAway(false);

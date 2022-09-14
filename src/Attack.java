@@ -5,6 +5,7 @@ public class Attack {
     private Effect effect;
     private double effectChance;
     private Type type;
+
     public String getName() {
         return name;
     }

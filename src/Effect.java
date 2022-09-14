@@ -1,5 +1,5 @@
 public class Effect {
-    public enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
+    enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
 
     private Effects name;
     private  int roundsLeft;

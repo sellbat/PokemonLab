@@ -1,20 +1,20 @@
 public class PokemonSpecies {
-    public enum SpeciesChoices {Pikachu, Ivysaur, Charizard, Squirtle};
+    enum SpeciesChoices {Pikachu, Ivysaur, Charizard, Squirtle};
 
-    public SpeciesChoices name;
+    private SpeciesChoices name;
 
-    public Type type1;
-    public Type type2;
+    private Type type1;
+    private Type type2;
 
-    public int baseHp;
-    public int baseAttack;
-    public int baseDefense;
+    private int baseHp;
+    private int baseAttack;
+    private int baseDefense;
 
-    public int baseSpeed;
+    private int baseSpeed;
 
-    public int hpEVDefeatYield;
-    public int attackEVDefeatYield;
-    public int defenseEVDefeatYield;
+    private int hpEVDefeatYield;
+    private int attackEVDefeatYield;
+    private int defenseEVDefeatYield;
 
     PokemonSpecies(SpeciesChoices speciesChoice) {
         this.name = speciesChoice;
@@ -54,6 +54,82 @@ public class PokemonSpecies {
 
         this.hpEVDefeatYield = hpEVDefeatYield;
         this.attackEVDefeatYield = attackEVDefeatYield;
+        this.defenseEVDefeatYield = defenseEVDefeatYield;
+    }
+
+    public SpeciesChoices getName() {
+        return name;
+    }
+
+    public void setName(SpeciesChoices name) {
+        this.name = name;
+    }
+
+    public Type getType1() {
+        return type1;
+    }
+
+    public void setType1(Type type1) {
+        this.type1 = type1;
+    }
+
+    public Type getType2() {
+        return type2;
+    }
+
+    public void setType2(Type type2) {
+        this.type2 = type2;
+    }
+
+    public int getBaseHp() {
+        return baseHp;
+    }
+
+    public void setBaseHp(int baseHp) {
+        this.baseHp = baseHp;
+    }
+
+    public int getBaseAttack() {
+        return baseAttack;
+    }
+
+    public void setBaseAttack(int baseAttack) {
+        this.baseAttack = baseAttack;
+    }
+
+    public int getBaseDefense() {
+        return baseDefense;
+    }
+
+    public void setBaseDefense(int baseDefense) {
+        this.baseDefense = baseDefense;
+    }
+
+    public int getBaseSpeed() {
+        return baseSpeed;
+    }
+
+    public void setBaseSpeed(int baseSpeed) {
+        this.baseSpeed = baseSpeed;
+    }
+
+    public int getHpEVDefeatYield() {
+        return hpEVDefeatYield;
+    }
+
+    public void setHpEVDefeatYield(int hpEVDefeatYield) {
+        this.hpEVDefeatYield = hpEVDefeatYield;
+    }
+
+    public int getAttackEVDefeatYield() {
+        return attackEVDefeatYield;
+    }
+
+    public int getDefenseEVDefeatYield() {
+        return defenseEVDefeatYield;
+    }
+
+    public void setDefenseEVDefeatYield(int defenseEVDefeatYield) {
         this.defenseEVDefeatYield = defenseEVDefeatYield;
     }
 }

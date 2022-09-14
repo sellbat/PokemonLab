@@ -1,15 +1,31 @@
 public class PlayerTeam {
-    public Pokemon[] pokemons;
-    public BagItem[] bag;
+    private Pokemon[] pokemons;
+    private BagItem[] bag;
 
     PlayerTeam(Pokemon[] pokemons, BagItem[] bag) {
         this.pokemons = pokemons;
         this.bag = bag;
     }
 
+    public Pokemon[] getPokemons() {
+        return pokemons;
+    }
+
+    public void setPokemons(Pokemon[] pokemons) {
+        this.pokemons = pokemons;
+    }
+
+    public BagItem[] getBag() {
+        return bag;
+    }
+
+    public void setBag(BagItem[] bag) {
+        this.bag = bag;
+    }
+
     public void addBagItem(int amount, Item item){
         for(int j=0 ; j<bag.length ; j++){
-            if(bag[j].getItemType().name.equals(item.name)){
+            if(bag[j].getItemType().getName().equals(item.getName())){
                 bag[j].setNumOfItems(bag[j].getNumOfItems() + amount);
                 return;
             }

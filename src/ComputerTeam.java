@@ -70,7 +70,14 @@ public class ComputerTeam {
                 randomTarget = game.getPlayerPokemon();
             }
 
-            game.useItem(randomItem, randomTarget, this, game.getPlayerTeam());
+            game.useItem(randomItem, randomTarget, true);
+
+            if (randomItem.getItemType() != StaticVars.ITEM.POKEBALL) {
+                Menus.battleMenu(game, "The enemy used " + randomItem.getItemType().getName() + " on " + randomTarget.getNickName());
+            }
+            else {
+                Menus.battleMenu(game, "The enemy threw a pokeball and captured " + game.getPlayerPokemon().getNickName());
+            }
 
         }
         else {
@@ -79,6 +86,8 @@ public class ComputerTeam {
             Pokemon defender = game.getPlayerPokemon();
             Attack randomAttack = attacker.getAttacks()[StaticVars.RANDOM.nextInt(attacker.getAttacks().length)];
             game.useAttack(randomAttack,attacker,defender);
+
+            Menus.battleMenu(game, attacker.getNickName() + " used " + randomAttack.getName());
         }
 
     }
@@ -98,5 +107,7 @@ public class ComputerTeam {
         }
 
         game.switchPokemon(true, this.pokemons[p]);
+
+        Menus.battleMenu(game, game.getCompPokemon().getNickName() + " has entered the battle");
     }
 }

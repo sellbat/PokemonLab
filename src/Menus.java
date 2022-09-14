@@ -28,15 +28,15 @@ public class Menus {
             }
         }
         for(int n=0; n<compTeam.getPokemons().length; n++) {
-            String currLine = ("*Lvl " + team.getPokemons()[n].getStats().getLevel() + " " + team.getPokemons()[n].getNickName()) + " (fainted)";
+            String currLine = ("*Lvl " + compTeam.getPokemons()[n].getStats().getLevel() + " " + compTeam.getPokemons()[n].getNickName()) + " (fainted)";
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
             }
         }
         for(int j=0 ; j<compTeam.getPokemons().length ; j++) {
-            for (int i = 0; i < team.getPokemons()[j].getAttacks().length; i++) {
-                String currLine = ("*   -|-" + team.getPokemons()[j].getAttacks()[i].getName() + " Lvl 100");
+            for (int i = 0; i < compTeam.getPokemons()[j].getAttacks().length; i++) {
+                String currLine = ("*   -|-" + compTeam.getPokemons()[j].getAttacks()[i].getName() + " Lvl 100");
                 int curr = currLine.length();
                 if (curr > max) {
                     max = curr;
@@ -44,7 +44,7 @@ public class Menus {
             }
         }
         for(int i=0 ; i<compTeam.getBag().length; i++){
-            String currLine = ("*" + team.getBag()[i].getNumOfItems() + "x " + team.getBag()[i].getItemType().getName());
+            String currLine = ("*" + compTeam.getBag()[i].getNumOfItems() + "x " + compTeam.getBag()[i].getItemType().getName());
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
@@ -193,92 +193,92 @@ public class Menus {
     public static void battleMenu(Game game, String message) {
         int width = maxWidth(game.getPlayerTeam(), game.getCompTeam());
 
-        for (int i = 0; i < width; i++) {
+        for (int i = 0; i < width+1; i++) {
             System.out.print("*");
         }
 
         String lineOne = "*" + game.getCompPokemon().getNickName() + " Lvl " + game.getCompPokemon().getStats().getLevel();
         System.out.print("\n" + lineOne);
-        for (int i = 0; i < width - lineOne.length() - 1; i++) {
+        for (int i = 0; i < width - lineOne.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
         String lineTwo = "*HP: " + game.getCompPokemon().getCurrentHp();
         System.out.print("\n" + lineTwo);
-        for (int i = 0; i < width - lineTwo.length() - 1; i++) {
+        for (int i = 0; i < width - lineTwo.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 7; i++) {
+        for (int i = 0; i < width - 6; i++) {
             System.out.print(" ");
         }
         System.out.print("O    *");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 8; i++) {
+        for (int i = 0; i < width - 7; i++) {
             System.out.print(" ");
         }
         System.out.print("-|-   *");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 8; i++) {
+        for (int i = 0; i < width - 7; i++) {
             System.out.print(" ");
         }
         System.out.print("/ \\   *");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 2; i++) {
+        for (int i = 0; i < width - 1; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
         System.out.print("\n*    O");
-        for (int i = 0; i < width - 7; i++) {
+        for (int i = 0; i < width - 6; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
         System.out.print("\n*   -|-");
-        for (int i = 0; i < width - 13 - game.getPlayerPokemon().getNickName().length() - String.valueOf(game.getPlayerPokemon().getStats().getLevel()).length(); i++) {
+        for (int i = 0; i < width - 12 - game.getPlayerPokemon().getNickName().length() - String.valueOf(game.getPlayerPokemon().getStats().getLevel()).length(); i++) {
             System.out.print(" ");
         }
         System.out.print("" + game.getPlayerPokemon().getNickName() + " Lvl " + game.getPlayerPokemon().getStats().getLevel() + "*");
 
         System.out.print("\n*   / \\");
-        for (int i = 0; i < width - 12 - String.valueOf(game.getPlayerPokemon().getCurrentHp()).length(); i++) {
+        for (int i = 0; i < width - 11 - String.valueOf(game.getPlayerPokemon().getCurrentHp()).length(); i++) {
             System.out.print(" ");
         }
         System.out.print("HP: " + game.getPlayerPokemon().getCurrentHp() + "*");
 
         System.out.print("\n*");
-        for (int i = 0; i < width - 2; i++) {
+        for (int i = 0; i < width - 1; i++) {
             System.out.print("_");
         }
         System.out.print("*");
 
 
-        for (int i=0; i<(2*(width-9)) - message.length(); i++) {
+        for (int i=0; i<(2*(width-8)) - message.length(); i++) {
             message += "";
         }
 
-        String firstMessage = "*" + message.substring(0, Math.min(message.length(), width-10));
+        String firstMessage = "*" + message.substring(0, Math.min(message.length(), width-9));
         System.out.print("\n" + firstMessage);
-        for (int i = 0; i < width - 9 - firstMessage.length(); i++) {
+        for (int i = 0; i < width - 8 - firstMessage.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("|Atk|Bag*");
 
-        String secondMessage = "*" + message.substring(Math.min(message.length(), width-10), Math.min(message.length(), 2*width-20));
+        String secondMessage = "*" + message.substring(Math.min(message.length(), width-9), Math.min(message.length(), 2*width-18));
         System.out.print("\n" + secondMessage);
-        for (int i = 0; i < width - 9 - secondMessage.length(); i++) {
+        for (int i = 0; i < width - 8 - secondMessage.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("|Pok|Run*\n");
 
-        for (int i = 0; i < width; i++) {
+        for (int i = 0; i < width+1; i++) {
             System.out.print("*");
         }
         System.out.print("\n");

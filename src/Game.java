@@ -166,7 +166,7 @@ public class Game {
             catch (Exception e) {
                 StaticVars.SCANNER.nextLine();
             }
-            for (int i=0; i<playerTeam.getPokemons().length; i++) {
+            for (int i=0; i<playerTeam.getBag().length; i++) {
                 if (choiceString.equals(playerTeam.getBag()[i].getItemType().getName())) {
                     if (playerTeam.getBag()[i].getNumOfItems() > 0) {
                         break ErrorHandlingLoop;
@@ -224,7 +224,7 @@ public class Game {
     }
 
     /*Andrew*/
-    public void useItem(BagItem item, Pokemon target, ComputerTeam compTeam, PlayerTeam playerTeam) {
+    public void useItem(BagItem item, Pokemon target, boolean isCompTeam) {
         item.setNumOfItems(item.getNumOfItems() - 1);
 
         target.setCurrentHp(target.getCurrentHp() + item.getItemType().getHealthIncrease());
@@ -249,7 +249,7 @@ public class Game {
         }
 
         if (item.getItemType().getPokeBall()) {
-            if (compTeam != null) {
+            if (isCompTeam == true) {
                 for (int i=0; i<compTeam.getPokemons().length; i++) {
                     if (playerTeam.getPokemons()[i] == target) {
                         Pokemon[] newCompPokemons = new Pokemon[compTeam.getPokemons().length+1];
@@ -270,12 +270,17 @@ public class Game {
                         break;
                     }
                 }
-                for (int i=0; i<index; i++) {
-                    newPlayerPokemons[i] = playerTeam.getPokemons()[i];
+
+                int j = 0;
+                for (int i = 0; i < index; i++) {
+                    newPlayerPokemons[j] = playerTeam.getPokemons()[i];
+                    j++;
                 }
-                for (int i=index+1; i<playerTeam.getPokemons().length-1; i++) {
-                    newPlayerPokemons[i] = playerTeam.getPokemons()[i];
+                for (int i = index + 1; i < playerTeam.getPokemons().length; i++) {
+                    newPlayerPokemons[j] = playerTeam.getPokemons()[i];
+                    j++;
                 }
+
                 playerTeam.setPokemons(newPlayerPokemons);
             }
 
@@ -300,12 +305,17 @@ public class Game {
                         break;
                     }
                 }
-                for (int i=0; i<index; i++) {
-                    newCompPokemons[i] = compTeam.getPokemons()[i];
+
+                int j = 0;
+                for (int i = 0; i < index; i++) {
+                    newCompPokemons[j] = compTeam.getPokemons()[i];
+                    j++;
                 }
-                for (int i=index+1; i<compTeam.getPokemons().length-1; i++) {
-                    newCompPokemons[i] = compTeam.getPokemons()[i];
+                for (int i = index + 1; i < compTeam.getPokemons().length; i++) {
+                    newCompPokemons[j] = compTeam.getPokemons()[i];
+                    j++;
                 }
+
                 compTeam.setPokemons(newCompPokemons);
             }
         }
@@ -358,8 +368,8 @@ public class Game {
 
     private void checkGameOver() {
         int count = 0;
-        for (Pokemon compPokemon : compTeam.getPokemons()) {
-            if (compPokemon.getFainted()) {
+        for (int i=0; i<compTeam.getPokemons().length; i++) {
+            if (compTeam.getPokemons()[i].getFainted()) {
                 count++;
             }
         }
@@ -370,8 +380,8 @@ public class Game {
         }
 
         count = 0;
-        for (Pokemon playerPokemon : playerTeam.getPokemons()) {
-            if (playerPokemon.getFainted()) {
+        for (int i=0; i<playerTeam.getPokemons().length; i++) {
+            if (playerTeam.getPokemons()[i].getFainted()) {
                 count++;
             }
         }
@@ -392,7 +402,6 @@ public class Game {
         if (!isPlayerTurn){
             if (compPokemon.getFainted()) {
                 compTeam.randomSwitchPokemon(this);
-                Menus.battleMenu(this, compPokemon.getNickName() + " has entered the battle");
             }
             else {
                 compTeam.randomMove(this);
@@ -400,7 +409,7 @@ public class Game {
         }
 
         else{
-            if (playerPokemon.getFainted()) {
+            if (playerPokemon.getFainted() || (playerPokemon == compTeam.getPokemons()[compTeam.getPokemons().length-1])) {
                 Menus.pokemonMenu(this.playerTeam, this.compTeam);
                 Pokemon newPlayerPokemon = inputPlayerPokemon();
                 switchPokemon(false, newPlayerPokemon);
@@ -418,12 +427,14 @@ public class Game {
                         Menus.bagMenu(this.playerTeam, this.compTeam);
                         BagItem itemChoice = inputItemChoice();
                         if (itemChoice.getItemType().getPokeBall()) {
-                            useItem(itemChoice, compPokemon, compTeam, playerTeam);
+                            useItem(itemChoice, compPokemon, false);
                             Menus.battleMenu(this, "You threw a pokeball and captured " + this.getCompPokemon().getNickName());
+                            compTeam.randomSwitchPokemon(this);
+                            this.isPlayerTurn = !this.isPlayerTurn; //DONT DELETE ACTUALLY USEFUL
                         }
                         else {
                             Pokemon pokemonChoice =  inputPlayerPokemon();
-                            useItem(itemChoice, pokemonChoice, compTeam, playerTeam);
+                            useItem(itemChoice, pokemonChoice, false);
                             Menus.battleMenu(this, "You used " + itemChoice.getItemType().getName() + " on " + pokemonChoice.getNickName());
                         }
                         break;

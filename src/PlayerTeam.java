@@ -9,8 +9,8 @@ public class PlayerTeam {
 
     public void addBagItem(int amount, Item item){
         for(int j=0 ; j<bag.length ; j++){
-            if(bag[j].itemType.name.equals(item.name)){
-                bag[j].numOfItems += amount;
+            if(bag[j].getItemType().name.equals(item.name)){
+                bag[j].setNumOfItems(bag[j].getNumOfItems() + amount);
                 return;
             }
         }

@@ -1,6 +1,22 @@
 public class ComputerTeam {
-    public Pokemon[] pokemons;
-    public BagItem[] bag;
+    private Pokemon[] pokemons;
+    private BagItem[] bag;
+
+    public Pokemon[] getPokemons() {
+        return pokemons;
+    }
+
+    public void setPokemons(Pokemon[] pokemons) {
+        this.pokemons = pokemons;
+    }
+
+    public BagItem[] getBag() {
+        return bag;
+    }
+
+    public void setBag(BagItem[] bag) {
+        this.bag = bag;
+    }
 
     ComputerTeam(Pokemon[] pokemons, BagItem[] bag) {
         this.pokemons = pokemons;
@@ -9,8 +25,8 @@ public class ComputerTeam {
 
     public void addBagItem(Item item, int numOfItems) {
         for (int i=0; i<bag.length; i++) {
-            if (item.name.equals(bag[i].itemType.name)) {
-                bag[i].numOfItems += numOfItems;
+            if (item.name.equals(bag[i].getItemType().name)) {
+                bag[i].setNumOfItems(bag[i].getNumOfItems() + numOfItems);
                 return;
             }
         }
@@ -45,7 +61,7 @@ public class ComputerTeam {
 
             int originalP = -1;
             for (int i=0; i<pokemons.length; i++) {
-                if (pokemons[i] == game.compPokemon) {
+                if (pokemons[i] == game.getCompPokemon()) {
                     originalP = i;
                 }
             }
@@ -61,20 +77,20 @@ public class ComputerTeam {
             BagItem randomItem = bag[StaticVars.RANDOM.nextInt(bag.length)];
             Pokemon randomTarget;
 
-            if (randomItem.itemType != StaticVars.ITEM.POKEBALL) {
+            if (randomItem.getItemType() != StaticVars.ITEM.POKEBALL) {
                 randomTarget = pokemons[StaticVars.RANDOM.nextInt(pokemons.length)];
             }
             else {
-                randomTarget = game.playerPokemon;
+                randomTarget = game.getPlayerPokemon();
             }
 
-            game.useItem(randomItem, randomTarget, this, game.playerTeam);
+            game.useItem(randomItem, randomTarget, this, game.getPlayerTeam());
 
         }
         else {
             //Attack
-            Pokemon attacker = game.compPokemon;
-            Pokemon defender = game.playerPokemon;
+            Pokemon attacker = game.getCompPokemon();
+            Pokemon defender = game.getPlayerPokemon();
             Attack randomAttack = attacker.attacks[StaticVars.RANDOM.nextInt(attacker.attacks.length)];
             game.useAttack(randomAttack,attacker,defender);
         }

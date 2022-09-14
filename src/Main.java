@@ -46,7 +46,7 @@ public class Main {
 
         myGame.setup();
 
-        while (!myGame.isGameOver) {
+        while (!myGame.getIsGameOver()) {
             myGame.nextTurn();
         }
     }

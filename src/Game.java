@@ -1,25 +1,58 @@
 public class Game {
-    public boolean isGameOver;
-    public boolean isPlayerTurn;
     enum Screen {Battle, Atk, Bag, Pok, Run}
-    public Pokemon playerPokemon;
-    public Pokemon compPokemon;
-    public PlayerTeam playerTeam;
+
+    private boolean isGameOver;
+    private boolean isPlayerTurn;
+    private Pokemon playerPokemon;
+    private Pokemon compPokemon;
+    private PlayerTeam playerTeam;
     private ComputerTeam compTeam;
 
     public Game(PlayerTeam playerTeam, ComputerTeam compTeam) {
         this.isGameOver = false;
         this.isPlayerTurn = true;
         this.playerPokemon = playerTeam.pokemons[0];
-        this.compPokemon = compTeam.pokemons[0];
+        this.compPokemon = compTeam.getPokemons()[0];
         this.playerTeam = playerTeam;
         this.compTeam = compTeam;
+    }
+
+    public boolean getIsGameOver() {
+        return isGameOver;
+    }
+
+    public void setIsGameOver(boolean gameOver) {
+        isGameOver = gameOver;
+    }
+
+    public Pokemon getPlayerPokemon() {
+        return playerPokemon;
+    }
+
+    public void setPlayerPokemon(Pokemon playerPokemon) {
+        this.playerPokemon = playerPokemon;
+    }
+
+    public Pokemon getCompPokemon() {
+        return compPokemon;
+    }
+
+    public void setCompPokemon(Pokemon compPokemon) {
+        this.compPokemon = compPokemon;
+    }
+
+    public PlayerTeam getPlayerTeam() {
+        return playerTeam;
+    }
+
+    public void setPlayerTeam(PlayerTeam playerTeam) {
+        this.playerTeam = playerTeam;
     }
 
     /*Connor*/
     public void setup(){
         this.playerPokemon = this.playerTeam.pokemons[0];
-        this.compPokemon = this.compTeam.pokemons[0];
+        this.compPokemon = this.compTeam.getPokemons()[0];
 
         StaticVars.SCANNER.useDelimiter("\n");
     }
@@ -144,10 +177,10 @@ public class Game {
 
     /*Andrew*/
     public void useItem(BagItem item, Pokemon target, ComputerTeam compTeam, PlayerTeam playerTeam) {
-        item.numOfItems -= 1;
+        item.setNumOfItems(item.getNumOfItems() - 1);
 
-        target.currentHp += item.itemType.healthIncrease;
-        target.stats.level += item.itemType.levelIncrease;
+        target.currentHp += item.getItemType().healthIncrease;
+        target.stats.level += item.getItemType().levelIncrease;
 
         if (target.currentHp > target.maxHp) {
             target.currentHp = target.maxHp;
@@ -157,26 +190,26 @@ public class Game {
         }
 
         if (target.fainted) {
-            if (item.itemType.revive) {
+            if (item.getItemType().revive) {
                 target.currentHp = target.maxHp / 2;
                 target.fainted = false;
             }
-            else if (item.itemType.maxRevive) {
+            else if (item.getItemType().maxRevive) {
                 target.currentHp = target.maxHp;
                 target.fainted = false;
             }
         }
 
-        if (item.itemType.pokeBall) {
+        if (item.getItemType().pokeBall) {
             if (compTeam != null) {
-                for (int i=0; i<compTeam.pokemons.length; i++) {
+                for (int i=0; i<compTeam.getPokemons().length; i++) {
                     if (playerTeam.pokemons[i] == target) {
-                        Pokemon[] newCompPokemons = new Pokemon[compTeam.pokemons.length+1];
-                        for (int j=0; j<compTeam.pokemons.length; j++) {
-                            newCompPokemons[j] = compTeam.pokemons[j];
+                        Pokemon[] newCompPokemons = new Pokemon[compTeam.getPokemons().length+1];
+                        for (int j=0; j<compTeam.getPokemons().length; j++) {
+                            newCompPokemons[j] = compTeam.getPokemons()[j];
                         }
-                        newCompPokemons[compTeam.pokemons.length] = target;
-                        compTeam.pokemons = newCompPokemons;
+                        newCompPokemons[compTeam.getPokemons().length] = target;
+                        compTeam.setPokemons(newCompPokemons);
                         break;
                     }
                 }
@@ -200,7 +233,7 @@ public class Game {
 
             else {
                 for (int i=0; i<playerTeam.pokemons.length; i++) {
-                    if (compTeam.pokemons[i] == target) {
+                    if (compTeam.getPokemons()[i] == target) {
                         Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.pokemons.length+1];
                         for (int j=0; j<playerTeam.pokemons.length; j++) {
                             newPlayerPokemons[j] = playerTeam.pokemons[j];
@@ -211,21 +244,21 @@ public class Game {
                     }
                 }
 
-                Pokemon[] newCompPokemons = new Pokemon[compTeam.pokemons.length-1];
+                Pokemon[] newCompPokemons = new Pokemon[compTeam.getPokemons().length-1];
                 int index = -1;
-                for (int i=0; i<compTeam.pokemons.length; i++) {
-                    if (compTeam.pokemons[i] == target) {
+                for (int i=0; i<compTeam.getPokemons().length; i++) {
+                    if (compTeam.getPokemons()[i] == target) {
                         index = i;
                         break;
                     }
                 }
                 for (int i=0; i<index; i++) {
-                    newCompPokemons[i] = compTeam.pokemons[i];
+                    newCompPokemons[i] = compTeam.getPokemons()[i];
                 }
-                for (int i=index+1; i<compTeam.pokemons.length-1; i++) {
-                    newCompPokemons[i] = compTeam.pokemons[i];
+                for (int i=index+1; i<compTeam.getPokemons().length-1; i++) {
+                    newCompPokemons[i] = compTeam.getPokemons()[i];
                 }
-                compTeam.pokemons = newCompPokemons;
+                compTeam.setPokemons(newCompPokemons);
             }
         }
     }
@@ -277,10 +310,10 @@ public class Game {
     /*Connor*/
     public void nextTurn(){
         applyEffects(this.playerTeam.pokemons);
-        applyEffects(this.compTeam.pokemons);
+        applyEffects(this.compTeam.getPokemons());
 
         updateIfFainted(this.playerTeam.pokemons);
-        updateIfFainted(compTeam.pokemons);
+        updateIfFainted(compTeam.getPokemons());
 
         this.isPlayerTurn = !this.isPlayerTurn;
         if (!isPlayerTurn){

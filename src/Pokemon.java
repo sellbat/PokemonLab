@@ -1,3 +1,5 @@
+/*Andrew*/
+
 public class Pokemon {
     private String nickName;
 
@@ -36,6 +38,7 @@ public class Pokemon {
         this.fainted = !(this.currentHp > 0);
     }
 
+    //Calculates the final stats of the pokemon based on base stats and level and EVs and other factors (using the official Pokemon stat formula)
     private void updateFinalStats() {
         this.maxHp =  (int) ((0.01 * (2 * this.species.getBaseHp() + this.stats.getHpIV() + (int)(0.25 * this.stats.getHpEV())) * this.stats.getLevel()) + this.stats.getLevel() + 10);
         this.attackPower = (int) (((0.01 * (2 * this.species.getBaseAttack() + this.stats.getAttackIV() + (int)(0.25 * this.stats.getAttackEV())) * this.stats.getLevel()) + 5) * this.stats.getNature().getAttackMultiplier());

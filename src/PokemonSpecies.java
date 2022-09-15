@@ -1,3 +1,5 @@
+/*Andrew*/
+
 public class PokemonSpecies {
     enum SpeciesChoices {Pikachu, Ivysaur, Charizard, Squirtle, Pidgey, Jigglypuff};
 
@@ -19,6 +21,7 @@ public class PokemonSpecies {
     PokemonSpecies(SpeciesChoices speciesChoice) {
         this.name = speciesChoice;
 
+        //Determines base stats for given species
         switch(speciesChoice) {
             case Pikachu:
                 setSpeciesStats(StaticVars.TYPE.ELECTRIC, StaticVars.TYPE.NONE, 35, 55, 40, 90, 0, 0, 0);

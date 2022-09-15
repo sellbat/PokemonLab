@@ -1,10 +1,12 @@
 /*Andrew*/
+
 public class Type {
     enum Types {None, Normal, Fire, Water, Grass, Electric, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dark, Dragon, Steel, Fairy}
 
     private Types type;
     private int typeIndex;
 
+    //This matrix holds the strong/weak interactions between different pokemon types (the attacker type is the row, and the defender type is the column, and the value is the factor by which the attack damage is scaled)
     public static double[][] TypeMatrix = {
          //Atk/Dfn  N    F    W   Gs    E    I   Fi   Po   Gd   Fl   Ps    B    R   Gt   Da   Dr    S   Fa
             /*N */{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 0.0, 1.0, 1.0, 0.5, 1.0},

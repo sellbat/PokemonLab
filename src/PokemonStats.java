@@ -1,3 +1,5 @@
+/*Andrew*/
+
 public class PokemonStats {
     private int hpIV;
     private int attackIV;
@@ -13,8 +15,7 @@ public class PokemonStats {
 
     private int level;
 
-
-
+    //Generates random stats if none are passed in
     PokemonStats() {
         this.hpIV = StaticVars.RANDOM.nextInt(32);
         this.attackIV = StaticVars.RANDOM.nextInt(32);
@@ -25,6 +26,7 @@ public class PokemonStats {
         this.attackEV = StaticVars.RANDOM.nextInt(255);
         this.defenseEV = StaticVars.RANDOM.nextInt(255);
 
+        //A pokemon can only have max EVs of 510 in total, and 255 per stat
         while((this.hpEV + this.attackEV + this.defenseEV) > maxTotalEVs) {
             this.hpEV -= 1;
             this.attackEV -= 1;

@@ -1,5 +1,6 @@
+/*Andrew*/
+
 public class Effect {
-    /* Connor */
     enum Effects {Paralyzed, Poisoned, Burned, Frozen, Flinch};
     private Effects name;
     private  int roundsLeft;

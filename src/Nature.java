@@ -1,4 +1,5 @@
 /*Andrew*/
+
 public class Nature {
     enum Natures {Bashful, Docile, Hardy, Quirky, Serious, Adamant, Brave, Lonely, Naughty, Bold, Relaxed, Impish, Lax, Modest, Mild, Quiet, Rash, Calm, Gentle, Sassy, Careful, Timid, Hasty, Jolly, Naive};
     private Natures[] naturesList = {Natures.Bashful, Natures.Docile, Natures.Hardy, Natures.Quirky, Natures.Serious,
@@ -13,6 +14,7 @@ public class Nature {
     private double attackMultiplier;
     private double defenseMultiplier;
 
+    //Constructor chooses a random nature
     Nature() {
         updateMultipliers(naturesList[StaticVars.RANDOM.nextInt(naturesList.length)]);
     }

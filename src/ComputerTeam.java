@@ -1,4 +1,5 @@
-/* Andrew */
+/*Andrew and Connor*/
+
 public class ComputerTeam {
     private Pokemon[] pokemons;
     private BagItem[] bag;
@@ -24,6 +25,7 @@ public class ComputerTeam {
         this.bag = bag;
     }
 
+    /*Connor*/
     public void addBagItem(Item item, int numOfItems) {
         for (int i=0; i<bag.length; i++) {
             if (item.getName().equals(bag[i].getItemType().getName())) { //if item already exists, the quantity is increased
@@ -40,6 +42,7 @@ public class ComputerTeam {
         this.bag = newBag;
     }
 
+    /*Connor*/
     public void addPokemon(Pokemon pokemon) { //connor
         Pokemon[] newPokemons = new Pokemon[pokemons.length+1]; //new array for the pokemon
         for (int i=0; i<pokemons.length; i++) {
@@ -49,7 +52,9 @@ public class ComputerTeam {
 
         this.pokemons = newPokemons;
     }
-    public void randomMove(Game game) { //connor
+
+    /*Connor*/
+    public void randomMove(Game game) {
         int n = StaticVars.RANDOM.nextInt(256);
         if (n%256 == 0) { // 1 in 256 chance of the computer team running away
             //Run
@@ -92,6 +97,7 @@ public class ComputerTeam {
 
     }
 
+    /*Andrew*/
     public void randomSwitchPokemon(Game game) {
         //Switch Pokemon
         int originalP = -1;

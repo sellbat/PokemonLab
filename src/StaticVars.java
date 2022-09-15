@@ -1,6 +1,9 @@
+/*Andrew*/
+
 import java.util.Random;
 import java.util.Scanner;
 
+//A class that holds access to single instances of other variables (subdivided up more by what each variable is (e.g. type, species, item, etc.)
 public class StaticVars {
     public static final Scanner SCANNER = new Scanner(System.in);
 

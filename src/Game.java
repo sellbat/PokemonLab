@@ -1,3 +1,5 @@
+/*Andrew and Connor*/
+
 public class Game {
     enum Screen {Battle, Atk, Bag, Pok, Run}
 
@@ -54,7 +56,7 @@ public class Game {
         this.compTeam = compTeam;
     }
 
-    /*Andrew*/
+    /*Connor*/
     public void setup() {
         this.isPlayerTurn = false;
 
@@ -220,7 +222,7 @@ public class Game {
         return choice;
     }
 
-    /*Andrew*/
+    /*Connor*/
     public void runAway(boolean isCompTeam) {
         this.isGameOver = true;
 
@@ -232,7 +234,7 @@ public class Game {
         }
     }
 
-    /*Andrew*/
+    /*Connor*/
     public void switchPokemon(boolean isCompTeam, Pokemon choice) {
         if (isCompTeam) {
             compPokemon = choice;
@@ -380,7 +382,7 @@ public class Game {
         return ((int) damage/255);
     }
 
-    /*Andrew*/
+    /*Connor*/
     public void applyEffects(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
             if ((pokemons[i] != null) && (pokemons[i].getEffect() != null)) {
@@ -388,14 +390,14 @@ public class Game {
             }
         }
     }
-    /*Andrew*/
+    /*Connor*/
     public void applyEffects(Pokemon pokemon) {
         pokemon.getEffect().setRoundsLeft(pokemon.getEffect().getRoundsLeft() - 1);
         pokemon.setCurrentHp((int) (pokemon.getCurrentHp() - (pokemon.getEffect().getScalingDamage() * pokemon.getCurrentHp())));
         pokemon.setCurrentHp(pokemon.getCurrentHp() - pokemon.getEffect().getDamage());
     }
 
-    /*Andrew*/
+    /*Connor*/
     public void updateIfFainted(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
             if ((pokemons[i] != null) && (pokemons[i].getCurrentHp() <= 0)) {
@@ -405,6 +407,7 @@ public class Game {
         }
     }
 
+    /*Connor*/
     private void checkGameOver() {
         int count = 0;
         for (int i=0; i<compTeam.getPokemons().length; i++) {

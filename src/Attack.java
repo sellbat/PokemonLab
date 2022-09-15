@@ -1,4 +1,4 @@
-/* Connor */
+/*Connor*/
 public class Attack {
 
     private String name;

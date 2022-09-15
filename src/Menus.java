@@ -1,7 +1,7 @@
-import javax.swing.text.Style;
+/*Andrew and Connor*/
 
-//Connor
 public class Menus {
+    /*Connor*/
     private static int maxWidth(PlayerTeam team, ComputerTeam compTeam){
         int max=0;
         for(int n=0; n<team.getPokemons().length; n++) {
@@ -53,6 +53,7 @@ public class Menus {
         return max;
     }
 
+    /*Connor*/
     public static void pokemonMenu(PlayerTeam team, ComputerTeam compTeam){
         //NEED TO ADD " (fainted)"
         String lineThree = "*";
@@ -110,6 +111,8 @@ public class Menus {
         }
         System.out.println(lineOne);
     }
+
+    /*Connor*/
     public static void attackMenu(PlayerTeam team, ComputerTeam compTeam){
         int max = maxWidth(team, compTeam);
         String lineThree = "*";
@@ -149,6 +152,8 @@ public class Menus {
         }
         System.out.println(lineOne);
     }
+
+    /*Connor*/
     public static void bagMenu(PlayerTeam team, ComputerTeam compTeam){
         int max = maxWidth(team, compTeam);
         String lineThree = "*";

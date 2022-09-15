@@ -8,7 +8,7 @@ public class Effect {
     private int damage;
     private double incapacitateChance;
 
-    Effect(Effects effect, int roundsLeft) { /*Andrew */
+    Effect(Effects effect, int roundsLeft) {
         this.name = effect;
         this.roundsLeft = roundsLeft;
 

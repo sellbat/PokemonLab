@@ -69,7 +69,7 @@ public class Game {
     }
 
     /*Andrew*/
-    private Screen inputMenuChoice() { // Andrew
+    private Screen inputMenuChoice() {
         String choiceString = "";
         Screen choice;
 

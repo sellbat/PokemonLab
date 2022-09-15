@@ -339,7 +339,7 @@ public class Game {
             else {
                 for (int i=0; i<playerTeam.getPokemons().length; i++) {
                     if (compTeam.getPokemons()[i] == target) {
-                        Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.getPokemons().length+1];
+                        Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.getPokemons().length+1]; //new array to store the enemy team pokemon
                         for (int j=0; j<playerTeam.getPokemons().length; j++) {
                             newPlayerPokemons[j] = playerTeam.getPokemons()[j];
                         }
@@ -357,6 +357,8 @@ public class Game {
                         break;
                     }
                 }
+
+                //removes pokemon that was caught from enemy team
 
                 int j = 0;
                 for (int i = 0; i < index; i++) {
@@ -377,15 +379,19 @@ public class Game {
     public int calculateAttackDamage(Attack attack, Pokemon attacker, Pokemon defender) {
         double criticalHitBonus = 1.0;
         if (StaticVars.RANDOM.nextInt(256) < ((int)(attacker.getSpecies().getBaseSpeed()/2))) {
+            //higher base speed means more likely to get critical hit
             criticalHitBonus = 2.0;
         }
+        //critical hit doubles damage
 
         double STABBonus = 1.0;
         if ((attack.getType() == attacker.getSpecies().getType1()) || (attack.getType() == attacker.getSpecies().getType2())) {
+            //if the type of the attack matches pokemon type
             STABBonus = 1.5;
         }
 
         double damage = (((((2.0 * attacker.getStats().getLevel() * criticalHitBonus)/5.0) + 2.0) * attack.getPower() * ((double)attacker.getAttackPower()/(double)defender.getDefensePower()))/50.0);
+        //uses official pokemon damage equation
         damage = damage * STABBonus * attack.getType().getEffectivenessAgainst(defender.getSpecies().getType1()) * attack.getType().getEffectivenessAgainst(defender.getSpecies().getType2());
         if (!((int) damage == 1)) {
             damage = damage * (StaticVars.RANDOM.nextInt(256-217) + 217);
@@ -397,7 +403,7 @@ public class Game {
     /*Connor*/
     public void applyEffects(Pokemon[] pokemons) {
         for (int i=0; i<pokemons.length; i++) {
-            if ((pokemons[i] != null) && (pokemons[i].getEffect() != null)) {
+            if ((pokemons[i] != null) && (pokemons[i].getEffect() != null)) { //if the pokemon has an effect
                 applyEffects(pokemons[i]);
             }
         }
@@ -405,8 +411,11 @@ public class Game {
     /*Connor*/
     public void applyEffects(Pokemon pokemon) {
         pokemon.getEffect().setRoundsLeft(pokemon.getEffect().getRoundsLeft() - 1);
+        //decreases rounds left of the effect
         pokemon.setCurrentHp((int) (pokemon.getCurrentHp() - (pokemon.getEffect().getScalingDamage() * pokemon.getCurrentHp())));
+        //reduces health based on effect (scaled)
         pokemon.setCurrentHp(pokemon.getCurrentHp() - pokemon.getEffect().getDamage());
+
     }
 
     /*Connor*/
@@ -415,6 +424,7 @@ public class Game {
             if ((pokemons[i] != null) && (pokemons[i].getCurrentHp() <= 0)) {
                 pokemons[i].setCurrentHp(0);
                 pokemons[i].setFainted(true);
+                //sets pokemon to fainted and hp to 0
             }
         }
     }
@@ -423,11 +433,18 @@ public class Game {
     private void checkGameOver() {
         int count = 0;
         for (int i=0; i<compTeam.getPokemons().length; i++) {
+            //counts num of fainted pokemon
+
             if (compTeam.getPokemons()[i].getFainted()) {
                 count++;
             }
+
         }
+
         if (count == compTeam.getPokemons().length) {
+
+            //if count is the entire team size, game is over
+
             isGameOver = true;
             System.out.print("The enemy team has lost!\nYou win! Game over!");
             return;
@@ -444,6 +461,8 @@ public class Game {
             System.out.print("Your team has lost!\nThe enemy wins! Game over!");
             return;
         }
+        
+        //same for player team
     }
 
     /*Andrew*/

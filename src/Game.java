@@ -256,6 +256,10 @@ public class Game {
                 }
             }
         }
+
+        if (defender.getCurrentHp() < 0) {
+            defender.setCurrentHp(0);
+        }
     }
 
     /*Andrew*/

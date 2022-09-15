@@ -24,6 +24,14 @@ public class Game {
         isGameOver = gameOver;
     }
 
+    public boolean getIsPlayerTurn() {
+        return isPlayerTurn;
+    }
+
+    public void setIsPlayerTurn(boolean isPlayerTurn) {
+        this.isPlayerTurn = isPlayerTurn;
+    }
+
     public Pokemon getPlayerPokemon() {
         return playerPokemon;
     }
@@ -92,7 +100,7 @@ public class Game {
     }
 
     /*Andrew*/
-    private Pokemon inputPlayerPokemon() {
+    public Pokemon inputPlayerPokemon() {
         String choiceString = "";
         Pokemon choice = null;
 
@@ -484,8 +492,8 @@ public class Game {
         }
 
         else{ //If its the player's turn
-            //If the player's latest pokemon is fainted or if it was captured by the computer using a pokeball, the player has to choose a new pokemon to send into the battle
-            if (playerPokemon.getFainted() || (playerPokemon == compTeam.getPokemons()[compTeam.getPokemons().length-1])) {
+            //If the player's latest pokemon is fainted, the player has to choose a new pokemon to send into the battle
+            if (playerPokemon.getFainted()) {
                 Menus.pokemonMenu(this.playerTeam, this.compTeam);
                 Pokemon newPlayerPokemon = inputPlayerPokemon();
                 switchPokemon(false, newPlayerPokemon);

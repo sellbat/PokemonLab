@@ -74,19 +74,19 @@ public class Game {
         System.out.print("Input Your Menu Choice (Atk, Bag, Pok, Run): ");
         while (true) {
             try {
-                choiceString = StaticVars.SCANNER.next();
+                choiceString = StaticVars.SCANNER.next(); //inputs the string
             }
             catch (Exception e) {
-                StaticVars.SCANNER.nextLine();
+                StaticVars.SCANNER.nextLine(); //catches exception
             }
-            if (choiceString.equals("Atk") || choiceString.equals("Bag") || choiceString.equals("Pok") || choiceString.equals("Run")) {
+            if (choiceString.equals("Atk") || choiceString.equals("Bag") || choiceString.equals("Pok") || choiceString.equals("Run")) { //4 choices for the menu
                 break;
             }
             System.out.print("\nPlease Try Again!\nInput Your Menu Choice: ");
         }
         choice = Screen.valueOf(choiceString);
 
-        return choice;
+        return choice; //returns choice as an enum
     }
 
     /*Andrew*/
@@ -101,16 +101,16 @@ public class Game {
                 choiceString = StaticVars.SCANNER.next();
             }
             catch (Exception e) {
-                StaticVars.SCANNER.nextLine();
+                StaticVars.SCANNER.nextLine(); //catches exception
             }
             for (int i=0; i<playerTeam.getPokemons().length; i++) {
                 if (choiceString.equals(playerTeam.getPokemons()[i].getNickName())) {
-                    if (!playerTeam.getPokemons()[i].getFainted()) {
+                    if (!playerTeam.getPokemons()[i].getFainted()) { //looks through all pokemon in playerTeam and makes sure they are not fainted
                         break ErrorHandlingLoop;
                     }
                 }
             }
-            System.out.print("\nPlease Try Again!\nInput Your Pokemon Choice: ");
+            System.out.print("\nPlease Try Again!\nInput Your Pokemon Choice: "); //prints error since pokemon not found in playerTeam
         }
 
         for (int i=0; i<playerTeam.getPokemons().length; i++) {
@@ -120,11 +120,12 @@ public class Game {
             }
         }
 
-        return choice;
+        return choice; //returns pokemon selected
     }
 
     /*Andrew*/
     private Pokemon inputFaintedPlayerPokemon() {
+        //same as above method but used for revives
         String choiceString = "";
         Pokemon choice = null;
 
@@ -171,11 +172,12 @@ public class Game {
                 StaticVars.SCANNER.nextLine();
             }
             if (choiceString.equals(playerPokemon.getAttacks()[0].getName()) || choiceString.equals(playerPokemon.getAttacks()[1].getName()) || choiceString.equals(playerPokemon.getAttacks()[2].getName()) || choiceString.equals(playerPokemon.getAttacks()[3].getName())) {
+                //makes sure the attack is one of the four options
                 break;
             }
             System.out.print("\nPlease Try Again!\nInput Your Attack Choice: ");
         }
-
+        //once attack is found in pokemon attacks, return the attack
         for (int i=0; i<playerPokemon.getAttacks().length; i++) {
             if (playerPokemon.getAttacks()[i].getName().equals(choiceString)) {
                 choice = playerPokemon.getAttacks()[i];
@@ -202,6 +204,7 @@ public class Game {
             }
             for (int i=0; i<playerTeam.getBag().length; i++) {
                 if (choiceString.equals(playerTeam.getBag()[i].getItemType().getName())) {
+                    //makes sure bag contains the desired item and the quantity of that item > 0
                     if (playerTeam.getBag()[i].getNumOfItems() > 0) {
                         break ErrorHandlingLoop;
                     }
@@ -245,18 +248,18 @@ public class Game {
     /*Andrew*/
     public void useAttack(Attack attack, Pokemon attacker, Pokemon defender) {
         double rand = Math.random();
-        if ((attacker.getEffect() == null) || (rand > attacker.getEffect().getIncapacitateChance())) {
+        if ((attacker.getEffect() == null) || (rand > attacker.getEffect().getIncapacitateChance())) { //random chance being stunned
             rand = Math.random();
-            if (rand < attack.getAccuracy()) {
+            if (rand < attack.getAccuracy()) { //random chance of attack landing
                 defender.setCurrentHp(defender.getCurrentHp() - calculateAttackDamage(attack, attacker, defender));
                 rand = Math.random();
-                if ((attack.getEffect() != null) && (rand < attack.getEffectChance())) {
+                if ((attack.getEffect() != null) && (rand < attack.getEffectChance())) { //random chance of attack effect working
                     defender.setEffect(attack.getEffect());
                 }
             }
         }
 
-        if (defender.getCurrentHp() < 0) {
+        if (defender.getCurrentHp() < 0) { //sets to 0 instead of negative hp
             defender.setCurrentHp(0);
         }
     }
@@ -264,23 +267,25 @@ public class Game {
     /*Andrew*/
     public void useItem(BagItem item, Pokemon target, boolean isCompTeam) {
         item.setNumOfItems(item.getNumOfItems() - 1);
+        //adds the items hp boost and level boosts
 
         target.setCurrentHp(target.getCurrentHp() + item.getItemType().getHealthIncrease());
         target.getStats().setLevel(target.getStats().getLevel() + item.getItemType().getLevelIncrease());
 
-        if (target.getCurrentHp() > target.getMaxHp()) {
+        if (target.getCurrentHp() > target.getMaxHp()) { //doesnt go over max hp
             target.setCurrentHp(target.getMaxHp());
         }
-        if (target.getStats().getLevel() > 100) {
+        if (target.getStats().getLevel() > 100) { // max lvl 100
             target.getStats().setLevel(100);
         }
 
         if (target.getFainted()) {
             if (item.getItemType().getRevive()) {
-                target.setCurrentHp(target.getMaxHp() / 2);
+                target.setCurrentHp(target.getMaxHp() / 2); //if it is regular revive, it gets half its health back
                 target.setFainted(false);
             }
             else if (item.getItemType().getMaxRevive()) {
+                //if max revive, it gets full health back
                 target.setCurrentHp(target.getMaxHp());
                 target.setFainted(false);
             }
@@ -292,7 +297,7 @@ public class Game {
                     if (playerTeam.getPokemons()[i] == target) {
                         Pokemon[] newCompPokemons = new Pokemon[compTeam.getPokemons().length+1];
                         for (int j=0; j<compTeam.getPokemons().length; j++) {
-                            newCompPokemons[j] = compTeam.getPokemons()[j];
+                            newCompPokemons[j] = compTeam.getPokemons()[j]; //moves pokemon to other team
                         }
                         newCompPokemons[compTeam.getPokemons().length] = target;
                         compTeam.setPokemons(newCompPokemons);
@@ -301,8 +306,12 @@ public class Game {
                 }
 
                 Pokemon[] newPlayerPokemons = new Pokemon[playerTeam.getPokemons().length-1];
+
                 int index = -1;
                 for (int i=0; i<playerTeam.getPokemons().length; i++) {
+
+                    //finds index of pokemon on player team
+
                     if (playerTeam.getPokemons()[i] == target) {
                         index = i;
                         break;

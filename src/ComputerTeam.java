@@ -106,7 +106,7 @@ public class ComputerTeam {
             p = StaticVars.RANDOM.nextInt(pokemons.length);
         }
 
-        game.switchPokemon(true, this.pokemons[p]);
+        game.switchPokemon(true, this.pokemons[p]); //switches the pokemon
 
         Menus.battleMenu(game, game.getCompPokemon().getNickName() + " has entered the battle");
     }

@@ -325,6 +325,9 @@ public class Game {
                     newPlayerPokemons[j] = playerTeam.getPokemons()[i];
                     j++;
                 }
+
+                //sets new array to all the old pokemons
+
                 for (int i = index + 1; i < playerTeam.getPokemons().length; i++) {
                     newPlayerPokemons[j] = playerTeam.getPokemons()[i];
                     j++;

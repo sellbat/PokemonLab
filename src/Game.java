@@ -445,28 +445,31 @@ public class Game {
 
     /*Andrew*/
     public void nextTurn(){
-        this.isPlayerTurn = !this.isPlayerTurn;
+        this.isPlayerTurn = !this.isPlayerTurn; //Switches whose turn it is
 
+        //If pokemon are for example, burned, they will lose some hp at the start of this turn
         applyEffects(this.playerTeam.getPokemons());
         applyEffects(this.compTeam.getPokemons());
 
+        //If its the computer's turn
         if (!isPlayerTurn){
-            if (compPokemon.getFainted()) {
+            if (compPokemon.getFainted()) { //If there latest pokemon is fainted, they have to choose a new one to send into the battle
                 compTeam.randomSwitchPokemon(this);
             }
-            else {
+            else { //Otherwise any random move
                 compTeam.randomMove(this);
             }
         }
 
-        else{
+        else{ //If its the player's turn
+            //If the player's latest pokemon is fainted or if it was captured by the computer using a pokeball, the player has to choose a new pokemon to send into the battle
             if (playerPokemon.getFainted() || (playerPokemon == compTeam.getPokemons()[compTeam.getPokemons().length-1])) {
                 Menus.pokemonMenu(this.playerTeam, this.compTeam);
                 Pokemon newPlayerPokemon = inputPlayerPokemon();
                 switchPokemon(false, newPlayerPokemon);
                 Menus.battleMenu(this, newPlayerPokemon.getNickName() + " has entered the battle");
             }
-            else {
+            else { //Otherwise the player can choose any move
                 switch (inputMenuChoice()) {
                     case Atk:
                         Menus.attackMenu(this.playerTeam, this.compTeam);
@@ -478,19 +481,22 @@ public class Game {
                         Menus.bagMenu(this.playerTeam, this.compTeam);
                         BagItem itemChoice = inputItemChoice();
                         if (itemChoice.getItemType().getPokeBall()) {
+                            //Pokeball does not require a pokemon input too, because pokeball is just thrown at the enemy's current pokemon
                             useItem(itemChoice, compPokemon, false);
                             Menus.battleMenu(this, "You threw a pokeball and captured " + this.getCompPokemon().getNickName());
                             compTeam.randomSwitchPokemon(this);
-                            this.isPlayerTurn = !this.isPlayerTurn; //DONT DELETE ACTUALLY USEFUL
+                            this.isPlayerTurn = !this.isPlayerTurn; //Makes sure its the player's turn again (as the comp's "turn" was randomly choosing which new pokemon to send into the battle)
                         }
                         else {
                             Menus.pokemonMenu(this.playerTeam, this.compTeam);
                             if (itemChoice.getItemType().getMaxRevive() || itemChoice.getItemType().getRevive()) {
+                                //Revives can only be used on fainted pokemon
                                 Pokemon pokemonChoice = inputFaintedPlayerPokemon();
                                 useItem(itemChoice, pokemonChoice, false);
                                 Menus.battleMenu(this, "You used " + itemChoice.getItemType().getName() + " on " + pokemonChoice.getNickName());
                             }
                             else {
+                                //Choose which pokemon to use the item on
                                 Pokemon pokemonChoice = inputPlayerPokemon();
                                 useItem(itemChoice, pokemonChoice, false);
                                 Menus.battleMenu(this, "You used " + itemChoice.getItemType().getName() + " on " + pokemonChoice.getNickName());
@@ -509,6 +515,7 @@ public class Game {
                 }
             }
         }
+
         updateIfFainted(this.playerTeam.getPokemons());
         updateIfFainted(compTeam.getPokemons());
 

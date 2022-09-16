@@ -469,8 +469,22 @@ public class Game {
             System.out.print("Your team has lost!\nThe enemy wins! Game over!");
             return;
         }
-        
         //same for player team
+
+
+        //If the computer team loses all its pokemon, the game is over (because you captured them all in pokeballs)
+        if (compTeam.getPokemons().length == 0) {
+            isGameOver = true;
+            System.out.print("The enemy has lost all of their pokemon!\nYou win! Game over!");
+            return;
+        }
+
+        //Likewise, if you lose all your pokemon from enemy pokeballs, the game is over
+        if (playerTeam.getPokemons().length == 0) {
+            isGameOver = true;
+            System.out.print("You have lost all of your pokemon!\nThe enemy wins! Game over!");
+        }
+
     }
 
     /*Andrew*/

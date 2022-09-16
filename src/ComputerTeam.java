@@ -79,6 +79,9 @@ public class ComputerTeam {
 
             if (randomItem.getItemType() != StaticVars.ITEM.POKEBALL) {
                 Menus.battleMenu(game, "The enemy used " + randomItem.getItemType().getName() + " on " + randomTarget.getNickName());
+            }
+            else {
+                Menus.battleMenu(game, "The enemy threw a pokeball and captured " + game.getPlayerPokemon().getNickName());
 
                 Menus.pokemonMenu(game.getPlayerTeam(), game.getCompTeam());
                 Pokemon newPlayerPokemon = game.inputPlayerPokemon();
@@ -86,9 +89,6 @@ public class ComputerTeam {
                 Menus.battleMenu(game, newPlayerPokemon.getNickName() + " has entered the battle");
 
                 game.setIsPlayerTurn(!game.getIsPlayerTurn());
-            }
-            else {
-                Menus.battleMenu(game, "The enemy threw a pokeball and captured " + game.getPlayerPokemon().getNickName());
             }
 
         }

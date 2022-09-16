@@ -293,25 +293,30 @@ public class Menus {
         }
         System.out.print("*");
 
-        //Make all messages at least long enough
+        //Make all messages at least long enough with spaces to fit in the box
         for (int i=0; i<(2*(width-8)) - message.length(); i++) {
             message += " ";
         }
 
+        //Split message into two parts for top line and bottom line
         String firstMessage = "*" + message.substring(0, Math.min(message.length(), width-9));
+        String secondMessage = "*" + message.substring(Math.min(message.length(), width-9), Math.min(message.length(), 2*width-18));
+
+        //Message Line One
         System.out.print("\n" + firstMessage);
         for (int i = 0; i < width - 8 - firstMessage.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("|Atk|Bag*");
 
-        String secondMessage = "*" + message.substring(Math.min(message.length(), width-9), Math.min(message.length(), 2*width-18));
+        //Message Line Two
         System.out.print("\n" + secondMessage);
         for (int i = 0; i < width - 8 - secondMessage.length(); i++) {
             System.out.print(" ");
         }
         System.out.print("|Pok|Run*\n");
 
+        //Final * line
         for (int i = 0; i < width+1; i++) {
             System.out.print("*");
         }

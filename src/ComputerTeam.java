@@ -81,6 +81,7 @@ public class ComputerTeam {
                 Menus.battleMenu(game, "The enemy used " + randomItem.getItemType().getName() + " on " + randomTarget.getNickName());
             }
             else {
+                //If the enemy uses a pokeball, force the player to choose a new pokemon
                 Menus.battleMenu(game, "The enemy threw a pokeball and captured " + game.getPlayerPokemon().getNickName());
 
                 Menus.pokemonMenu(game.getPlayerTeam(), game.getCompTeam());

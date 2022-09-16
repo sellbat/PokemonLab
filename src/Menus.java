@@ -216,10 +216,12 @@ public class Menus {
     public static void battleMenu(Game game, String message) {
         int width = maxWidth(game.getPlayerTeam(), game.getCompTeam());
 
+        //Top Row of *
         for (int i = 0; i < width+1; i++) {
             System.out.print("*");
         }
 
+        //First Line that has *[Name] Lvl [Level]             *
         String lineOne = "*" + game.getCompPokemon().getNickName() + " Lvl " + game.getCompPokemon().getStats().getLevel();
         System.out.print("\n" + lineOne);
         for (int i = 0; i < width - lineOne.length(); i++) {
@@ -227,6 +229,7 @@ public class Menus {
         }
         System.out.print("*");
 
+        //HP Line
         String lineTwo = "*HP: " + game.getCompPokemon().getCurrentHp();
         System.out.print("\n" + lineTwo);
         for (int i = 0; i < width - lineTwo.length(); i++) {
@@ -234,57 +237,65 @@ public class Menus {
         }
         System.out.print("*");
 
+        //Head Line
         System.out.print("\n*");
         for (int i = 0; i < width - 6; i++) {
             System.out.print(" ");
         }
         System.out.print("O    *");
 
+        //Body Line
         System.out.print("\n*");
         for (int i = 0; i < width - 7; i++) {
             System.out.print(" ");
         }
         System.out.print("-|-   *");
 
+        //Legs Line
         System.out.print("\n*");
         for (int i = 0; i < width - 7; i++) {
             System.out.print(" ");
         }
         System.out.print("/ \\   *");
 
+        //Blank Line
         System.out.print("\n*");
         for (int i = 0; i < width - 1; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
+        //Head Line
         System.out.print("\n*    O");
         for (int i = 0; i < width - 6; i++) {
             System.out.print(" ");
         }
         System.out.print("*");
 
+        //Body Line
         System.out.print("\n*   -|-");
         for (int i = 0; i < width - 12 - game.getPlayerPokemon().getNickName().length() - String.valueOf(game.getPlayerPokemon().getStats().getLevel()).length(); i++) {
             System.out.print(" ");
         }
         System.out.print("" + game.getPlayerPokemon().getNickName() + " Lvl " + game.getPlayerPokemon().getStats().getLevel() + "*");
 
+        //Legs Line
         System.out.print("\n*   / \\");
         for (int i = 0; i < width - 11 - String.valueOf(game.getPlayerPokemon().getCurrentHp()).length(); i++) {
             System.out.print(" ");
         }
         System.out.print("HP: " + game.getPlayerPokemon().getCurrentHp() + "*");
 
+        //*______________* Line
         System.out.print("\n*");
         for (int i = 0; i < width - 1; i++) {
             System.out.print("_");
         }
         System.out.print("*");
 
-
+        //Make all messages at least long enough
         for (int i=0; i<(2*(width-8)) - message.length(); i++) {
-            message += "";
+            message += " ";
         }
 
         String firstMessage = "*" + message.substring(0, Math.min(message.length(), width-9));

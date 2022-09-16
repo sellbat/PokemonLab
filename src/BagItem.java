@@ -1,6 +1,8 @@
 /*Connor*/
 public class BagItem {
+
     private Item itemType;
+
     private int numOfItems;
 
     public BagItem(Item itemType, int numOfItems) {
@@ -23,4 +25,5 @@ public class BagItem {
     public void setNumOfItems(int numOfItems) {
         this.numOfItems = numOfItems;
     }
+
 }

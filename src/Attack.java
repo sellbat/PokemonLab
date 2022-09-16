@@ -63,6 +63,9 @@ public class Attack {
         this.effect = effect;
         this.effectChance = effectChance;
 
+
         this.type = type;
+
     }
+
 }

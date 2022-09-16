@@ -125,3 +125,14 @@ public class ComputerTeam {
         Menus.battleMenu(game, game.getCompPokemon().getNickName() + " has entered the battle");
     }
 }
+
+
+
+
+
+
+
+
+
+
+

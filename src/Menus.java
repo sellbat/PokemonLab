@@ -4,8 +4,13 @@ public class Menus {
     /*Connor*/
     private static int maxWidth(PlayerTeam team, ComputerTeam compTeam){
         int max=0;
+
+        //finds the maximum string length that should be printed out
+
         for(int n=0; n<team.getPokemons().length; n++) {
             String currLine = ("*Lvl " + team.getPokemons()[n].getStats().getLevel() + " " + team.getPokemons()[n].getNickName()) + " (fainted)";
+            //maximum pokemon menu line length
+
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
@@ -13,6 +18,7 @@ public class Menus {
         }
         for(int j=0 ; j<team.getPokemons().length ; j++) {
             for (int i = 0; i < team.getPokemons()[j].getAttacks().length; i++) {
+                //maximum pokemon name length
                 String currLine = ("*   -|-" + team.getPokemons()[j].getAttacks()[i].getName() + " Lvl 100");
                 int curr = currLine.length();
                 if (curr > max) {
@@ -21,12 +27,16 @@ public class Menus {
             }
         }
         for(int i=0 ; i<team.getBag().length; i++){
+
+            //maximum bag menu line length
+
             String currLine = ("*" + team.getBag()[i].getNumOfItems() + "x " + team.getBag()[i].getItemType().getName());
             int curr = currLine.length();
             if(curr>max){
                 max = curr;
             }
         }
+        //repeats the process for the compTeam pokemon
         for(int n=0; n<compTeam.getPokemons().length; n++) {
             String currLine = ("*Lvl " + compTeam.getPokemons()[n].getStats().getLevel() + " " + compTeam.getPokemons()[n].getNickName()) + " (fainted)";
             int curr = currLine.length();
@@ -55,7 +65,7 @@ public class Menus {
 
     /*Connor*/
     public static void pokemonMenu(PlayerTeam team, ComputerTeam compTeam){
-        //NEED TO ADD " (fainted)"
+        //creates head
         String lineThree = "*";
         String lineOne = "*";
         String spaceLine = "*";
@@ -69,6 +79,7 @@ public class Menus {
         spaceLine += "*";
         lineThree +="*";
         String lineTwo = "*Pokemon";
+        //pokemon title
         for(int i=0; i<max-8 ; i++){
             lineTwo+=" ";
         }
@@ -77,6 +88,7 @@ public class Menus {
         System.out.println(lineTwo);
         System.out.println(lineThree);
         int n =0;
+        //prints 12 lines for the pokemon
         for(int i=0; i<12; i++){
             if(n<team.getPokemons().length){
                 String levelString = String.valueOf(team.getPokemons()[n].getStats().getLevel());
@@ -89,10 +101,10 @@ public class Menus {
                         currLine += " ";
                     }
                     currLine += "*";
-                    System.out.println(currLine);
+                    System.out.println(currLine); //prints out the pokemon line in the menu if it is fainted
                     n += 1;
                 }
-                else{
+                else{//prints out the pokemon line in the menu if the pokemon is not fainted
                     for (int k = 0; k < 3 - String.valueOf(team.getPokemons()[n].getStats().getLevel()).length(); k++) {
                         levelString = " " + levelString;
                     }
@@ -115,6 +127,9 @@ public class Menus {
     /*Connor*/
     public static void attackMenu(Pokemon playerPokemon, PlayerTeam team, ComputerTeam compTeam){
         int max = maxWidth(team, compTeam);
+
+        //creates header for the attack menu
+
         String lineThree = "*";
         String lineOne = "*";
         String spaceLine = "*";
@@ -128,7 +143,7 @@ public class Menus {
         spaceLine += "*";
         lineThree +="*";
         String lineTwo = "*Attacks";
-        for(int i=0; i<max-8 ; i++){
+        for(int i=0; i<max-8 ; i++){ //accounts for offset in Attacks title
             lineTwo+=" ";
         }
         lineTwo+="*";
@@ -138,8 +153,8 @@ public class Menus {
         int n =0;
         for(int i=0; i<12; i++){
             if(n<playerPokemon.getAttacks().length){
-                String currLine = ("*" + playerPokemon.getAttacks()[n].getName());
-                for(int j = currLine.length(); j<max ; j++){
+                String currLine = ("*" + playerPokemon.getAttacks()[n].getName()); //prints out all the attacks
+                for(int j = currLine.length(); j<max ; j++){ //accounts for difference in max
                     currLine += " ";
                 }
                 currLine+="*";
@@ -156,6 +171,9 @@ public class Menus {
     /*Connor*/
     public static void bagMenu(PlayerTeam team, ComputerTeam compTeam){
         int max = maxWidth(team, compTeam);
+
+        //creates header for bag menu
+
         String lineThree = "*";
         String lineOne = "*";
         String spaceLine = "*";
@@ -179,7 +197,7 @@ public class Menus {
         for(int i=0; i<12; i++){
             if(n<team.getBag().length){
                 String currLine = ("*" + team.getBag()[n].getNumOfItems() + "x " + team.getBag()[n].getItemType().getName());
-                for(int j = currLine.length(); j<max; j++){
+                for(int j = currLine.length(); j<max; j++){ //offset spaces by max
                     currLine += " ";
                 }
                 currLine+="*";
@@ -289,3 +307,77 @@ public class Menus {
         System.out.print("\n");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

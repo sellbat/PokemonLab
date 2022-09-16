@@ -502,7 +502,7 @@ public class Game {
             else { //Otherwise the player can choose any move
                 switch (inputMenuChoice()) {
                     case Atk:
-                        Menus.attackMenu(this.playerTeam, this.compTeam);
+                        Menus.attackMenu(this.playerPokemon, this.playerTeam, this.compTeam);
                         Attack attackChoice = inputAttackChoice();
                         useAttack(attackChoice, this.playerPokemon, this.compPokemon);
                         Menus.battleMenu(this, this.playerPokemon.getNickName() + " used " + attackChoice.getName());

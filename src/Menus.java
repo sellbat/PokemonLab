@@ -113,7 +113,7 @@ public class Menus {
     }
 
     /*Connor*/
-    public static void attackMenu(PlayerTeam team, ComputerTeam compTeam){
+    public static void attackMenu(Pokemon playerPokemon, PlayerTeam team, ComputerTeam compTeam){
         int max = maxWidth(team, compTeam);
         String lineThree = "*";
         String lineOne = "*";
@@ -137,8 +137,8 @@ public class Menus {
         System.out.println(lineThree);
         int n =0;
         for(int i=0; i<12; i++){
-            if(n<team.getPokemons()[0].getAttacks().length){
-                String currLine = ("*" + team.getPokemons()[0].getAttacks()[n].getName());
+            if(n<playerPokemon.getAttacks().length){
+                String currLine = ("*" + playerPokemon.getAttacks()[n].getName());
                 for(int j = currLine.length(); j<max ; j++){
                     currLine += " ";
                 }
